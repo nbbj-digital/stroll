@@ -17,7 +17,15 @@
     "url": "https://github.com/mitevpi/stroll/issues"
   },
   "keywords": [
-    "sql"
+    "stroll",
+    "pathfinding",
+    "wayfinding",
+    "analysis",
+    "nature",
+    "architecture",
+    "design",
+    "computation",
+    "nbbj"
   ],
   "homepage": "https://github.com/mitevpi/stroll#readme",
   "dependencies": {

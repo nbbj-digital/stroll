@@ -1,4 +1,4 @@
-const apiKey = '6NYOaiq8v9lYb4anGkNvmrRxSKejVfIlvJZjHkK__IQv2uAcn8xBp_6yW58coOfuUMwpp1Tjmmy3hUTjJ65DKOfuE8GF3qvwZPMDirzf88MWTPRbN2uNOI7hvb2fXHYx';
+const apiKey = process.env.YELP_KEY;
 const yelp = require('yelp-fusion');
 const Bottleneck = require('bottleneck/es5');
 

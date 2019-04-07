@@ -19,6 +19,10 @@ For the proof of concept application, we were not able to complete the functiona
 
 ## Usage
 
+### Environment Variables
+
+Before using this module, `GMAPS_KEY` and `YELP_KEY` environment variables have to be set on your machine with your specific Google Maps API Key and Yelp API Key.
+
 ### Imports
 
 Imports can be done through the aggregating index.js file or via individual members.
