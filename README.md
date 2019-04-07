@@ -7,7 +7,7 @@
 
 ![npm](https://img.shields.io/npm/v/@mitevpi/stroll.svg) ![npm bundle size](https://img.shields.io/bundlephobia/min/@mitevpi/stroll.svg)
 
-![GitHub issues](https://img.shields.io/github/issues/nbbj-digital/stroll.svg) ![David](https://img.shields.io/david/dev/nbbj-digital/stroll.svg) ![GitHub last commit](https://img.shields.io/github/last-commit/nbbj-digital/stroll.svg)
+![GitHub issues](https://img.shields.io/github/issues/nbbj-digital/stroll.svg) ![David](https://img.shields.io/david/dev/nbbj-digital/stroll.svg) ![Azure DevOps builds](https://img.shields.io/azure-devops/build/PMitev/NBBJ%20Public/3.svg) ![GitHub last commit](https://img.shields.io/github/last-commit/nbbj-digital/stroll.svg)
 
 TT AEC Hackathon 2019 - Seattle Project
 
