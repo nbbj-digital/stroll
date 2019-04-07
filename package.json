@@ -1,6 +1,6 @@
 {
   "name": "@nbbj/stroll",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Javascript library for finding the optimal walking path to be as exposed to nature as possible.",
   "main": "src/index.js",
   "scripts": {
