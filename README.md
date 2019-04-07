@@ -3,7 +3,7 @@
 
 # Stroll
 
-[![Generic badge](https://img.shields.io/badge/App-Source-Green.svg)](https://github.com/Brandoncyu/aechackathon2019) [![Generic badge](https://img.shields.io/badge/Documentation-MD-Green.svg)](docs/README.md) [![Generic badge](https://img.shields.io/badge/Samples-JS-Green.svg)](samples/strollSamples.js)
+[![Generic badge](https://img.shields.io/badge/Docs-Web-Green.svg)](https://nbbj-digital.github.io/stroll/) [![Generic badge](https://img.shields.io/badge/Docs-MD-Green.svg)](docs/README.md) [![Generic badge](https://img.shields.io/badge/Samples-JS-Green.svg)](samples/strollSamples.js)
 
 TT AEC Hackathon 2019 - Seattle Project
 
