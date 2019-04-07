@@ -90,7 +90,8 @@ Returns **[Object][34]** A collection of Objects containing color palette data.
 
 ## GetPaletteAnalysis
 
-Get a percentage of "greenery" visible in a 360 panorama taken at the given latitude/longitude.
+Get a percentage of "greenery" visible (dominant in the image color palette) in a 360 panorama
+taken at the given latitude/longitude.
 
 ### Parameters
 

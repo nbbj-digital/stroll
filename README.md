@@ -7,7 +7,7 @@
 
 TT AEC Hackathon 2019 - Seattle Project
 
-This is the computational library which powers the Stroll App which helps people find the most nature-filled walks/paths to take thrughout the day in order to stimulate creativity and boost mental health.
+This is a computational library which finds the most nature-filled walks/paths to take thrughout the day in order to stimulate creativity and boost mental health.
 
 Pathfinding is performed via Weighted Graph computation, with weights being given for characteristics such as proximity to parks, and amount of nature in the field of view.
 
@@ -53,10 +53,9 @@ RouteData.GetGraph(grid, 0.7) // get a graph from point grid
   }).catch(err => console.error(err));
 ```
 
-
 #### Yelp Data
 
-Yelp data for nearby public parks/green amenities.
+Yelp data for nearby public parks/green amenities. Used for finding public parks and other notable green spaces near any point on earth (lat/long).
 
 ```js
 YelpData.ParkSearch(47.660273, -122.409887, 1000).then(results => {
@@ -66,7 +65,7 @@ YelpData.ParkSearch(47.660273, -122.409887, 1000).then(results => {
 
 #### Weather Data
 
-Weather data analysis.
+Weather data analysis. Currently not used in the nature score calculation, but itended to be added.
 
 ```js
 let sunData = WeatherData.GetSunPositionToday(47.6694956, -122.31547389999999);
@@ -75,7 +74,7 @@ console.log(sunData);
 
 #### Color Palette Analysis
 
-Color palette analysis in field of view.
+Color palette analysis in field of view. Used for calculating how much of the visible color palette at any point on earth (lat/long) is green (nature).
 
 ```js
 ColorParse.GetPalette(46.414382, 10.013988, 151.78).then(colors => {
@@ -103,4 +102,4 @@ The module can be built by running `npm pack` in the root directory of this repo
 
 ### Testing
 
-Testing is not yet implemented.
+Testing is handled using [mocha](https://www.npmjs.com/package/mocha) and code coverage is evaluated using [nyc](https://www.npmjs.com/package/nyc). Tests can be initiated by running `npm test` in the root directory of this repository.

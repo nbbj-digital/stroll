@@ -13,6 +13,7 @@ logs/
 node_modules/
 .vscode/
 data/
+data
 wip/
 assets/
 docs/index.html

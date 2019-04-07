@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "test": "nyc --reporter=text mocha --exit --timeout 10000",
-    "doc": "documentation build src/index.js -f md -o docs/README.md"
+    "doc": "documentation build src/index.js -f md -o docs/README.md && documentation build src/** -f html -o docs"
   },
   "repository": {
     "type": "git",
@@ -16,6 +16,9 @@
   "bugs": {
     "url": "https://github.com/mitevpi/stroll/issues"
   },
+  "keywords": [
+    "sql"
+  ],
   "homepage": "https://github.com/mitevpi/stroll#readme",
   "dependencies": {
     "turf": "^3.0.14",
