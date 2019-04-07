@@ -16,10 +16,14 @@ data/
 data
 wip/
 assets/
+
 docs/index.html
+docs/_config.yml
 docs/assets
 
 .idea
 .nyc_output
 
-bitbucket.pipelines.yml 
+bitbucket.pipelines.yml
+
+wip

@@ -1,6 +1,6 @@
 {
-  "name": "stroll",
-  "version": "1.0.0",
+  "name": "@mitevpi/stroll",
+  "version": "1.0.3",
   "description": "Javascript library for finding the optimal walking path to be as exposed to nature as possible.",
   "main": "src/index.js",
   "scripts": {
@@ -18,6 +18,7 @@
   },
   "keywords": [
     "stroll",
+    "walk",
     "pathfinding",
     "wayfinding",
     "analysis",
@@ -29,7 +30,7 @@
   ],
   "homepage": "https://github.com/mitevpi/stroll#readme",
   "dependencies": {
-    "turf": "^3.0.14",
+    "@turf/random": "^6.0.2",
     "bottleneck": "^2.17.1",
     "ngraph.graph": "0.0.18",
     "ngraph.path": "^1.1.0",
@@ -37,8 +38,8 @@
     "querystring": "^0.2.0",
     "request": "^2.88.0",
     "suncalc": "^1.8.0",
-    "yelp-fusion": "^2.2.1",
-    "@turf/random": "^6.0.2"
+    "turf": "^3.0.14",
+    "yelp-fusion": "^2.2.1"
   },
   "devDependencies": {
     "mocha": "^6.0.2",

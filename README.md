@@ -3,7 +3,11 @@
 
 # Stroll
 
-[![Generic badge](https://img.shields.io/badge/App-Source-Green.svg)](https://github.com/Brandoncyu/aechackathon2019) [![Generic badge](https://img.shields.io/badge/Documentation-MD-Green.svg)](docs/README.md) [![Generic badge](https://img.shields.io/badge/Samples-JS-Green.svg)](samples/strollSamples.js)
+[![Generic badge](https://img.shields.io/badge/Docs-Web-Green.svg)](https://nbbj-digital.github.io/stroll/) [![Generic badge](https://img.shields.io/badge/Docs-MD-Green.svg)](docs/README.md) [![Generic badge](https://img.shields.io/badge/Samples-JS-Green.svg)](samples/strollSamples.js) ![NPM](https://img.shields.io/npm/l/@mitevpi/stroll.svg)
+
+[![npm](https://img.shields.io/npm/v/@mitevpi/stroll.svg)](https://www.npmjs.com/package/@mitevpi/stroll) [![npm bundle size](https://img.shields.io/bundlephobia/min/@mitevpi/stroll.svg)](https://bundlephobia.com/result?p=@mitevpi/stroll)
+
+![GitHub issues](https://img.shields.io/github/issues/nbbj-digital/stroll.svg) ![David](https://img.shields.io/david/dev/nbbj-digital/stroll.svg) ![Azure DevOps builds](https://img.shields.io/azure-devops/build/PMitev/NBBJ%20Public/3.svg) ![GitHub last commit](https://img.shields.io/github/last-commit/nbbj-digital/stroll.svg)
 
 TT AEC Hackathon 2019 - Seattle Project
 
@@ -19,23 +23,35 @@ For the proof of concept application, we were not able to complete the functiona
 
 ## Usage
 
+To use this module, install locally using the command below, or clone this repository and import the .js files directly from source.
+
+```cmd
+npm i @mitevpi/stroll
+```
+
 ### Environment Variables
 
-Before using this module, `GMAPS_KEY` and `YELP_KEY` environment variables have to be set on your machine with your specific Google Maps API Key and Yelp API Key.
+Before using this module, `GMAPS_KEY` and `YELP_KEY` environment variables must be set on your machine with your specific Google Maps API Key and Yelp API Key.
 
 ### Imports
 
 Imports can be done through the aggregating index.js file or via individual members.
 
 ```js
-const Stroll = require('./index.js');
+const Stroll = require('./index.js'); // from source
+const stroll = require('@mitevpi/stroll') // from npm
 ```
 
 ```js
+// from source
 const ColorParse = require('./ColorParse');
 const YelpData = require('./YelpData');
 const WeatherData = require('./WeatherData');
 const RouteData = require('./RouteData');
+
+// from npm
+const { RouteData } = require('@mitevpi/stroll');
+const { ColorParse } = require('@mitevpi/stroll');
 ```
 
 ### Methods
