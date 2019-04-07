@@ -9,15 +9,15 @@
 
 ![GitHub issues](https://img.shields.io/github/issues/nbbj-digital/stroll.svg) ![David](https://img.shields.io/david/dev/nbbj-digital/stroll.svg) ![Azure DevOps builds](https://img.shields.io/azure-devops/build/PMitev/NBBJ%20Public/3.svg) ![GitHub last commit](https://img.shields.io/github/last-commit/nbbj-digital/stroll.svg)
 
-TT AEC Hackathon 2019 - Seattle Project
-
 This is a computational library which finds the most nature-filled walks/paths to take thrughout the day in order to stimulate creativity and boost mental health.
 
 Pathfinding is performed via Weighted Graph computation, with weights being given for characteristics such as proximity to parks, and amount of nature in the field of view.
 
+Original started at the [TT West AEC Hackathon in Seattle, 2019](http://core.thorntontomasetti.com/aec-tech-2019-seattle/aec-tech-seattle-hackathon/aec-tech-seattle-github-repos/).
+
 ## Proof of Concept
 
-For the proof of concept application, we were not able to complete the functionality of a walk being a "loop", but we do calculate and find the most nature-filled walk given the input parameters and start point.
+Currently, the library computes only an A to B path given an origin, and point grid generated around it. Future development will target more route-finding options.
 
 ![first path](assets/screenshots/firstMap.png)
 
