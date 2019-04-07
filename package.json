@@ -1,6 +1,6 @@
 {
   "name": "@nbbj/stroll",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Javascript library for finding the optimal walking path to be as exposed to nature as possible.",
   "main": "src/index.js",
   "scripts": {
@@ -9,12 +9,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mitevpi/stroll.git"
+    "url": "git+https://github.com/nbbj-digital/stroll.git"
   },
-  "author": "Petr Mitev",
+  "author": {
+    "name": "Petr Mitev",
+    "email": "p.mitevpi@gmail.com",
+    "url": "https://mitevpi.com/"
+  },
+  "contributors": ["Nate Holland", "NBBJ"],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mitevpi/stroll/issues"
+    "url": "https://github.com/nbbj-digital/stroll/issues"
   },
   "keywords": [
     "stroll",
@@ -28,7 +33,7 @@
     "computation",
     "nbbj"
   ],
-  "homepage": "https://github.com/mitevpi/stroll#readme",
+  "homepage": "https://github.com/nbbj-digital/stroll#readme",
   "dependencies": {
     "@turf/random": "^6.0.2",
     "bottleneck": "^2.17.1",
