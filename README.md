@@ -29,7 +29,6 @@ const Stroll = require('./index.js');
 
 ```js
 const ColorParse = require('./ColorParse');
-const StreetData = require('./StreetData');
 const YelpData = require('./YelpData');
 const WeatherData = require('./WeatherData');
 const RouteData = require('./RouteData');
