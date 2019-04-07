@@ -16,7 +16,9 @@ data/
 data
 wip/
 assets/
+
 docs/index.html
+docs/_config.yml
 docs/assets
 
 .idea
