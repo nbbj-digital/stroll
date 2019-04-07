@@ -1,0 +1,39 @@
+{
+  "name": "stroll",
+  "version": "1.0.0",
+  "description": "Javascript library for finding the optimal walking path to be as exposed to nature as possible.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "nyc --reporter=text mocha --exit --timeout 10000",
+    "doc": "documentation build src/index.js -f md -o docs/README.md && documentation build src/** -f html -o docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mitevpi/stroll.git"
+  },
+  "author": "Petr Mitev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mitevpi/stroll/issues"
+  },
+  "keywords": [
+    "sql"
+  ],
+  "homepage": "https://github.com/mitevpi/stroll#readme",
+  "dependencies": {
+    "turf": "^3.0.14",
+    "bottleneck": "^2.17.1",
+    "ngraph.graph": "0.0.18",
+    "ngraph.path": "^1.1.0",
+    "node-vibrant": "^3.2.0-alpha",
+    "querystring": "^0.2.0",
+    "request": "^2.88.0",
+    "suncalc": "^1.8.0",
+    "yelp-fusion": "^2.2.1",
+    "@turf/random": "^6.0.2"
+  },
+  "devDependencies": {
+    "mocha": "^6.0.2",
+    "nyc": "^13.3.0"
+  }
+}
