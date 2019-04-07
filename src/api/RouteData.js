@@ -1,5 +1,6 @@
-const turf = require('turf');
-const TurfRandom = require('@turf/random');
+const Turf = require('Turf');
+const TurfRandom = require('@Turf/random');
+
 let createGraph = require('ngraph.graph');
 let path = require('ngraph.path');
 
@@ -16,12 +17,12 @@ class RouteData {
    * @param {Number} long Longitude of location.
    * @param {Number} radius The radius of the bounding geometry from the given lat/long origin.
    * @param {String} numPoints How many points to return
-   * @returns {Array<turf.Point>} A collection of Turf.JS points.
+   * @returns {Array<Turf.Point>} A collection of Turf.JS points.
    */
   static GetRandomPointGrid(lat, long, radius, numPoints) {
-    let point = turf.point([lat, long]);
-    let buffer = turf.buffer(point, radius);
-    let bbox = turf.bbox(buffer);
+    let point = Turf.point([lat, long]);
+    let buffer = Turf.buffer(point, radius);
+    let bbox = Turf.bbox(buffer);
     let points = TurfRandom.randomPoint(numPoints, bbox);
 
     return points;
@@ -34,13 +35,13 @@ class RouteData {
    * @param {Number} long Longitude of location.
    * @param {Number} radius The radius of the bounding geometry from the given lat/long origin.
    * @param {Number} pointDist How far apart the points should be in the point grid.
-   * @returns {Array<turf.Point>} A collection of Turf.JS points.
+   * @returns {Array<Turf.Point>} A collection of Turf.JS points.
    */
   static GetPointGrid(lat, long, radius, pointDist) {
-    let point = turf.point([lat, long]);
-    let buffer = turf.buffer(point, radius);
-    let bbox = turf.bbox(buffer);
-    var grid = turf.pointGrid(bbox, pointDist);
+    let point = Turf.point([lat, long]);
+    let buffer = Turf.buffer(point, radius);
+    let bbox = Turf.bbox(buffer);
+    var grid = Turf.pointGrid(bbox, pointDist);
 
     return grid;
   }
@@ -48,7 +49,7 @@ class RouteData {
   /**
    * Get graph object representing the points which are walkable given an origin lat/long, radius, and
    * distance between points for creation of a grid.
-   * @param {Array<turf.Point>} grid A grid of turf.js points
+   * @param {Array<Turf.Point>} grid A grid of Turf.js points
    * @param {Number} linkTolerance The minimum distance between points to be considered a 'link'.
    * @returns {Graph} A ngraph.graph object.
    */
@@ -65,7 +66,7 @@ class RouteData {
           r.map(o2 => {
             let idB = String(o2.coordinates[0]) + '-' + String(o2.coordinates[1]);
 
-            let distance = turf.distance(o.coordinates, o2.coordinates);
+            let distance = Turf.distance(o.coordinates, o2.coordinates);
             let dx = (+o.coordinates[0]) - (+o2.coordinates[0]);
             let dy = (+o.coordinates[1]) - (+o2.coordinates[1]);
 
@@ -96,7 +97,7 @@ class RouteData {
   /**
    * Get graph data from the points which are walkable given an origin lat/long, radius, and
    * distance between points for creation of a grid.
-   * @param {Array<turf.Point>} grid A grid of turf.js points
+   * @param {Array<Turf.Point>} grid A grid of Turf.js points
    * @returns {Object} A ngraph.graph object.
    */
   static async GetGraphData(grid) {
