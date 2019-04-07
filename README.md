@@ -23,6 +23,12 @@ For the proof of concept application, we were not able to complete the functiona
 
 ## Usage
 
+Install locally using the folling command.
+
+```cmd
+npm i @mitevpi/stroll
+```
+
 ### Environment Variables
 
 Before using this module, `GMAPS_KEY` and `YELP_KEY` environment variables have to be set on your machine with your specific Google Maps API Key and Yelp API Key.
@@ -32,10 +38,12 @@ Before using this module, `GMAPS_KEY` and `YELP_KEY` environment variables have 
 Imports can be done through the aggregating index.js file or via individual members.
 
 ```js
-const Stroll = require('./index.js');
+const Stroll = require('./index.js'); // from source
+const stroll = require('@mitevpi/stroll') // from npm
 ```
 
 ```js
+// from source
 const ColorParse = require('./ColorParse');
 const YelpData = require('./YelpData');
 const WeatherData = require('./WeatherData');
