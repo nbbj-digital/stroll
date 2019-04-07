@@ -5,7 +5,7 @@
 
 [![Generic badge](https://img.shields.io/badge/Docs-Web-Green.svg)](https://nbbj-digital.github.io/stroll/) [![Generic badge](https://img.shields.io/badge/Docs-MD-Green.svg)](docs/README.md) [![Generic badge](https://img.shields.io/badge/Samples-JS-Green.svg)](samples/strollSamples.js) ![NPM](https://img.shields.io/npm/l/@mitevpi/stroll.svg)
 
-[![Generic badge](https://img.shields.io/badge/Release-NPM-Blue.svg)](https://www.npmjs.com/package/@mitevpi/stroll) ![npm](https://img.shields.io/npm/v/@mitevpi/stroll.svg) [![npm bundle size](https://img.shields.io/bundlephobia/min/@mitevpi/stroll.svg)](https://bundlephobia.com/result?p=@mitevpi/stroll)
+[![npm](https://img.shields.io/npm/v/@mitevpi/stroll.svg)](https://www.npmjs.com/package/@mitevpi/stroll) [![npm bundle size](https://img.shields.io/bundlephobia/min/@mitevpi/stroll.svg)](https://bundlephobia.com/result?p=@mitevpi/stroll)
 
 ![GitHub issues](https://img.shields.io/github/issues/nbbj-digital/stroll.svg) ![David](https://img.shields.io/david/dev/nbbj-digital/stroll.svg) ![Azure DevOps builds](https://img.shields.io/azure-devops/build/PMitev/NBBJ%20Public/3.svg) ![GitHub last commit](https://img.shields.io/github/last-commit/nbbj-digital/stroll.svg)
 
