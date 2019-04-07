@@ -12,8 +12,6 @@ class ColorParse {
    * @returns {String} A url for google maps.
    */
   static BuildRequest(lat, long, heading) {
-    // let location = 'location=46.414382,10.013988&';
-    // let heading = 'heading=151.78&';
     let base = 'https://maps.googleapis.com/maps/api/streetview?';
     let size = 'size=800x400&';
     let location = 'location=' + String(lat) + ',' + String(long) + '&';
@@ -86,7 +84,8 @@ class ColorParse {
   }
 
   /**
-   * Get a percentage of "greenery" visible in a 360 panorama taken at the given latitude/longitude.
+   * Get a percentage of "greenery" visible (dominant in the image color palette) in a 360 panorama
+   * taken at the given latitude/longitude.
    * @param {String} lat Latitude of location.
    * @param {String} long Longitude of location.
    * @returns {Promise<Number>} A decimal percentage of the prevalence of green in the field of view.

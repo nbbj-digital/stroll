@@ -4,7 +4,7 @@
   "description": "Javascript library for finding the optimal walking path to be as exposed to nature as possible.",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "nyc --reporter=text mocha --exit --timeout 10000",
     "doc": "documentation build src/index.js -f md -o docs/README.md"
   },
   "repository": {
@@ -28,5 +28,9 @@
     "suncalc": "^1.8.0",
     "yelp-fusion": "^2.2.1",
     "@turf/random": "^6.0.2"
+  },
+  "devDependencies": {
+    "mocha": "^6.0.2",
+    "nyc": "^13.3.0"
   }
 }
