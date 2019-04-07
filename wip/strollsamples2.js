@@ -8,6 +8,7 @@ RouteData.GetGraph(grid, 0.7)
   .then(paths => RouteData.FindTopNaturePaths(paths))
   .then(results => {
     console.log(results);
+    console.log(results);
 
     fs.writeFile('data/strollPathData.json', JSON.stringify(results[0]), function (err) {
       if (err) {

@@ -22,4 +22,6 @@ docs/assets
 .idea
 .nyc_output
 
-bitbucket.pipelines.yml 
+bitbucket.pipelines.yml
+
+wip

@@ -1,5 +1,5 @@
 const turf = require('turf');
-const turfrandom = require('@turf/random');
+const TurfRandom = require('@turf/random');
 let createGraph = require('ngraph.graph');
 let path = require('ngraph.path');
 
@@ -22,7 +22,7 @@ class RouteData {
     let point = turf.point([lat, long]);
     let buffer = turf.buffer(point, radius);
     let bbox = turf.bbox(buffer);
-    let points = turfrandom.randomPoint(numPoints, bbox);
+    let points = TurfRandom.randomPoint(numPoints, bbox);
 
     return points;
   }
