@@ -1,4 +1,4 @@
-const Stroll = require('@mitevpi/Stroll');
+const Stroll = require('@nbbj/stroll');
 
 let grid = Stroll.RouteData.GetPointGrid(47.651588, -122.415078, 1, 0.5);
 
