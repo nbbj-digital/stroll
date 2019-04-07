@@ -179,7 +179,6 @@ distance between points for creation of a grid.
 ### Parameters
 
 -   `grid` **[Array][37]&lt;turf.Point>** A grid of turf.js points
--   `linkTolerance` **[String][33]** The minimum distance between points to be considered a 'link'.
 
 Returns **[Object][34]** A ngraph.graph object.
 

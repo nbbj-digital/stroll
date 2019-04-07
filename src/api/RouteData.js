@@ -2,7 +2,6 @@ const turf = require('turf');
 const turfrandom = require('@turf/random');
 let createGraph = require('ngraph.graph');
 let path = require('ngraph.path');
-// var fs = require('fs');
 
 const ColorParse = require('./ColorParse');
 const YelpData = require('./YelpData');
@@ -54,31 +53,37 @@ class RouteData {
    * @returns {Graph} A ngraph.graph object.
    */
   static GetGraph(grid, linkTolerance) {
-    console.log('Staring Get Graph');
+    console.log('Staring Get Graph | Grid Size: ' + String(grid.features.length));
     let self = this;
     return new Promise(function (resolve, reject) {
 
-      self.GetGraphData(grid, linkTolerance).then(r => {
+      self.GetGraphData(grid).then(r => {
         let graph = createGraph();
         r.map(o => {
-          let idA = String(o.idA[0]) + '-' + String(o.idA[1]);
-          let idB = String(o.idB[0]) + '-' + String(o.idB[1]);
+          let idA = String(o.coordinates[0]) + '-' + String(o.coordinates[1]);
 
-          graph.addNode(idA, {
-            x: +o.idA[0],
-            y: +o.idA[1],
-            greenScore: o.greenScore,
-            parkScore: o.parkScore,
-          });
+          r.map(o2 => {
+            let idB = String(o2.coordinates[0]) + '-' + String(o2.coordinates[1]);
 
-          let dx = (+o.idA[0]) - (+o.idB[0])
-          let dy = (+o.idA[1]) - (+o.idB[1]);
+            let distance = turf.distance(o.coordinates, o2.coordinates);
+            let dx = (+o.coordinates[0]) - (+o2.coordinates[0]);
+            let dy = (+o.coordinates[1]) - (+o2.coordinates[1]);
 
-          graph.addLink(idA, idB, {
-            greenScore: o.greenScore,
-            parkScore: o.parkScore,
-            dist: Math.abs(Math.sqrt(dx * dx + dy * dy)),
-            dist2: o.distance
+            graph.addNode(idA, {
+              x: +o.coordinates[0],
+              y: +o.coordinates[1],
+              greenScore: o.greenScore + o2.greenScore,
+              parkScore: o.parkScore + o2.parkScore,
+            });
+
+            if (distance != 0 && distance < linkTolerance) {
+              graph.addLink(idA, idB, {
+                greenScore: o2.greenScore,
+                parkScore: o2.parkScore,
+                dist: Math.abs(Math.sqrt(dx * dx + dy * dy)),
+                dist2: distance
+              });
+            }
           });
         });
 
@@ -92,47 +97,31 @@ class RouteData {
    * Get graph data from the points which are walkable given an origin lat/long, radius, and
    * distance between points for creation of a grid.
    * @param {Array<turf.Point>} grid A grid of turf.js points
-   * @param {String} linkTolerance The minimum distance between points to be considered a 'link'.
    * @returns {Object} A ngraph.graph object.
    */
-  static async GetGraphData(grid, linkTolerance) {
+  static async GetGraphData(grid) {
     console.log('Staring Get Graph Data');
     let promises = [];
 
-    // add all points as nodes
-    grid.features.map(o1 => {
+    // iterate over the same collection to get links between nodes based on distance
+    grid.features.map(o2 => {
 
-      // iterate over the same collection to get links between nodes based on distance
-      grid.features.map(o2 => {
-        let distance = turf.distance(o1.geometry.coordinates, o2.geometry.coordinates);
+      let temp = new Promise(function (resolve, reject) {
+        ColorParse.GetPaletteAnalysis(o2.geometry.coordinates[0], o2.geometry.coordinates[1]).then(result => {
 
-        // console.log(distance);
-        // if distance is within threshold, check nature metrics
-        if (distance != 0 && distance < linkTolerance) {
-
-          let temp = new Promise(function (resolve, reject) {
-            ColorParse.GetPaletteAnalysis(o2.geometry.coordinates[0], o2.geometry.coordinates[1]).then(result => {
-
-              // limiter.schedule(() => YelpData.ParkSearch(+o2.geometry.coordinates[0], +o2.geometry.coordinates[1], 500))
-              // YelpData.ParkSearch(47.660273, -122.409887, 500)
-              YelpData.ParkSearch(+o2.geometry.coordinates[0], +o2.geometry.coordinates[1], 300)
-                .then(result2 => {
-                  let returnObj = {
-                    idA: o1.geometry.coordinates,
-                    idB: o2.geometry.coordinates,
-                    // greenScore: 1 - (+result),
-                    greenScore: +result,
-                    parkScore: result2.length,
-                    distance: distance,
-                  };
-                  resolve(returnObj);
-                }).catch(err => console.error(err));
-
+          YelpData.ParkSearch(+o2.geometry.coordinates[0], +o2.geometry.coordinates[1], 300)
+            .then(result2 => {
+              let returnObj = {
+                coordinates: o2.geometry.coordinates,
+                greenScore: +result,
+                parkScore: result2.length,
+              };
+              resolve(returnObj);
             }).catch(err => console.error(err));
-          });
-          promises.push(temp);
-        }
+
+        }).catch(err => console.error(err));
       });
+      promises.push(temp);
     });
 
     return Promise.all(promises);
@@ -198,11 +187,11 @@ class RouteData {
 
       });
 
-      fs.writeFile('graphData.json', JSON.stringify(paths), function (err) {
-        if (err) {
-          console.log(err);
-        }
-      });
+      // fs.writeFile('graphData.json', JSON.stringify(paths), function (err) {
+      //   if (err) {
+      //     console.log(err);
+      //   }
+      // });
 
       resolve(paths);
 
@@ -239,12 +228,6 @@ class RouteData {
         });
         return data;
       });
-
-      // fs.writeFile('data/pathData.json', JSON.stringify(topPathSimple[0]), function (err) {
-      //   if (err) {
-      //     console.log(err);
-      //   }
-      // });
 
       resolve(topPathSimple);
     }).catch(err => console.error(err));
