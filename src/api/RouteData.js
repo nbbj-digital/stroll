@@ -22,8 +22,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-const Turf = require('Turf');
-const TurfRandom = require('@Turf/random');
+const Turf = require('turf');
+const TurfRandom = require('@turf/random');
 
 let createGraph = require('ngraph.graph');
 let path = require('ngraph.path');
