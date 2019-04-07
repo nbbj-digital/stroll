@@ -23,7 +23,7 @@ SOFTWARE.
 */
 
 const Turf = require('turf');
-const TurfRandom = require('@Turf/random');
+const TurfRandom = require('@turf/random');
 
 let createGraph = require('ngraph.graph');
 let path = require('ngraph.path');
