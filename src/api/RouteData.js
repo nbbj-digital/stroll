@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-const Turf = require('Turf');
+const Turf = require('turf');
 const TurfRandom = require('@Turf/random');
 
 let createGraph = require('ngraph.graph');
