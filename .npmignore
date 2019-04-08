@@ -25,5 +25,6 @@ docs/assets
 .nyc_output
 
 bitbucket.pipelines.yml
+azure-pipelines.yml
 
 wip

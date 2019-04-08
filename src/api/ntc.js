@@ -1782,7 +1782,7 @@ var ntc = {
     ["CDD5D5", "Zumthor", "Grey"]
   ]
 
-}
+};
 
 ntc.init();
 module.exports = ntc;

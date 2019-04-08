@@ -44,9 +44,7 @@ class RouteData {
   static BoundingBoxRadius(lat, long, radius) {
     let point = Turf.point([lat, long]);
     let buffer = Turf.buffer(point, radius);
-    let bbox = Turf.bbox(buffer);
-
-    return bbox;
+    return Turf.bbox(buffer);
   }
 
   /**
@@ -60,9 +58,7 @@ class RouteData {
    */
   static GetRandomPointGrid(lat, long, radius, numPoints) {
     let bbox = this.BoundingBoxRadius(lat, long, radius);
-    let points = TurfRandom.randomPoint(numPoints, bbox);
-
-    return points;
+    return TurfRandom.randomPoint(numPoints, bbox);
   }
 
   /**
@@ -76,9 +72,7 @@ class RouteData {
    */
   static GetPointGrid(lat, long, radius, pointDist) {
     let bbox = this.BoundingBoxRadius(lat, long, radius);
-    var grid = Turf.pointGrid(bbox, pointDist);
-
-    return grid;
+    return Turf.pointGrid(bbox, pointDist);
   }
 
   /**
@@ -144,7 +138,7 @@ class RouteData {
     grid.features.map(point => {
 
       let temp = new Promise(function (resolve, reject) {
-        let coordinates = point.geometry.coordinates
+        let coordinates = point.geometry.coordinates;
         ColorParse.GetPaletteAnalysis(coordinates[0], coordinates[1]).then(greenScore => {
 
           YelpData.ParkSearch(+coordinates[0], +coordinates[1], 300)
@@ -229,7 +223,7 @@ class RouteData {
    * Get graph data from the points which are walkable given an origin lat/long, radius, and
    * distance between points for creation of a grid. Sort with the top nature walks first.
    * @param {Object} json The raw path output of FindAllNaturePaths().
-   * @returns {Array} A list of paths, sorted from most exposed to nature to least.
+   * @returns {Promise<Array>} A list of paths, sorted from most exposed to nature to least.
    */
   static FindTopNaturePaths(json) {
     return new Promise(function (resolve, reject) {

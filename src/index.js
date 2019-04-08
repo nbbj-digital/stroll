@@ -30,22 +30,22 @@ const RouteData = require('./api/RouteData');
 module.exports = {
   /**
    * Field of view analysis for nature/greenery.
-   * @property {module:ColorParse}
+   * @property {ColorParse}
    */
   ColorParse,
   /**
    * Yelp-related data for analysis.
-   * @property {module:YelpData}
+   * @property {YelpData}
    */
   YelpData,
    /**
    * Weather-related data for analysis.
-   * @property {module:WeatherData}
+   * @property {WeatherData}
    */
   WeatherData,
    /**
    * Route-related data for analysis.
-   * @property {module:RouteData}
+   * @property {RouteData}
    */
   RouteData,
 };
