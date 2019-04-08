@@ -35,6 +35,22 @@ class RouteData {
   constructor() {}
 
   /**
+   * Get a bounding box around a location with a given radius.
+   * @param {Number} lat Latitude of location.
+   * @param {Number} long Longitude of location.
+   * @param {Number} radius The radius of the bounding geometry from the given lat/long origin.
+   * @returns {Turf.bbox} A Turf.js bounding box object.
+   */
+  static BoundingBoxRadius(lat, long, radius) {
+    let point = Turf.point([lat, long]);
+    let buffer = Turf.buffer(point, radius);
+    let bbox = Turf.bbox(buffer);
+
+    return bbox;
+  }
+
+
+  /**
    * Get a collection of random points which fall within a given bounding radius from an origin
    * lat/long point.
    * @param {Number} lat Latitude of location.
@@ -44,9 +60,7 @@ class RouteData {
    * @returns {Array<Turf.Point>} A collection of Turf.JS points.
    */
   static GetRandomPointGrid(lat, long, radius, numPoints) {
-    let point = Turf.point([lat, long]);
-    let buffer = Turf.buffer(point, radius);
-    let bbox = Turf.bbox(buffer);
+    let bbox = this.BoundingBoxRadius(lat, long, radius);
     let points = TurfRandom.randomPoint(numPoints, bbox);
 
     return points;
@@ -62,9 +76,7 @@ class RouteData {
    * @returns {Array<Turf.Point>} A collection of Turf.JS points.
    */
   static GetPointGrid(lat, long, radius, pointDist) {
-    let point = Turf.point([lat, long]);
-    let buffer = Turf.buffer(point, radius);
-    let bbox = Turf.bbox(buffer);
+    let bbox = this.BoundingBoxRadius(lat, long, radius);
     var grid = Turf.pointGrid(bbox, pointDist);
 
     return grid;
