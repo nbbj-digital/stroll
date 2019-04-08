@@ -134,7 +134,7 @@ ColorParse.GetPaletteAnalysis(47.660259, -122.408417).then(result => {
 
 ### Building
 
-The module can be built by running `npm pack` in the root directory of this repository. Documentation can be built using the [Documentation module](https://www.npmjs.com/package/documentation) from npm, and by running `npm run doc` in the root directory of this repository. This will create [markdown](docs/README.md) and [HTML documentaion](docs/index.html).
+The module can be built by running `npm run build` in the root directory of this repository. Documentation is built using the [Documentation module](https://www.npmjs.com/package/documentation) from npm, and by running `npm run doc` in the root directory of this repository. This will create [markdown](docs/README.md) and [HTML documentaion](docs/index.html).
 
 ### Testing
 
