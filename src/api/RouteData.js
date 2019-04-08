@@ -47,7 +47,7 @@ class RouteData {
    * @returns {Turf.bbox} A Turf.js bounding box object.
    */
   static BoundingBoxRadius(lat, long, radius) {
-    let point = TurfHelpers.point([lat, long]);
+    let point = TurfHelpers.point([long, lat]);
     let buffer = TurfCircle.default(point, radius);
     return TurfBBox.default(buffer);
   }
@@ -92,9 +92,9 @@ class RouteData {
     let self = this;
     return new Promise(function (resolve, reject) {
 
-      self.GetGraphData(grid).then(r => {
+      self.GetGraphData(grid).then(points => {
         let graph = createGraph();
-        r.map(o => {
+        points.map(o => {
           let idA = String(o.coordinates[0]) + '-' + String(o.coordinates[1]);
 
           // add nodes to graph
@@ -105,7 +105,7 @@ class RouteData {
             parkScore: o.parkScore,
           });
 
-          r.map(o2 => {
+          points.map(o2 => {
             let idB = String(o2.coordinates[0]) + '-' + String(o2.coordinates[1]);
 
             let distance = TurfDistance.default(o.coordinates, o2.coordinates);
@@ -144,9 +144,9 @@ class RouteData {
 
       let temp = new Promise(function (resolve, reject) {
         let coordinates = point.geometry.coordinates;
-        ColorParse.GetPaletteAnalysis(coordinates[0], coordinates[1]).then(greenScore => {
+        ColorParse.GetPaletteAnalysis(coordinates[1], coordinates[0]).then(greenScore => {
 
-          YelpData.ParkSearch(+coordinates[0], +coordinates[1], 300)
+          YelpData.ParkSearch(+coordinates[1], +coordinates[0], 300)
             .then(yelpResult => {
               let returnObj = {
                 coordinates: coordinates,
@@ -241,8 +241,8 @@ class RouteData {
         
         // build google maps url
         let mapUrl = 'https://www.google.com/maps/dir/?api=1&';
-        mapUrl = mapUrl + 'origin=' + String(path[0].data.x) + ',' + String(path[0].data.y);
-        mapUrl = mapUrl + '&destination=' + String(path.slice(-1)[0].data.x) + ',' + String(path.slice(-1)[0].data.y);
+        mapUrl = mapUrl + 'origin=' + String(path[0].data.y) + ',' + String(path[0].data.x);
+        mapUrl = mapUrl + '&destination=' + String(path.slice(-1)[0].data.y) + ',' + String(path.slice(-1)[0].data.x);
         mapUrl = mapUrl + '&waypoints=';
 
         // iterate over the path nodes to build a url and calculate totals
@@ -257,7 +257,7 @@ class RouteData {
               // do nothing, last point in path added above
               break;
             default:
-              mapUrl = mapUrl + '%7C' + String(node.data.x) + ',' + String(node.data.y);
+              mapUrl = mapUrl + '%7C' + String(node.data.y) + ',' + String(node.data.x);
           }
           count++;
         });
