@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-const apiKey = process.env.YELP_KEY;
+const apiKey = process.env.YELP_KEY || process.env.VUE_APP_YELP_KEY ;
 const yelp = require('yelp-fusion');
 const Bottleneck = require('bottleneck/es5');
 
@@ -54,7 +54,6 @@ class YelpData {
       return new Promise(function (resolve, reject) {
 
         limiter.schedule(() => client.search(searchRequest))
-          // client.search(searchRequest)
           .then(response => {
             let results = response.jsonBody.businesses;
 
