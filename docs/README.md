@@ -230,7 +230,7 @@ distance between points for creation of a grid. Sort with the top nature walks f
 
 -   `json` **[Object][36]** The raw path output of FindAllNaturePaths().
 
-Returns **[Array][39]** A list of paths, sorted from most exposed to nature to least.
+Returns **[Promise][37]&lt;[Array][39]>** A list of paths, sorted from most exposed to nature to least.
 
 [1]: #colorparse
 
