@@ -25,7 +25,7 @@ Currently, the library computes only an A to B path within the boundaries of the
 The working model to compute the "Nature Score" of a given point in the urban environment is composed of the following:
 
 1. Green Score - What percentage of an image's dominant color palette is green in color.
-2. Park SCore - How many public parks/green spaces are near the given point, as computed by Yelp.
+2. Park Score - How many public parks/green spaces are near the given point, as computed by Yelp.
 
 Next steps for development are to add the following criteria to the "Nature Score" computation:
 
@@ -47,7 +47,7 @@ Before using this module, `GMAPS_KEY` and `YELP_KEY` environment variables must 
 
 #### User API Usage Notice
 
-Please be advised that this module will requrest Google Street View images from the Google Maps API, and therefore **WILL** [incur a cost](https://developers.google.com/maps/documentation/streetview/usage-and-billing). Managing the cost and/or other API-specific limits/resource constraints are entirely the responsibility of the user using this module.
+Please be advised that this module will request Google Street View images from the Google Maps API, and therefore **WILL** [incur a cost](https://developers.google.com/maps/documentation/streetview/usage-and-billing). Managing the cost and/or other API-specific limits/resource constraints are entirely the responsibility of the user using this module.
 
 ### Imports
 
