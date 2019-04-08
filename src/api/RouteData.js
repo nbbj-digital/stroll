@@ -146,7 +146,7 @@ class RouteData {
         let coordinates = point.geometry.coordinates;
         ColorParse.GetPaletteAnalysis(coordinates[1], coordinates[0]).then(greenScore => {
 
-          YelpData.ParkSearch(+coordinates[1], +coordinates[0], 300)
+          YelpData.ParkSearch(+coordinates[1], +coordinates[0], 500)
             .then(yelpResult => {
               let returnObj = {
                 coordinates: coordinates,

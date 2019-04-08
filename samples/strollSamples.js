@@ -1,26 +1,29 @@
-const Stroll = require('@nbbj/stroll');
+const Stroll = require("@nbbj/stroll");
 
-let grid = Stroll.RouteData.GetPointGrid(47.651588, -122.415078, 1, 0.5);
+let grid = Stroll.RouteData.GetPointGrid(47.651588, -122.415078, 0.5, 0.2);
 
-Stroll.RouteData.GetGraph(grid, 0.7)
+Stroll.RouteData.GetGraph(grid, 0.3)
   .then(graph => Stroll.RouteData.FindAllNaturePaths(graph))
   .then(paths => Stroll.RouteData.FindTopNaturePaths(paths))
   .then(results => {
     console.log(results);
+  })
+  .catch(err => console.error(err));
 
-  }).catch(err => console.error(err));
-
-  Stroll.YelpData.ParkSearch(47.660273, -122.409887, 1000).then(d => {
+Stroll.YelpData.ParkSearch(47.660273, -122.409887, 1000).then(d => {
   console.log(d);
 });
 
-let points = Stroll.RouteData.GetRandomPointGrid(-90.548630, 14.616599, 1, 10);
+let points = Stroll.RouteData.GetRandomPointGrid(-90.54863, 14.616599, 1, 10);
 console.log(points);
 
-let points2 = Stroll.RouteData.GetPointGrid(-90.548630, 14.616599, 1, 0.1);
+let points2 = Stroll.RouteData.GetPointGrid(-90.54863, 14.616599, 1, 0.1);
 console.log(points2);
 
-let sunData = Stroll.WeatherData.GetSunPositionToday(47.6694956, -122.31547389999999);
+let sunData = Stroll.WeatherData.GetSunPositionToday(
+  47.6694956,
+  -122.31547389999999
+);
 console.log(sunData);
 
 Stroll.ColorParse.GetPalette(46.414382, 10.013988, 151.78).then(colors => {
