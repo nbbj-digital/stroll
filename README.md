@@ -10,16 +10,28 @@
 ![GitHub issues](https://img.shields.io/github/issues/nbbj-digital/stroll.svg) ![David](https://img.shields.io/david/dev/nbbj-digital/stroll.svg) ![Azure DevOps builds](https://img.shields.io/azure-devops/build/PMitev/NBBJ%20Public/3.svg) ![GitHub last commit](https://img.shields.io/github/last-commit/nbbj-digital/stroll.svg)
 
 This is a computational library which finds the most nature-filled walks/paths that can be taken in order to stimulate creativity and boost mental health.
-
 Pathfinding is performed via Weighted Graph computation, with weights being given for characteristics such as proximity to parks, and amount of nature in the field of view.
 
-Original started at the [TT West AEC Hackathon in Seattle, 2019](http://core.thorntontomasetti.com/aec-tech-2019-seattle/aec-tech-seattle-hackathon/aec-tech-seattle-github-repos/).
+Originally started at the [TT West AEC Hackathon in Seattle, 2019](http://core.thorntontomasetti.com/aec-tech-2019-seattle/aec-tech-seattle-hackathon/aec-tech-seattle-github-repos/).
 
 ## Proof of Concept
 
 Currently, the library computes only an A to B path within the boundaries of the user-defined grid (created from the user's origin and desired radius). Future development will target more route-finding options such as loops, distance constraints, sun/shade preferences, etc.
 
 ![first path](assets/screenshots/firstMap.png)
+
+### Working Model
+
+The working model to compute the "Nature Score" of a given point in the urban environment is composed of the following:
+
+1. Green Score - What percentage of an image's dominant color palette is green in color.
+2. Park SCore - How many public parks/green spaces are near the given point, as computed by Yelp.
+
+Next steps for development are to add the following criteria to the "Nature Score" computation:
+
+1. Trees - Use a ML model with transfer learning to recognize natural feature such as trees, lakes, etc. which may not be captured by the "Green Score" in the color palette.
+2. Sun/Shade - Compute "sunny-ness"/"shady-ness" of a given route.
+3. Rain/Cover - Compute a route based on cover during a rain event.
 
 ## Usage
 
@@ -33,7 +45,9 @@ npm i @nbbj/stroll
 
 Before using this module, `GMAPS_KEY` and `YELP_KEY` environment variables must be set on your machine with your specific Google Maps API Key and Yelp API Key.
 
-**PLESE BE ADVISED** that this module will requrest Google Street View images from the Google Maps API, and therefore **WILL** [incur a cost](https://developers.google.com/maps/documentation/streetview/usage-and-billing). Managing the cost and/or other API-specific limits/resource constraints are entirely the responsibility of the user using this module.
+#### User API Usage Notice
+
+Please be advised that this module will requrest Google Street View images from the Google Maps API, and therefore **WILL** [incur a cost](https://developers.google.com/maps/documentation/streetview/usage-and-billing). Managing the cost and/or other API-specific limits/resource constraints are entirely the responsibility of the user using this module.
 
 ### Imports
 
