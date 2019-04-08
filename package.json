@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "test": "nyc --reporter=text mocha --exit --timeout 10000",
-    "doc": "documentation build src/index.js -f md -o docs/README.md && documentation build src/** -f html -o docs"
+    "doc": "documentation build src/index.js -f md -o docs/README.md && documentation build src/** -f html -o docs",
+    "build": "npx webpack"
   },
   "repository": {
     "type": "git",
@@ -51,6 +52,8 @@
   },
   "devDependencies": {
     "mocha": "^6.0.2",
-    "nyc": "^13.3.0"
+    "nyc": "^13.3.0",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
   }
 }
