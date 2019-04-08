@@ -41,7 +41,7 @@ class ColorParse {
     let location = 'location=' + String(lat) + ',' + String(long) + '&';
     let headingStr = 'heading=' + heading + '&' || 'heading=0.0&';
     let pitch = 'pitch=-0.76&';
-    let key = 'key=' +  process.env.GMAPS_KEY;
+    let key = 'key=' +  (process.env.GMAPS_KEY || process.env.VUE_APP_GMAPS_KEY);
 
     return base + size + location + headingStr + pitch + key;
   }
