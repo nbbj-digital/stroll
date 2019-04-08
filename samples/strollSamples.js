@@ -3,7 +3,7 @@ const Stroll = require('@nbbj/stroll');
 let grid = Stroll.RouteData.GetPointGrid(47.651588, -122.415078, 1, 0.5);
 
 Stroll.RouteData.GetGraph(grid, 0.7)
-  .then(graph => Stroll.RouteData.FindNaturePaths(graph))
+  .then(graph => Stroll.RouteData.FindAllNaturePaths(graph))
   .then(paths => Stroll.RouteData.FindTopNaturePaths(paths))
   .then(results => {
     console.log(results);
