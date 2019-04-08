@@ -235,27 +235,29 @@ class RouteData {
    */
   static FindTopNaturePaths(json) {
     return new Promise(function (resolve, reject) {
-
       let returnObj = [];
 
+      // iterate over all routes
       json.map(path => {
         let count = 0;
         let totalGreenScore = 0;
         
+        // build google maps url
         let mapUrl = 'https://www.google.com/maps/dir/?api=1&';
         mapUrl = mapUrl + 'origin=' + String(path[0].data.x) + ',' + String(path[0].data.y);
         mapUrl = mapUrl + '&destination=' + String(path.slice(-1)[0].data.x) + ',' + String(path.slice(-1)[0].data.y);
         mapUrl = mapUrl + '&waypoints=';
 
+        // iterate over the path nodes to build a url and calculate totals
         path.map(node => {
           totalGreenScore = totalGreenScore + node.data.greenScore + node.data.parkScore;
           
           switch(count){
             case 0:
-              // do nothing
+              // do nothing, first point in path added above
               break;
             case (path.length +1):
-              // last one
+              // do nothing, last point in path added above
               break;
             default:
               mapUrl = mapUrl + '%7C' + String(node.data.x) + ',' + String(node.data.y);
@@ -271,17 +273,7 @@ class RouteData {
       });
 
       returnObj.sort((a, b) => (a.totalGreenScore < b.totalGreenScore) ? 1 : -1);
-
-      let topPathSimple = returnObj.map(p => {
-        let data = p.path.map(n => {
-          return n.data;
-        });
-        data['mapUrl'] = p.mapUrl;
-        data['totalGreenScore'] = p.totalGreenScore;
-        return data;
-      });
-
-      resolve(topPathSimple);
+      resolve(returnObj);
     }).catch(err => console.error(err));
   }
 
