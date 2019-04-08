@@ -24,12 +24,11 @@ SOFTWARE.
 
 // const Turf = require('turf');
 const TurfRandom = require('@turf/random');
-
-const TurfHelpers = require('turf-helpers');
-const TurfBuffer = require('turf-buffer');
-const TurfBBox = require('turf-bbox');
-const TurfPointGrid = require('turf-point-grid');
-const TurfDistance = require('turf-distance');
+const TurfHelpers = require('@turf/helpers');
+const TurfCircle = require('@turf/circle');
+const TurfBBox = require('@turf/bbox');
+const TurfPointGrid = require('@turf/point-grid');
+const TurfDistance = require('@turf/distance');
 
 let createGraph = require('ngraph.graph');
 let path = require('ngraph.path');
@@ -49,8 +48,8 @@ class RouteData {
    */
   static BoundingBoxRadius(lat, long, radius) {
     let point = TurfHelpers.point([lat, long]);
-    let buffer = TurfBuffer(point, radius);
-    return TurfBBox(buffer);
+    let buffer = TurfCircle.default(point, radius);
+    return TurfBBox.default(buffer);
   }
 
   /**
@@ -78,7 +77,7 @@ class RouteData {
    */
   static GetPointGrid(lat, long, radius, pointDist) {
     let bbox = this.BoundingBoxRadius(lat, long, radius);
-    return TurfPointGrid(bbox, pointDist);
+    return TurfPointGrid.default(bbox, pointDist);
   }
 
   /**
@@ -109,7 +108,7 @@ class RouteData {
           r.map(o2 => {
             let idB = String(o2.coordinates[0]) + '-' + String(o2.coordinates[1]);
 
-            let distance = TurfDistance(o.coordinates, o2.coordinates);
+            let distance = TurfDistance.default(o.coordinates, o2.coordinates);
             let dx = (+o.coordinates[0]) - (+o2.coordinates[0]);
             let dy = (+o.coordinates[1]) - (+o2.coordinates[1]);
 

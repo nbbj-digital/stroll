@@ -39,6 +39,11 @@
   ],
   "homepage": "https://github.com/nbbj-digital/stroll#readme",
   "dependencies": {
+    "@turf/bbox": "^6.0.1",
+    "@turf/circle": "^6.0.1",
+    "@turf/distance": "^6.0.1",
+    "@turf/helpers": "^6.1.4",
+    "@turf/point-grid": "^6.0.1",
     "@turf/random": "^6.0.2",
     "bottleneck": "^2.17.1",
     "ngraph.graph": "0.0.18",
@@ -47,7 +52,6 @@
     "querystring": "^0.2.0",
     "request": "^2.88.0",
     "suncalc": "^1.8.0",
-    "turf": "^3.0.14",
     "yelp-fusion": "^2.2.1"
   },
   "devDependencies": {
