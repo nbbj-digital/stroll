@@ -1,12 +1,12 @@
 {
   "name": "@nbbj/stroll",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Javascript library for finding the optimal walking path to be as exposed to nature as possible.",
   "main": "src/index.js",
   "scripts": {
     "test": "nyc --reporter=text mocha --exit --timeout 10000",
     "doc": "documentation build src/index.js -f md -o docs/README.md && documentation build src/** -f html -o docs",
-    "build": "npx webpack"
+    "build": "npx webpack && npm pack"
   },
   "repository": {
     "type": "git",
