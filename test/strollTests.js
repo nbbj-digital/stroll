@@ -75,7 +75,7 @@ describe("Stroll", function() {
   //     let grid = RouteData.GetPointGrid(47.651588, -122.415078, 1, 0.5);
 
   //     let graph = await RouteData.GetGraph(grid, 0.7);
-  //     let paths = await RouteData.FindNaturePaths(graph);
+  //     let paths = await RouteData.FindAllNaturePaths(graph);
   //     paths = await RouteData.FindTopNaturePaths(paths);
 
   //     assert.equal(JSON.stringify(NATURE_PATH), JSON.stringify(paths[0]));;

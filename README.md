@@ -9,7 +9,7 @@
 
 ![GitHub issues](https://img.shields.io/github/issues/nbbj-digital/stroll.svg) ![David](https://img.shields.io/david/dev/nbbj-digital/stroll.svg) ![Azure DevOps builds](https://img.shields.io/azure-devops/build/PMitev/NBBJ%20Public/3.svg) ![GitHub last commit](https://img.shields.io/github/last-commit/nbbj-digital/stroll.svg)
 
-This is a computational library which finds the most nature-filled walks/paths to take thrughout the day in order to stimulate creativity and boost mental health.
+This is a computational library which finds the most nature-filled walks/paths that can be taken in order to stimulate creativity and boost mental health.
 
 Pathfinding is performed via Weighted Graph computation, with weights being given for characteristics such as proximity to parks, and amount of nature in the field of view.
 
@@ -66,7 +66,7 @@ Building graphs and calculating paths of travel.
 let grid = RouteData.GetPointGrid(47.660273, -122.409887, 1, 0.5);
 
 RouteData.GetGraph(grid, 0.7) // get a graph from point grid
-  .then(graph => RouteData.FindNaturePaths(graph)) // find all possible paths
+  .then(graph => RouteData.FindAllNaturePaths(graph)) // find all possible paths
   .then(paths => RouteData.FindTopNaturePaths(paths)) // return sorted paths
   .then(results => {
     console.log(results); // do something with results

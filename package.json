@@ -1,6 +1,6 @@
 {
   "name": "@nbbj/stroll",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Javascript library for finding the optimal walking path to be as exposed to nature as possible.",
   "main": "src/index.js",
   "scripts": {
@@ -16,7 +16,10 @@
     "email": "p.mitevpi@gmail.com",
     "url": "https://mitevpi.com/"
   },
-  "contributors": ["Nate Holland", "NBBJ"],
+  "contributors": [
+    "Nate Holland",
+    "NBBJ"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/nbbj-digital/stroll/issues"

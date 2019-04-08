@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset='utf-8' />
-  <title>@mitevpi/stroll 1.0.1 | Documentation</title>
+  <title>@nbbj/stroll 1.0.6 | Documentation</title>
   <meta name='description' content='Javascript library for finding the optimal walking path to be as exposed to nature as possible.'>
   <meta name='viewport' content='width=device-width,initial-scale=1'>
   <link href='assets/bass.css' rel='stylesheet' />
@@ -14,8 +14,8 @@
     <div class='flex'>
       <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
         <div class='py1 px2'>
-          <h3 class='mb0 no-anchor'>@mitevpi/stroll</h3>
-          <div class='mb1'><code>1.0.1</code></div>
+          <h3 class='mb0 no-anchor'>@nbbj/stroll</h3>
+          <div class='mb1'><code>1.0.6</code></div>
           <input
             placeholder='Filter'
             id='filter-input'
@@ -86,6 +86,16 @@
               
                 
                 <li><a
+                  href='#boundingboxradius'
+                  class="">
+                  BoundingBoxRadius
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
                   href='#getrandompointgrid'
                   class="">
                   GetRandomPointGrid
@@ -126,9 +136,9 @@
               
                 
                 <li><a
-                  href='#findpath'
+                  href='#findnaturepath'
                   class="">
-                  FindPath
+                  FindNaturePath
                   
                 </a>
                 
@@ -136,9 +146,9 @@
               
                 
                 <li><a
-                  href='#findnaturepaths'
+                  href='#findallnaturepaths'
                   class="">
-                  FindNaturePaths
+                  FindAllNaturePaths
                   
                 </a>
                 
@@ -696,6 +706,94 @@ taken at the given latitude/longitude.</p>
   
   <div class='clearfix'>
     
+    <h3 class='fl m0' id='boundingboxradius'>
+      BoundingBoxRadius
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Get a bounding box around a location with a given radius.</p>
+
+    <div class='pre p1 fill-light mt0'>BoundingBoxRadius(lat: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, long: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, radius: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>): Turf.bbox</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>lat</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
+	    Latitude of location.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>long</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
+	    Longitude of location.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>radius</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
+	    The radius of the bounding geometry from the given lat/long origin.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>Turf.bbox</code>:
+        A Turf.js bounding box object.
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
     <h3 class='fl m0' id='getrandompointgrid'>
       GetRandomPointGrid
     </h3>
@@ -707,7 +805,7 @@ taken at the given latitude/longitude.</p>
   <p>Get a collection of random points which fall within a given bounding radius from an origin
 lat/long point.</p>
 
-    <div class='pre p1 fill-light mt0'>GetRandomPointGrid(lat: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, long: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, radius: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, numPoints: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;turf.Point></div>
+    <div class='pre p1 fill-light mt0'>GetRandomPointGrid(lat: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, long: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, radius: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, numPoints: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Turf.Point></div>
   
   
 
@@ -766,7 +864,7 @@ lat/long point.</p>
   
     
       <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;turf.Point></code>:
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Turf.Point></code>:
         A collection of Turf.JS points.
 
       
@@ -805,7 +903,7 @@ lat/long point.</p>
   <p>Get a collection of points in a gird which fall within a given bounding radius from an origin
 lat/long point.</p>
 
-    <div class='pre p1 fill-light mt0'>GetPointGrid(lat: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, long: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, radius: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, pointDist: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;turf.Point></div>
+    <div class='pre p1 fill-light mt0'>GetPointGrid(lat: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, long: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, radius: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, pointDist: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Turf.Point></div>
   
   
 
@@ -864,7 +962,7 @@ lat/long point.</p>
   
     
       <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;turf.Point></code>:
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Turf.Point></code>:
         A collection of Turf.JS points.
 
       
@@ -903,7 +1001,7 @@ lat/long point.</p>
   <p>Get graph object representing the points which are walkable given an origin lat/long, radius, and
 distance between points for creation of a grid.</p>
 
-    <div class='pre p1 fill-light mt0'>GetGraph(grid: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;turf.Point>, linkTolerance: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>): Graph</div>
+    <div class='pre p1 fill-light mt0'>GetGraph(grid: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Turf.Point>, linkTolerance: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>): Graph</div>
   
   
 
@@ -920,8 +1018,8 @@ distance between points for creation of a grid.</p>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>grid</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;turf.Point>)</code>
-	    A grid of turf.js points
+            <span class='code bold'>grid</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Turf.Point>)</code>
+	    A grid of Turf.js points
 
           </div>
           
@@ -983,7 +1081,7 @@ distance between points for creation of a grid.</p>
   <p>Get graph data from the points which are walkable given an origin lat/long, radius, and
 distance between points for creation of a grid.</p>
 
-    <div class='pre p1 fill-light mt0'>GetGraphData(grid: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;turf.Point>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
+    <div class='pre p1 fill-light mt0'>GetGraphData(grid: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Turf.Point>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
   
   
 
@@ -1000,8 +1098,8 @@ distance between points for creation of a grid.</p>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>grid</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;turf.Point>)</code>
-	    A grid of turf.js points
+            <span class='code bold'>grid</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Turf.Point>)</code>
+	    A grid of Turf.js points
 
           </div>
           
@@ -1043,8 +1141,8 @@ distance between points for creation of a grid.</p>
   
   <div class='clearfix'>
     
-    <h3 class='fl m0' id='findpath'>
-      FindPath
+    <h3 class='fl m0' id='findnaturepath'>
+      FindNaturePath
     </h3>
     
     
@@ -1054,7 +1152,7 @@ distance between points for creation of a grid.</p>
   <p>Find a path between two nodes on the graph, weighted by the 'Green Score' weight of the nodes
 along the potential path.</p>
 
-    <div class='pre p1 fill-light mt0'>FindPath(graph: Graph, idA: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, idB: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
+    <div class='pre p1 fill-light mt0'>FindNaturePath(graph: Graph, idA: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, idB: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
   
   
 
@@ -1132,8 +1230,8 @@ along the potential path.</p>
   
   <div class='clearfix'>
     
-    <h3 class='fl m0' id='findnaturepaths'>
-      FindNaturePaths
+    <h3 class='fl m0' id='findallnaturepaths'>
+      FindAllNaturePaths
     </h3>
     
     
@@ -1143,7 +1241,7 @@ along the potential path.</p>
   <p>Evaluate a walkable region with views to naturegiven an origin lat/long, radius, and
 distance between points for creation of a grid.</p>
 
-    <div class='pre p1 fill-light mt0'>FindNaturePaths(graph: Graph): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></div>
+    <div class='pre p1 fill-light mt0'>FindAllNaturePaths(graph: Graph): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>></div>
   
   
 
@@ -1175,7 +1273,7 @@ distance between points for creation of a grid.</p>
   
     
       <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></code>:
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>></code>:
         An array of all possible paths;
 
       
@@ -1232,7 +1330,7 @@ distance between points for creation of a grid. Sort with the top nature walks f
         <div class='space-bottom0'>
           <div>
             <span class='code bold'>json</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
-	    The raw path output of FindNaturePaths().
+	    The raw path output of FindAllNaturePaths().
 
           </div>
           

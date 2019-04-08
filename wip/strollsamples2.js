@@ -4,7 +4,7 @@ const fs = require('fs');
 let grid = RouteData.GetPointGrid(47.651588, -122.415078, 1, 0.5);
 
 RouteData.GetGraph(grid, 0.7)
-  .then(graph => RouteData.FindNaturePaths(graph))
+  .then(graph => RouteData.FindAllNaturePaths(graph))
   .then(paths => RouteData.FindTopNaturePaths(paths))
   .then(results => {
     console.log(results);
