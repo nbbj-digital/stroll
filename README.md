@@ -5,7 +5,7 @@
 
 [![Generic badge](https://img.shields.io/badge/Docs-Web-Green.svg)](https://nbbj-digital.github.io/stroll/) [![Generic badge](https://img.shields.io/badge/Docs-MD-Green.svg)](docs/README.md) [![Generic badge](https://img.shields.io/badge/Samples-JS-Green.svg)](samples/strollSamples.js) ![NPM](https://img.shields.io/npm/l/@nbbj/stroll.svg)
 
-[![npm](https://img.shields.io/npm/v/@nbbj/stroll.svg)](https://www.npmjs.com/package/@nbbj/stroll) [![npm bundle size](https://img.shields.io/bundlephobia/min/@nbbj/stroll.svg)](https://bundlephobia.com/result?p=@nbbj/stroll)
+[![npm](https://img.shields.io/npm/v/@nbbj/stroll.svg)](https://www.npmjs.com/package/@nbbj/stroll) [![npm bundle size](https://img.shields.io/bundlephobia/min/@nbbj/stroll.svg)](https://bundlephobia.com/result?p=@nbbj/stroll) ![npm](https://img.shields.io/npm/dw/@nbbj/stroll.svg) ![npm2](https://img.shields.io/npm/dt/@nbbj/stroll.svg)
 
 ![GitHub issues](https://img.shields.io/github/issues/nbbj-digital/stroll.svg) ![David](https://img.shields.io/david/dev/nbbj-digital/stroll.svg) ![Azure DevOps builds](https://img.shields.io/azure-devops/build/PMitev/NBBJ%20Public/3.svg) ![GitHub last commit](https://img.shields.io/github/last-commit/nbbj-digital/stroll.svg)
 
@@ -17,7 +17,7 @@ Original started at the [TT West AEC Hackathon in Seattle, 2019](http://core.tho
 
 ## Proof of Concept
 
-Currently, the library computes only an A to B path given an origin, and point grid generated around it. Future development will target more route-finding options.
+Currently, the library computes only an A to B path within the boundaries of the user-defined grid (created from the user's origin and desired radius). Future development will target more route-finding options such as loops, distance constraints, sun/shade preferences, etc.
 
 ![first path](assets/screenshots/firstMap.png)
 
@@ -32,6 +32,8 @@ npm i @nbbj/stroll
 ### Environment Variables
 
 Before using this module, `GMAPS_KEY` and `YELP_KEY` environment variables must be set on your machine with your specific Google Maps API Key and Yelp API Key.
+
+**PLESE BE ADVISED** that this module will requrest Google Street View images from the Google Maps API, and therefore **WILL** [incur a cost](https://developers.google.com/maps/documentation/streetview/usage-and-billing). Managing the cost and/or other API-specific limits/resource constraints are entirely the responsibility of the user using this module.
 
 ### Imports
 
@@ -69,7 +71,7 @@ RouteData.GetGraph(grid, 0.7) // get a graph from point grid
   .then(graph => RouteData.FindAllNaturePaths(graph)) // find all possible paths
   .then(paths => RouteData.FindTopNaturePaths(paths)) // return sorted paths
   .then(results => {
-    console.log(results); // do something with results
+    console.log(results); // do something with results (array of all possible paths)
   }).catch(err => console.error(err));
 ```
 
@@ -118,7 +120,7 @@ ColorParse.GetPaletteAnalysis(47.660259, -122.408417).then(result => {
 
 ### Building
 
-The module can be built by running `npm pack` in the root directory of this repository. Documentation can be built using the Documentation module from npm, and by running `npm run doc` in the root directory of this repository.
+The module can be built by running `npm pack` in the root directory of this repository. Documentation can be built using the [Documentation module](https://www.npmjs.com/package/documentation) from npm, and by running `npm run doc` in the root directory of this repository. This will create [markdown](docs/README.md) and [HTML documentaion](docs/index.html).
 
 ### Testing
 
