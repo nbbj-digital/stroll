@@ -16,7 +16,10 @@
     "email": "p.mitevpi@gmail.com",
     "url": "https://mitevpi.com/"
   },
-  "contributors": ["Nate Holland", "NBBJ"],
+  "contributors": [
+    "Nate Holland",
+    "NBBJ"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/nbbj-digital/stroll/issues"

@@ -49,7 +49,6 @@ class RouteData {
     return bbox;
   }
 
-
   /**
    * Get a collection of random points which fall within a given bounding radius from an origin
    * lat/long point.
@@ -224,14 +223,7 @@ class RouteData {
 
       });
 
-      // fs.writeFile('graphData.json', JSON.stringify(paths), function (err) {
-      //   if (err) {
-      //     console.log(err);
-      //   }
-      // });
-
       resolve(paths);
-
     });
   }
 
@@ -247,13 +239,34 @@ class RouteData {
       let returnObj = [];
 
       json.map(path => {
+        let count = 0;
         let totalGreenScore = 0;
+        
+        let mapUrl = 'https://www.google.com/maps/dir/?api=1&';
+        mapUrl = mapUrl + 'origin=' + String(path[0].data.x) + ',' + String(path[0].data.y);
+        mapUrl = mapUrl + '&destination=' + String(path.slice(-1)[0].data.x) + ',' + String(path.slice(-1)[0].data.y);
+        mapUrl = mapUrl + '&waypoints=';
+
         path.map(node => {
           totalGreenScore = totalGreenScore + node.data.greenScore + node.data.parkScore;
+          
+          switch(count){
+            case 0:
+              // do nothing
+              break;
+            case (path.length +1):
+              // last one
+              break;
+            default:
+              mapUrl = mapUrl + '%7C' + String(node.data.x) + ',' + String(node.data.y);
+          }
+          count++;
         });
+        mapUrl = mapUrl + '&travelmode=walking';
         returnObj.push({
-          path: path,
-          totalGreenScore: totalGreenScore
+          path: path.map(node => node.data),
+          totalGreenScore: totalGreenScore,
+          mapUrl: mapUrl
         });
       });
 
@@ -263,6 +276,8 @@ class RouteData {
         let data = p.path.map(n => {
           return n.data;
         });
+        data['mapUrl'] = p.mapUrl;
+        data['totalGreenScore'] = p.totalGreenScore;
         return data;
       });
 
