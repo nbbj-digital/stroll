@@ -1,9 +1,9 @@
 const RouteData = require('../src/api/RouteData');
 const fs = require('fs');
 
-let grid = RouteData.GetPointGrid(47.651588, -122.415078, 0.5, 0.2);
+let grid = RouteData.GetPointGrid(47.651588, -122.415078, 1, 0.8);
 
-RouteData.GetGraph(grid, 0.3)
+RouteData.GetGraph(grid, 0.9)
   .then(graph => RouteData.FindAllNaturePaths(graph))
   .then(paths => RouteData.FindTopNaturePaths(paths))
   .then(results => {

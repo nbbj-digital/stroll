@@ -22,9 +22,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-const apiKey = process.env.YELP_KEY || process.env.VUE_APP_YELP_KEY ;
-const yelp = require('yelp-fusion');
-const Bottleneck = require('bottleneck/es5');
+const apiKey = process.env.YELP_KEY || process.env.VUE_APP_YELP_KEY;
+const yelp = require("yelp-fusion");
+const Bottleneck = require("bottleneck/es5");
+const TurfDistance = require("@turf/distance");
+const TurfHelpers = require("@turf/helpers");
 
 const limiter = new Bottleneck({
   // maxConcurrent: 1,
@@ -44,35 +46,40 @@ class YelpData {
   static ParkSearch(lat, long, radius) {
     try {
       const searchRequest = {
-        term: 'park',
+        term: "park",
         latitude: lat,
         longitude: long,
         radius: radius
       };
 
-      const client = yelp.client(apiKey);
-      return new Promise(function (resolve, reject) {
+      let pointA = TurfHelpers.point([long, lat]);
 
-        limiter.schedule(() => client.search(searchRequest))
+      const client = yelp.client(apiKey);
+      return new Promise(function(resolve, reject) {
+        limiter
+          .schedule(() => client.search(searchRequest))
           .then(response => {
+            // console.log(response.jsonBody.businesses);
             let results = response.jsonBody.businesses;
 
             let parkData = results.map(r => {
+              let pointB = TurfHelpers.point([r.coordinates.longitude, r.coordinates.latitude]);
               return {
                 name: r.name,
                 rating: r.rating,
                 coordinates: r.coordinates,
+                distance: TurfDistance.default(pointA, pointB),
               };
             });
             resolve(parkData);
-          });
+          })
+          .catch(err => console.error(err));
       });
-    } catch(err) {
+    } catch (err) {
       //Block of code to handle errors
       return [];
     }
   }
-
 }
 
 module.exports = YelpData;
