@@ -22,7 +22,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-// const Turf = require('turf');
 const TurfRandom = require("@turf/random");
 const TurfHelpers = require("@turf/helpers");
 const TurfCircle = require("@turf/circle");
@@ -211,7 +210,12 @@ class RouteData {
       distance(fromNode, toNode, link) {
         return (
           1 /
-          (link.data.greenScore * 10 + link.data.parkScore + 0.0000000000000001)
+          (link.data.greenScore * 8 +
+            link.data.parkScore * 2 +
+            link.data.closeParkScore * 10 +
+            link.data.mediumParkScore * 5 +
+            link.data.farParkScore * 2 +
+            0.0000000000000001)
         );
       },
       heuristic(fromNode, toNode) {
