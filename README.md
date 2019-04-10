@@ -54,7 +54,7 @@ Please be advised that this module will request Google Street View images from t
 Imports can be done through the aggregating index.js file or via individual members.
 
 ```js
-const Stroll = require('./index.js'); // from source
+const stroll = require('./index.js'); // from source
 const stroll = require('@nbbj/stroll') // from npm
 import * as Stroll from "../src"; // from source
 import * as Stroll from from "@nbbj/stroll"; // from npm

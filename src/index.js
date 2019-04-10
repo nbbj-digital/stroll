@@ -1,18 +1,27 @@
 // @flow
 
+import { WeatherData } from "./api/WeatherData";
+import { YelpData } from "./api/YelpData";
+import { ColorData } from "./api/ColorData";
+import { RouteData } from "./api/RouteData";
+
 /**
- * Module for getting weather-specific data from a place.
+ * Weather-related data for analysis.
+ * @property {WeatherData}
  */
-export { WeatherData } from "./api/WeatherData";
+export { WeatherData };
 /**
- * Module for getting nearby parks and other green public spaces.
+ * Yelp-related data for analysis.
+ * @property {YelpData}
  */
-export { YelpData } from "./api/YelpData";
+export { YelpData };
 /**
- * Module for getting color/color palette-specific data from points.
+ * Field of view analysis for nature/greenery.
+ * @property {ColorData}
  */
-export { ColorData } from "./api/ColorData";
+export { ColorData };
 /**
- * Module for computing the actual routes.
+ * Route-related data for analysis.
+ * @property {RouteData}
  */
-export { RouteData } from "./api/RouteData";
+export { RouteData };

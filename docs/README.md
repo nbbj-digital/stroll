@@ -81,7 +81,7 @@
 
 ## WeatherData
 
-Module for getting weather-specific data from a place.
+Weather-related data for analysis.
 
 ### GetSunPositionToday
 
@@ -135,7 +135,7 @@ Returns **[Object][78]** An object containing azimuth and sun angle properties.
 
 ## YelpData
 
-Module for getting nearby parks and other green public spaces.
+Yelp-related data for analysis.
 
 ### ParkSearch
 
@@ -167,7 +167,7 @@ Returns **[Promise][80]&lt;[Array][81]>** A collection of nearby parks.
 
 ## ColorData
 
-Module for getting color/color palette-specific data from points.
+Field of view analysis for nature/greenery.
 
 ### BuildRequest
 
@@ -313,7 +313,7 @@ Returns **[string][82]** A color name.
 
 ## RouteData
 
-Module for computing the actual routes.
+Route-related data for analysis.
 
 ### BoundingBoxRadius
 
