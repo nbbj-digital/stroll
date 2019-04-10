@@ -22,19 +22,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-const SunCalc = require('suncalc');
+import suncalc from "suncalc";
 
-class WeatherData {
-  constructor() {}
-
+export default class WeatherData {
   static GetSunPositionToday(lat, long) {
-    return SunCalc.getPosition(Date.now(), lat, long);
+    return suncalc.getPosition(Date.now(), lat, long);
   }
 
   static GetSunPosition(lat, long, date) {
-    return SunCalc.getPosition(date, lat, long);
+    return suncalc.getPosition(date, lat, long);
   }
-
 }
-
-module.exports = WeatherData;

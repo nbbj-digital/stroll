@@ -1,0 +1,29 @@
+{
+  "parser": "babel-eslint",
+  "extends": [
+    "airbnb-base",
+    "plugin:flowtype/recommended",
+    "plugin:prettier/recommended",
+    "prettier/flowtype"
+  ],
+  "plugins": [
+    "flowtype",
+    "flowtype-errors"
+  ],
+  "env": {
+    "jest": true
+  },
+  "rules": {
+    "no-plusplus": "off",
+    "array-callback-return": "off",
+    "no-restricted-syntax":"off",
+    "no-param-reassign":"off",
+    "no-prototype-builtins":"off",
+    "flowtype-errors/show-errors": "error",
+    "no-console": "off",
+        "semi": [
+            "error",
+            "always"
+        ]
+  }
+}

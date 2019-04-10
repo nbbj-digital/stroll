@@ -138,4 +138,16 @@ The module can be built by running `npm run build` in the root directory of this
 
 ### Testing
 
-Testing is handled using [mocha](https://www.npmjs.com/package/mocha) and code coverage is evaluated using [nyc](https://www.npmjs.com/package/nyc). Tests can be initiated by running `npm test` in the root directory of this repository.
+Testing is handled using [jest](https://jestjs.io/) and code coverage is evaluated using [nyc](https://www.npmjs.com/package/nyc). Tests can be initiated by running `npm test` in the root directory of this repository.
+
+## Commands
+
+The following commands are available during development.
+
+```sh
+npm test # run tests with Jest
+npm run coverage # run tests with coverage and open it on browser
+npm run lint # lint code
+npm run docs # generate docs
+npm run build # generate docs and transpile code
+```

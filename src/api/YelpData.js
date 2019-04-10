@@ -22,20 +22,19 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+import YelpFusion from "yelp-fusion";
+import * as TurfDistance from "@turf/distance";
+import * as TurfHelpers from "@turf/helpers";
+import Bottleneck from "bottleneck";
+
 const apiKey = process.env.YELP_KEY || process.env.VUE_APP_YELP_KEY;
-const yelp = require("yelp-fusion");
-const Bottleneck = require("bottleneck/es5");
-const TurfDistance = require("@turf/distance");
-const TurfHelpers = require("@turf/helpers");
 
 const limiter = new Bottleneck({
   // maxConcurrent: 1,
   minTime: 250
 });
 
-class YelpData {
-  constructor() {}
-
+export default class YelpData {
   /**
    * Get a collection of public parks from Yelp within the given radius from the origin lat/long point.
    * @param {Number} lat Latitude of location.
@@ -44,42 +43,41 @@ class YelpData {
    * @returns {Promise<Array>} A collection of nearby parks.
    */
   static ParkSearch(lat, long, radius) {
-    try {
-      const searchRequest = {
-        term: "park",
-        latitude: lat,
-        longitude: long,
-        radius: radius
-      };
+    const searchRequest = {
+      term: "park",
+      latitude: lat,
+      longitude: long,
+      radius
+    };
 
-      let pointA = TurfHelpers.point([long, lat]);
+    const pointA = TurfHelpers.point([long, lat]);
 
-      const client = yelp.client(apiKey);
-      return new Promise(function(resolve, reject) {
-        limiter
-          .schedule(() => client.search(searchRequest))
-          .then(response => {
-            // console.log(response.jsonBody.businesses);
-            let results = response.jsonBody.businesses;
+    const client = YelpFusion.client(apiKey);
+    return new Promise((resolve, reject) => {
+      limiter
+        .schedule(() => client.search(searchRequest))
+        .then(response => {
+          // console.log(response.jsonBody.businesses);
+          const results = response.jsonBody.businesses;
 
-            let parkData = results.map(r => {
-              let pointB = TurfHelpers.point([r.coordinates.longitude, r.coordinates.latitude]);
-              return {
-                name: r.name,
-                rating: r.rating,
-                coordinates: r.coordinates,
-                distance: TurfDistance.default(pointA, pointB),
-              };
-            });
-            resolve(parkData);
-          })
-          .catch(err => console.error(err));
-      });
-    } catch (err) {
-      //Block of code to handle errors
-      return [];
-    }
+          const parkData = results.map(r => {
+            const pointB = TurfHelpers.point([
+              r.coordinates.longitude,
+              r.coordinates.latitude
+            ]);
+            return {
+              name: r.name,
+              rating: r.rating,
+              coordinates: r.coordinates,
+              distance: TurfDistance.default(pointA, pointB)
+            };
+          });
+          resolve(parkData);
+        })
+        .catch(err => {
+          console.error(err);
+          reject(err);
+        });
+    });
   }
 }
-
-module.exports = YelpData;

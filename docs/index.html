@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset='utf-8' />
-  <title>@nbbj/stroll 1.1.0 | Documentation</title>
+  <title>@mitevpi/stroll 2.0.1 | Documentation</title>
   <meta name='description' content='Javascript library for finding the optimal walking path to be as exposed to nature as possible.'>
   <meta name='viewport' content='width=device-width,initial-scale=1'>
   <link href='assets/bass.css' rel='stylesheet' />
@@ -14,8 +14,8 @@
     <div class='flex'>
       <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
         <div class='py1 px2'>
-          <h3 class='mb0 no-anchor'>@nbbj/stroll</h3>
-          <div class='mb1'><code>1.1.0</code></div>
+          <h3 class='mb0 no-anchor'>@mitevpi/stroll</h3>
+          <div class='mb1'><code>2.0.1</code></div>
           <input
             placeholder='Filter'
             id='filter-input'
@@ -116,9 +116,9 @@
               
                 
                 <li><a
-                  href='#getgraph'
+                  href='#getgraphdata'
                   class="">
-                  GetGraph
+                  GetGraphData
                   
                 </a>
                 
@@ -126,9 +126,9 @@
               
                 
                 <li><a
-                  href='#getgraphdata'
+                  href='#getgraph'
                   class="">
-                  GetGraphData
+                  GetGraph
                   
                 </a>
                 
@@ -169,46 +169,6 @@
                   href='#parksearch'
                   class="">
                   ParkSearch
-                  
-                </a>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#colorparse'
-                  class="">
-                  ColorParse
-                  
-                </a>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#yelpdata'
-                  class="">
-                  YelpData
-                  
-                </a>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#weatherdata'
-                  class="">
-                  WeatherData
-                  
-                </a>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#routedata'
-                  class="">
-                  RouteData
                   
                 </a>
                 
@@ -990,6 +950,77 @@ lat/long point.</p>
   
   <div class='clearfix'>
     
+    <h3 class='fl m0' id='getgraphdata'>
+      GetGraphData
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Get graph data from the points which are walkable given an origin lat/long, radius, and
+distance between points for creation of a grid.</p>
+
+    <div class='pre p1 fill-light mt0'>GetGraphData(grid: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Turf.Point>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>grid</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Turf.Point>)</code>
+	    A grid of Turf.js points
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>></code>:
+        A ngraph.graph object.
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
     <h3 class='fl m0' id='getgraph'>
       GetGraph
     </h3>
@@ -1043,77 +1074,6 @@ distance between points for creation of a grid.</p>
     
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code>Graph</code>:
-        A ngraph.graph object.
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-          
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='getgraphdata'>
-      GetGraphData
-    </h3>
-    
-    
-  </div>
-  
-
-  <p>Get graph data from the points which are walkable given an origin lat/long, radius, and
-distance between points for creation of a grid.</p>
-
-    <div class='pre p1 fill-light mt0'>GetGraphData(grid: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Turf.Point>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>grid</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Turf.Point>)</code>
-	    A grid of Turf.js points
-
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
         A ngraph.graph object.
 
       
@@ -1437,198 +1397,6 @@ distance between points for creation of a grid. Sort with the top nature walks f
 
       
     
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-          
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='colorparse'>
-      ColorParse
-    </h3>
-    
-    
-  </div>
-  
-
-  <p>Field of view analysis for nature/greenery.</p>
-
-    <div class='pre p1 fill-light mt0'>ColorParse</div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-          
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='yelpdata'>
-      YelpData
-    </h3>
-    
-    
-  </div>
-  
-
-  <p>Yelp-related data for analysis.</p>
-
-    <div class='pre p1 fill-light mt0'>YelpData</div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-          
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='weatherdata'>
-      WeatherData
-    </h3>
-    
-    
-  </div>
-  
-
-  <p>Weather-related data for analysis.</p>
-
-    <div class='pre p1 fill-light mt0'>WeatherData</div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-          
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='routedata'>
-      RouteData
-    </h3>
-    
-    
-  </div>
-  
-
-  <p>Route-related data for analysis.</p>
-
-    <div class='pre p1 fill-light mt0'>RouteData</div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-  
-
   
 
   

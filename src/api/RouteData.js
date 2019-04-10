@@ -22,22 +22,20 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-const TurfRandom = require("@turf/random");
-const TurfHelpers = require("@turf/helpers");
-const TurfCircle = require("@turf/circle");
-const TurfBBox = require("@turf/bbox");
-const TurfPointGrid = require("@turf/point-grid");
-const TurfDistance = require("@turf/distance");
+import * as TurfBBox from "@turf/bbox";
+import * as TurfCircle from "@turf/circle";
+import * as TurfDistance from "@turf/distance";
+import * as TurfHelpers from "@turf/helpers";
+import * as TurfPointGrid from "@turf/point-grid";
+import * as TurfRandom from "@turf/random";
 
-let createGraph = require("ngraph.graph");
-let path = require("ngraph.path");
+import YelpData from "./YelpData";
+import ColorData from "./ColorData";
 
-const ColorParse = require("./ColorParse");
-const YelpData = require("./YelpData");
+const createGraph = require("ngraph.graph");
+const path = require("ngraph.path");
 
-class RouteData {
-  constructor() {}
-
+export default class RouteData {
   /**
    * Get a bounding box around a location with a given radius.
    * @param {Number} lat Latitude of location.
@@ -46,8 +44,8 @@ class RouteData {
    * @returns {Turf.bbox} A Turf.js bounding box object.
    */
   static BoundingBoxRadius(lat, long, radius) {
-    let point = TurfHelpers.point([long, lat]);
-    let buffer = TurfCircle.default(point, radius);
+    const point = TurfHelpers.point([long, lat]);
+    const buffer = TurfCircle.default(point, radius);
     return TurfBBox.default(buffer);
   }
 
@@ -61,7 +59,7 @@ class RouteData {
    * @returns {Array<Turf.Point>} A collection of Turf.JS points.
    */
   static GetRandomPointGrid(lat, long, radius, numPoints) {
-    let bbox = this.BoundingBoxRadius(lat, long, radius);
+    const bbox = this.BoundingBoxRadius(lat, long, radius);
     return TurfRandom.randomPoint(numPoints, bbox);
   }
 
@@ -75,8 +73,64 @@ class RouteData {
    * @returns {Array<Turf.Point>} A collection of Turf.JS points.
    */
   static GetPointGrid(lat, long, radius, pointDist) {
-    let bbox = this.BoundingBoxRadius(lat, long, radius);
+    const bbox = this.BoundingBoxRadius(lat, long, radius);
     return TurfPointGrid.default(bbox, pointDist);
+  }
+
+  /**
+   * Get graph data from the points which are walkable given an origin lat/long, radius, and
+   * distance between points for creation of a grid.
+   * @param {Array<Turf.Point>} grid A grid of Turf.js points
+   * @returns {Promise<Array>} A ngraph.graph object.
+   */
+  static async GetGraphData(grid) {
+    console.log("Staring Get Graph Data");
+    const promises = [];
+
+    // iterate over the same collection to get links between nodes based on distance
+    grid.features.map(point => {
+      const mainPromise = new Promise((resolve, reject) => {
+        const { coordinates } = point.geometry;
+
+        // get color palette analysis from google street view images
+        ColorData.GetPaletteAnalysis(coordinates[1], coordinates[0])
+          .then(greenScore => {
+            // get nearby parks and categorize based on distance from origin point
+            YelpData.ParkSearch(+coordinates[1], +coordinates[0], 1000)
+              .then(yelpResult => {
+                const closestParks = yelpResult.filter(park => {
+                  return park.distance < 0.3;
+                });
+
+                const closeParks = yelpResult.filter(park => {
+                  return park.distance < 0.6;
+                });
+
+                const farParks = yelpResult.filter(park => {
+                  return park.distance < 1;
+                });
+
+                const returnObj = {
+                  coordinates,
+                  greenScore: +greenScore,
+                  parkScore: yelpResult.length,
+                  closeParkScore: closestParks.length,
+                  mediumParkScore: closeParks.length,
+                  farParkScore: farParks.length
+                };
+                resolve(returnObj);
+              })
+              .catch(err => {
+                console.error(err);
+                reject(err);
+              });
+          })
+          .catch(err => console.error(err));
+      });
+      promises.push(mainPromise);
+    });
+
+    return Promise.all(promises);
   }
 
   /**
@@ -88,16 +142,18 @@ class RouteData {
    */
   static GetGraph(grid, linkTolerance) {
     console.log(
-      "Staring Get Graph | Grid Size: " + String(grid.features.length)
+      `Staring Get Graph | Grid Size: ${String(grid.features.length)}`
     );
-    let self = this;
-    return new Promise(function(resolve, reject) {
+    const self = this;
+    return new Promise((resolve, reject) => {
       self
         .GetGraphData(grid)
         .then(points => {
-          let graph = createGraph();
+          const graph = createGraph();
           points.map(o => {
-            let idA = String(o.coordinates[0]) + "-" + String(o.coordinates[1]);
+            const idA = `${String(o.coordinates[0])}-${String(
+              o.coordinates[1]
+            )}`;
 
             // add nodes to graph
             graph.addNode(idA, {
@@ -111,18 +167,19 @@ class RouteData {
             });
 
             points.map(o2 => {
-              let idB =
-                String(o2.coordinates[0]) + "-" + String(o2.coordinates[1]);
+              const idB = `${String(o2.coordinates[0])}-${String(
+                o2.coordinates[1]
+              )}`;
 
-              let distance = TurfDistance.default(
+              const distance = TurfDistance.default(
                 o.coordinates,
                 o2.coordinates
               );
-              let dx = +o.coordinates[0] - +o2.coordinates[0];
-              let dy = +o.coordinates[1] - +o2.coordinates[1];
+              const dx = +o.coordinates[0] - +o2.coordinates[0];
+              const dy = +o.coordinates[1] - +o2.coordinates[1];
 
               // if the node is within the tolerance, add it as a walkable link
-              if (distance != 0 && distance < linkTolerance) {
+              if (distance !== 0 && distance < linkTolerance) {
                 graph.addLink(idA, idB, {
                   greenScore: o.greenScore + o2.greenScore,
                   parkScore: o.parkScore + o2.parkScore,
@@ -138,63 +195,11 @@ class RouteData {
 
           resolve(graph);
         })
-        .catch(err => console.error(err));
+        .catch(err => {
+          console.error(err);
+          reject(err);
+        });
     });
-  }
-
-  /**
-   * Get graph data from the points which are walkable given an origin lat/long, radius, and
-   * distance between points for creation of a grid.
-   * @param {Array<Turf.Point>} grid A grid of Turf.js points
-   * @returns {Object} A ngraph.graph object.
-   */
-  static async GetGraphData(grid) {
-    console.log("Staring Get Graph Data");
-    let promises = [];
-
-    // iterate over the same collection to get links between nodes based on distance
-    grid.features.map(point => {
-      let mainPromise = new Promise(function(resolve, reject) {
-        let coordinates = point.geometry.coordinates;
-
-        // get color palette analysis from google street view images
-        ColorParse.GetPaletteAnalysis(coordinates[1], coordinates[0])
-          .then(greenScore => {
-            // get nearby parks and categorize based on distance from origin point
-            YelpData.ParkSearch(+coordinates[1], +coordinates[0], 1000)
-              .then(yelpResult => {
-                //console.log(yelpResult);
-
-                let closestParks = yelpResult.filter(park => {
-                  return park.distance < 0.3;
-                });
-
-                let closeParks = yelpResult.filter(park => {
-                  return park.distance < 0.6;
-                });
-
-                let farParks = yelpResult.filter(park => {
-                  return park.distance < 1;
-                });
-
-                let returnObj = {
-                  coordinates: coordinates,
-                  greenScore: +greenScore,
-                  parkScore: yelpResult.length,
-                  closeParkScore: closestParks.length,
-                  mediumParkScore: closeParks.length,
-                  farParkScore: farParks.length
-                };
-                resolve(returnObj);
-              })
-              .catch(err => console.error(err));
-          })
-          .catch(err => console.error(err));
-      });
-      promises.push(mainPromise);
-    });
-
-    return Promise.all(promises);
   }
 
   /**
@@ -206,7 +211,7 @@ class RouteData {
    * @returns {Object} A ngraph.path object.
    */
   static FindNaturePath(graph, idA, idB) {
-    let pathFinder = path.aStar(graph, {
+    const pathFinder = path.aStar(graph, {
       distance(fromNode, toNode, link) {
         return (
           1 /
@@ -219,8 +224,8 @@ class RouteData {
         );
       },
       heuristic(fromNode, toNode) {
-        let greenScore = fromNode.data.greenScore + toNode.data.greenScore;
-        let parkScore = fromNode.data.parkScore + toNode.data.parkScore;
+        const greenScore = fromNode.data.greenScore + toNode.data.greenScore;
+        const parkScore = fromNode.data.parkScore + toNode.data.parkScore;
 
         return 1 / (greenScore * 10 + parkScore + 0.0000000000000001);
       }
@@ -235,13 +240,13 @@ class RouteData {
    * @returns {Promise<Array>} An array of all possible paths;
    */
   static FindAllNaturePaths(graph) {
-    let self = this;
+    const self = this;
     console.log("Staring Find Nature Path");
-    return new Promise(function(resolve, reject) {
-      let paths = [];
-      let nodes = [];
+    return new Promise((resolve, reject) => {
+      const paths = [];
+      const nodes = [];
 
-      graph.forEachNode(function(node) {
+      graph.forEachNode(node => {
         nodes.push(node);
       });
 
@@ -249,17 +254,20 @@ class RouteData {
       nodes.map(nodeA => {
         // tier 2 loop
         nodes.map(nodeB => {
-          let path = self.FindNaturePath(graph, nodeA.id, nodeB.id);
+          const foundPath = self.FindNaturePath(graph, nodeA.id, nodeB.id);
 
           // if it isn't a path to itself, add to list
-          if (path.length > 1) {
-            paths.push(path);
+          if (foundPath.length > 1) {
+            paths.push(foundPath);
           }
         });
       });
 
+      if (paths === null) {
+        reject(paths);
+      }
       resolve(paths);
-    });
+    }).catch(err => console.error(err));
   }
 
   /**
@@ -269,32 +277,26 @@ class RouteData {
    * @returns {Promise<Array>} A list of paths, sorted from most exposed to nature to least.
    */
   static FindTopNaturePaths(json) {
-    return new Promise(function(resolve, reject) {
-      let returnObj = [];
+    return new Promise((resolve, reject) => {
+      const returnObj = [];
 
       // iterate over all routes
-      json.map(path => {
+      json.map(pathObj => {
         let count = 0;
         let totalGreenScore = 0;
 
         // build google maps url
         let mapUrl = "https://www.google.com/maps/dir/?api=1&";
-        mapUrl =
-          mapUrl +
-          "origin=" +
-          String(path[0].data.y) +
-          "," +
-          String(path[0].data.x);
-        mapUrl =
-          mapUrl +
-          "&destination=" +
-          String(path.slice(-1)[0].data.y) +
-          "," +
-          String(path.slice(-1)[0].data.x);
-        mapUrl = mapUrl + "&waypoints=";
+        mapUrl = `${mapUrl}origin=${String(pathObj[0].data.y)},${String(
+          pathObj[0].data.x
+        )}`;
+        mapUrl = `${mapUrl}&destination=${String(
+          pathObj.slice(-1)[0].data.y
+        )},${String(pathObj.slice(-1)[0].data.x)}`;
+        mapUrl += "&waypoints=";
 
         // iterate over the path nodes to build a url and calculate totals
-        path.map(node => {
+        pathObj.map(node => {
           totalGreenScore =
             totalGreenScore + node.data.greenScore + node.data.parkScore;
 
@@ -302,33 +304,32 @@ class RouteData {
             case 0:
               // do nothing, first point in path added above
               break;
-            case path.length + 1:
+            case pathObj.length + 1:
               // do nothing, last point in path added above
               break;
             default:
-              mapUrl =
-                mapUrl +
-                "%7C" +
-                String(node.data.y) +
-                "," +
-                String(node.data.x);
+              mapUrl = `${mapUrl}%7C${String(node.data.y)},${String(
+                node.data.x
+              )}`;
           }
           count++;
         });
-        mapUrl = mapUrl + "&travelmode=walking";
+        mapUrl += "&travelmode=walking";
         returnObj.push({
-          path: path.map(node => node.data),
-          totalGreenScore: totalGreenScore,
-          mapUrl: mapUrl
+          path: pathObj.map(node => node.data),
+          totalGreenScore,
+          mapUrl
         });
       });
 
       returnObj.sort((a, b) =>
         a.totalGreenScore < b.totalGreenScore ? 1 : -1
       );
+
       resolve(returnObj);
+      if (returnObj === null) {
+        reject(returnObj);
+      }
     }).catch(err => console.error(err));
   }
 }
-
-module.exports = RouteData;
