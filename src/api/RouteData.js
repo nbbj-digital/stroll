@@ -29,8 +29,8 @@ import * as TurfHelpers from "@turf/helpers";
 import * as TurfPointGrid from "@turf/point-grid";
 import * as TurfRandom from "@turf/random";
 
-import YelpData from "./YelpData";
-import ColorData from "./ColorData";
+import { YelpData } from "./YelpData";
+import { ColorData } from "./ColorData";
 
 const createGraph = require("ngraph.graph");
 const path = require("ngraph.path");
