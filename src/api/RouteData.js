@@ -38,7 +38,7 @@ const path = require("ngraph.path");
 /**
  * Module for computing the actual routes.
  */
-export default class RouteData {
+export class RouteData {
   /**
    * Get a bounding box around a location with a given radius.
    * @param {Number} lat Latitude of location.

@@ -37,7 +37,7 @@ const limiter = new Bottleneck({
 /**
  * Module for getting nearby parks and other green public spaces.
  */
-export default class YelpData {
+export class YelpData {
   /**
    * Get a collection of public parks from Yelp within the given radius from the origin lat/long point.
    * @param {Number} lat Latitude of location.

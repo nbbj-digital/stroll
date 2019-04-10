@@ -29,7 +29,7 @@ const ntc = require("./ntc");
 /**
  * Module for getting color/color palette-specific data from points.
  */
-export default class ColorData {
+export class ColorData {
   /**
    * Build a url request for a google street view image.
    * @param {String} lat Latitude of location.
