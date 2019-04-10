@@ -16,7 +16,7 @@ test("GetPaletteNames", async () => {
   expect(result.length).toBe(3);
 });
 
-test("GetPaletteNames", async () => {
+test("GetPaletteAnalysis", async () => {
   const result = await ColorData.GetPaletteAnalysis(47.660259, -122.408417);
   expect(result).toBeGreaterThan(0.05);
 });
