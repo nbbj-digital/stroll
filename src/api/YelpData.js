@@ -34,6 +34,9 @@ const limiter = new Bottleneck({
   minTime: 250
 });
 
+/**
+ * Module for getting nearby parks and other green public spaces.
+ */
 export default class YelpData {
   /**
    * Get a collection of public parks from Yelp within the given radius from the origin lat/long point.

@@ -26,6 +26,9 @@ import * as Vibrant from "node-vibrant";
 
 const ntc = require("./ntc");
 
+/**
+ * Module for getting color/color palette-specific data from points.
+ */
 export default class ColorData {
   /**
    * Build a url request for a google street view image.

@@ -35,6 +35,9 @@ import ColorData from "./ColorData";
 const createGraph = require("ngraph.graph");
 const path = require("ngraph.path");
 
+/**
+ * Module for computing the actual routes.
+ */
 export default class RouteData {
   /**
    * Get a bounding box around a location with a given radius.
