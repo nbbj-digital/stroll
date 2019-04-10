@@ -56,6 +56,9 @@ Imports can be done through the aggregating index.js file or via individual memb
 ```js
 const Stroll = require('./index.js'); // from source
 const stroll = require('@nbbj/stroll') // from npm
+import * as Stroll from "../src"; // from source
+import * as Stroll from from "@nbbj/stroll"; // from npm
+
 ```
 
 ```js
@@ -64,10 +67,13 @@ const ColorParse = require('./ColorParse');
 const YelpData = require('./YelpData');
 const WeatherData = require('./WeatherData');
 const RouteData = require('./RouteData');
+import { WeatherData, YelpData, ColorData, RouteData } from "../src";
+
 
 // from npm
 const { RouteData } = require('@nbbj/stroll');
 const { ColorParse } = require('@nbbj/stroll');
+import { WeatherData, YelpData, ColorData, RouteData } from "@nbbj/stroll";
 ```
 
 ### Methods
