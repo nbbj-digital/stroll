@@ -22,12 +22,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-const Vibrant = require('node-vibrant');
-const ntc = require('./ntc');
+import * as Vibrant from "node-vibrant";
 
-class ColorParse {
-  constructor() {}
+const ntc = require("./ntc");
 
+/**
+ * Module for getting color/color palette-specific data from points.
+ */
+export default class ColorData {
   /**
    * Build a url request for a google street view image.
    * @param {String} lat Latitude of location.
@@ -36,12 +38,12 @@ class ColorParse {
    * @returns {String} A url for google maps.
    */
   static BuildRequest(lat, long, heading) {
-    let base = 'https://maps.googleapis.com/maps/api/streetview?';
-    let size = 'size=800x400&';
-    let location = 'location=' + String(lat) + ',' + String(long) + '&';
-    let headingStr = 'heading=' + heading + '&' || 'heading=0.0&';
-    let pitch = 'pitch=-0.76&';
-    let key = 'key=' +  (process.env.GMAPS_KEY || process.env.VUE_APP_GMAPS_KEY);
+    const base = "https://maps.googleapis.com/maps/api/streetview?";
+    const size = "size=800x400&";
+    const location = `location=${String(lat)},${String(long)}&`;
+    const headingStr = `heading=${heading}&` || "heading=0.0&";
+    const pitch = "pitch=-0.76&";
+    const key = `key=${process.env.GMAPS_KEY || process.env.VUE_APP_GMAPS_KEY}`;
 
     return base + size + location + headingStr + pitch + key;
   }
@@ -54,22 +56,29 @@ class ColorParse {
    * @returns {Object} A collection of Objects containing color palette data.
    */
   static GetPalette(lat, long, heading) {
-    let self = this;
-    return new Promise(function (resolve, reject) {
-      let url = self.BuildRequest(lat, long, heading);
-      Vibrant.from(url).getPalette()
+    const self = this;
+    return new Promise((resolve, reject) => {
+      const url = self.BuildRequest(lat, long, heading);
+      Vibrant.from(url)
+        .getPalette()
         .then(palette => {
-
           // iterate over palette objects, parse color names
-          for (let key in palette) {
+          for (const key in palette) {
             if (palette.hasOwnProperty(key)) {
-              palette[key]['closestShade'] = self.GetClosestShadeName(palette[key].hex);
-              palette[key]['closestColor'] = self.GetClosestColorName(palette[key].hex);
+              palette[key].closestShade = self.GetClosestShadeName(
+                palette[key].hex
+              );
+              palette[key].closestColor = self.GetClosestColorName(
+                palette[key].hex
+              );
             }
           }
-
           resolve(palette);
-        }).catch(err => console.error(err));
+        })
+        .catch(err => {
+          console.error(err);
+          reject(err);
+        });
     });
   }
 
@@ -82,25 +91,30 @@ class ColorParse {
    * @returns {Object} A collection of Objects containing color palette data.
    */
   static GetPaletteNames(lat, long) {
-    let self = this;
-    let bearings = [0, 90, 180];
-    let promises = [];
+    const self = this;
+    const bearings = [0, 90, 180];
+    const promises = [];
 
     bearings.forEach(b => {
-      let prom = new Promise(function (resolve, reject) {
-        let returnList = [];
+      const prom = new Promise((resolve, reject) => {
+        const returnList = [];
 
-        self.GetPalette(lat, long, b).then(colors => {
-
-          // iterate over palette objects, parse color names
-          for (let key in colors) {
-            if (colors.hasOwnProperty(key)) {
-              let shade = colors[key]['closestShade'];
-              returnList.push(shade);
-              resolve(returnList);
+        self
+          .GetPalette(lat, long, b)
+          .then(colors => {
+            // iterate over palette objects, parse color names
+            for (const key in colors) {
+              if (colors.hasOwnProperty(key)) {
+                const shade = colors[key].closestShade;
+                returnList.push(shade);
+                resolve(returnList);
+              }
             }
-          }
-        });
+          })
+          .catch(err => {
+            console.error(err);
+            reject(err);
+          });
       });
       promises.push(prom);
     });
@@ -115,16 +129,21 @@ class ColorParse {
    * @returns {Promise<Number>} A decimal percentage of the prevalence of green in the field of view.
    */
   static GetPaletteAnalysis(lat, long) {
-    let self = this;
-    return new Promise(function (resolve, reject) {
-
-      self.GetPaletteNames(lat, long).then(palette => {
-        let merged = palette[0].concat(palette[1]).concat(palette[2]);
-        const count = merged.reduce(function (n, val) {
-          return n + (val === 'Green');
-        }, 0);
-        resolve(count / merged.length);
-      });
+    const self = this;
+    return new Promise((resolve, reject) => {
+      self
+        .GetPaletteNames(lat, long)
+        .then(palette => {
+          const merged = palette[0].concat(palette[1]).concat(palette[2]);
+          const count = merged.reduce((n, val) => {
+            return n + (val === "Green");
+          }, 0);
+          resolve(count / merged.length);
+        })
+        .catch(err => {
+          console.error(err);
+          reject(err);
+        });
     });
   }
 
@@ -134,7 +153,7 @@ class ColorParse {
    * @returns {string} A color name.
    */
   static GetClosestShadeName(hex) {
-    let result = ntc.name(hex);
+    const result = ntc.name(hex);
     // let rgb_value = result[0]; // #6495ed : RGB value of closest match
     // let specific_name = result[1]; // Cornflower Blue : Color name of closest match
     // let shade_value = result[2]; // #0000ff : RGB value of shade of closest match
@@ -150,10 +169,7 @@ class ColorParse {
    * @returns {string} A color name.
    */
   static GetClosestColorName(hex) {
-    let result = ntc.name(hex);
+    const result = ntc.name(hex);
     return result[1];
   }
-
 }
-
-module.exports = ColorParse;

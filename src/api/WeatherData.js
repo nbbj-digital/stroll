@@ -22,19 +22,30 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-const SunCalc = require('suncalc');
+import suncalc from "suncalc";
 
-class WeatherData {
-  constructor() {}
-
+/**
+ * Module for getting weather-specific data from a place.
+ */
+export default class WeatherData {
+  /**
+   * Get a vector representation of the sun's position at the given location and today's date.
+   * @param {Number} lat Latitude of location.
+   * @param {Number} long Longitude of location.
+   * @returns {Object} An object containing azimuth and sun angle properties.
+   */
   static GetSunPositionToday(lat, long) {
-    return SunCalc.getPosition(Date.now(), lat, long);
+    return suncalc.getPosition(Date.now(), lat, long);
   }
 
+  /**
+   * Get a vector representation of the sun's position at the given location and date.
+   * @param {Number} lat Latitude of location.
+   * @param {Number} long Longitude of location.
+   * @param {Date} date Date to compute location at.
+   * @returns {Object} An object containing azimuth and sun angle properties.
+   */
   static GetSunPosition(lat, long, date) {
-    return SunCalc.getPosition(date, lat, long);
+    return suncalc.getPosition(date, lat, long);
   }
-
 }
-
-module.exports = WeatherData;

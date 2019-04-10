@@ -56,6 +56,9 @@ Imports can be done through the aggregating index.js file or via individual memb
 ```js
 const Stroll = require('./index.js'); // from source
 const stroll = require('@nbbj/stroll') // from npm
+import * as Stroll from "../src"; // from source
+import * as Stroll from from "@nbbj/stroll"; // from npm
+
 ```
 
 ```js
@@ -64,10 +67,13 @@ const ColorParse = require('./ColorParse');
 const YelpData = require('./YelpData');
 const WeatherData = require('./WeatherData');
 const RouteData = require('./RouteData');
+import { WeatherData, YelpData, ColorData, RouteData } from "../src";
+
 
 // from npm
 const { RouteData } = require('@nbbj/stroll');
 const { ColorParse } = require('@nbbj/stroll');
+import { WeatherData, YelpData, ColorData, RouteData } from "@nbbj/stroll";
 ```
 
 ### Methods
@@ -138,4 +144,16 @@ The module can be built by running `npm run build` in the root directory of this
 
 ### Testing
 
-Testing is handled using [mocha](https://www.npmjs.com/package/mocha) and code coverage is evaluated using [nyc](https://www.npmjs.com/package/nyc). Tests can be initiated by running `npm test` in the root directory of this repository.
+Testing is handled using [jest](https://jestjs.io/) and code coverage is evaluated using [nyc](https://www.npmjs.com/package/nyc). Tests can be initiated by running `npm test` in the root directory of this repository.
+
+## Commands
+
+The following commands are available during development.
+
+```sh
+npm test # run tests with Jest
+npm run coverage # run tests with coverage and open it on browser
+npm run lint # lint code
+npm run docs # generate docs
+npm run build # generate docs and transpile code
+```

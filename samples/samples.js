@@ -1,6 +1,6 @@
 const Stroll = require("@nbbj/stroll");
 
-let grid = Stroll.RouteData.GetPointGrid(47.651588, -122.415078, 0.5, 0.2);
+const grid = Stroll.RouteData.GetPointGrid(47.651588, -122.415078, 0.5, 0.2);
 
 Stroll.RouteData.GetGraph(grid, 0.3)
   .then(graph => Stroll.RouteData.FindAllNaturePaths(graph))
@@ -14,13 +14,13 @@ Stroll.YelpData.ParkSearch(47.660273, -122.409887, 1000).then(d => {
   console.log(d);
 });
 
-let points = Stroll.RouteData.GetRandomPointGrid(-90.54863, 14.616599, 1, 10);
+const points = Stroll.RouteData.GetRandomPointGrid(-90.54863, 14.616599, 1, 10);
 console.log(points);
 
-let points2 = Stroll.RouteData.GetPointGrid(-90.54863, 14.616599, 1, 0.1);
+const points2 = Stroll.RouteData.GetPointGrid(-90.54863, 14.616599, 1, 0.1);
 console.log(points2);
 
-let sunData = Stroll.WeatherData.GetSunPositionToday(
+const sunData = Stroll.WeatherData.GetSunPositionToday(
   47.6694956,
   -122.31547389999999
 );
