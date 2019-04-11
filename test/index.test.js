@@ -1,11 +1,11 @@
-import { WeatherData, YelpData, ColorData, RouteData } from "../src";
+import { WeatherData, PlaceData, ColorData, RouteData } from "../src";
 
 test("import WeatherData", () => {
   expect.anything(WeatherData);
 });
 
-test("import YelpData", () => {
-  expect.anything(YelpData);
+test("import PlaceData", () => {
+  expect.anything(PlaceData);
 });
 
 test("import ColorData", () => {

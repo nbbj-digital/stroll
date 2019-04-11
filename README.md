@@ -30,7 +30,7 @@ npm i @nbbj/stroll
 
 ### Environment Variables
 
-Before using this module, `GMAPS_KEY` and `YELP_KEY` environment variables must be set on your machine with your specific Google Maps API Key and Yelp API Key.
+Before using this module, the `GMAPS_KEY` environment variable must be set on your machine with your specific Google Maps API Key.
 
 #### User API Usage Notice
 
@@ -56,15 +56,15 @@ import * as Stroll from from "@nbbj/stroll"; // from npm
 ```js
 // from source
 const ColorParse = require('./ColorParse');
-const YelpData = require('./YelpData');
+const PlaceData = requirePlaceDataa');
 const WeatherData = require('./WeatherData');
 const RouteData = require('./RouteData');
-import { WeatherData, YelpData, ColorData, RouteData } from "../src"; // es6
+import { WeatherData, PlaceData, ColorData, RouteData } from "../src"; // es6
 
 // from npm
 const { RouteData } = require('@nbbj/stroll');
 const { ColorParse } = require('@nbbj/stroll');
-import { WeatherData, YelpData, ColorData, RouteData } from "@nbbj/stroll"; // es6
+import { WeatherData, PlaceData, ColorData, RouteData } from "@nbbj/stroll"; // es6
 ```
 
 ### Methods
@@ -86,12 +86,12 @@ RouteData.GetGraph(grid, 0.7) // get a graph from point grid
   }).catch(err => console.error(err));
 ```
 
-#### Yelp Data
+#### Place Data
 
-Yelp data for nearby public parks/green amenities. Used for finding public parks and other notable green spaces near any point on earth (lat/long).
+Place data for nearby public parks/green amenities. Used for finding public parks and other notable green spaces near any point on earth (lat/long).
 
 ```js
-YelpData.ParkSearch(47.660273, -122.409887, 1000).then(results => {
+PlaceData.ParkSearch(47.660273, -122.409887, 1000).then(results => {
   console.log(results);
 });
 ```
@@ -132,7 +132,7 @@ ColorParse.GetPaletteAnalysis(47.660259, -122.408417).then(result => {
 The working model to compute the "Nature Score" of a given point in the urban environment is composed of the following:
 
 1. Green Score - What percentage of an image's dominant color palette is green in color.
-2. Park Score - How many public parks/green spaces are near the given point, as computed by Yelp.
+2. Park Score - How many public parks/green spaces are near the given point, as computed by Google Maps.
 
 Next steps for development are to add the following criteria to the "Nature Score" computation:
 

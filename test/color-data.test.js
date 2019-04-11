@@ -1,3 +1,7 @@
+/**
+ * @jest-environment node
+ */
+
 import { ColorData } from "../src";
 
 test("GetPalette", async () => {

@@ -12,10 +12,10 @@
         -   [Parameters][8]
     -   [GetSunPosition][9]
         -   [Parameters][10]
--   [YelpData][11]
+-   [PlaceData][11]
     -   [ParkSearch][12]
         -   [Parameters][13]
--   [YelpData][14]
+-   [PlaceData][14]
     -   [ParkSearch][15]
         -   [Parameters][16]
 -   [ColorData][17]
@@ -133,7 +133,7 @@ Get a vector representation of the sun's position at the given location and date
 
 Returns **[Object][78]** An object containing azimuth and sun angle properties.
 
-## YelpData
+## PlaceData
 
 Yelp-related data for analysis.
 
@@ -149,7 +149,7 @@ Get a collection of public parks from Yelp within the given radius from the orig
 
 Returns **[Promise][80]&lt;[Array][81]>** A collection of nearby parks.
 
-## YelpData
+## PlaceData
 
 Module for getting nearby parks and other green public spaces.
 
@@ -535,13 +535,13 @@ Returns **[Promise][80]&lt;[Array][81]>** A list of paths, sorted from most expo
 
 [10]: #parameters-3
 
-[11]: #yelpdata
+[11]: #placedata
 
 [12]: #parksearch
 
 [13]: #parameters-4
 
-[14]: #yelpdata-1
+[14]: #placedata-1
 
 [15]: #parksearch-1
 

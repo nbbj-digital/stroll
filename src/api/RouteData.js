@@ -29,7 +29,7 @@ import * as TurfHelpers from "@turf/helpers";
 import * as TurfPointGrid from "@turf/point-grid";
 import * as TurfRandom from "@turf/random";
 
-import { YelpData } from "./YelpData";
+import { PlaceData } from "./PlaceData";
 import { ColorData } from "./ColorData";
 
 const createGraph = require("ngraph.graph");
@@ -44,7 +44,7 @@ export class RouteData {
    * @param {Number} lat Latitude of location.
    * @param {Number} long Longitude of location.
    * @param {Number} radius The radius of the bounding geometry from the given lat/long origin.
-   * @returns {Turf.bbox} A Turf.js bounding box object.
+   * @returns {BBox} A Turf.js bounding box object.
    */
   static BoundingBoxRadius(lat, long, radius) {
     const point = TurfHelpers.point([long, lat]);
@@ -58,8 +58,8 @@ export class RouteData {
    * @param {Number} lat Latitude of location.
    * @param {Number} long Longitude of location.
    * @param {Number} radius The radius of the bounding geometry from the given lat/long origin.
-   * @param {String} numPoints How many points to return
-   * @returns {Array<Turf.Point>} A collection of Turf.JS points.
+   * @param {Number} numPoints How many points to return
+   * @returns {FeatureCollection<Point, any>} A collection of Turf.JS points.
    */
   static GetRandomPointGrid(lat, long, radius, numPoints) {
     const bbox = this.BoundingBoxRadius(lat, long, radius);
@@ -73,7 +73,7 @@ export class RouteData {
    * @param {Number} long Longitude of location.
    * @param {Number} radius The radius of the bounding geometry from the given lat/long origin.
    * @param {Number} pointDist How far apart the points should be in the point grid.
-   * @returns {Array<Turf.Point>} A collection of Turf.JS points.
+   * @returns {Array<Point>} A collection of Turf.JS points.
    */
   static GetPointGrid(lat, long, radius, pointDist) {
     const bbox = this.BoundingBoxRadius(lat, long, radius);
@@ -83,7 +83,7 @@ export class RouteData {
   /**
    * Get graph data from the points which are walkable given an origin lat/long, radius, and
    * distance between points for creation of a grid.
-   * @param {Array<Turf.Point>} grid A grid of Turf.js points
+   * @param {Array<Point>} grid A grid of Turf.js points
    * @returns {Promise<Array>} A ngraph.graph object.
    */
   static async GetGraphData(grid) {
@@ -99,7 +99,7 @@ export class RouteData {
         ColorData.GetPaletteAnalysis(coordinates[1], coordinates[0])
           .then(greenScore => {
             // get nearby parks and categorize based on distance from origin point
-            YelpData.ParkSearch(+coordinates[1], +coordinates[0], 1000)
+            PlaceData.ParkSearch(+coordinates[1], +coordinates[0], 1000)
               .then(yelpResult => {
                 const closestParks = yelpResult.filter(park => {
                   return park.distance < 0.3;
@@ -139,7 +139,7 @@ export class RouteData {
   /**
    * Get graph object representing the points which are walkable given an origin lat/long, radius, and
    * distance between points for creation of a grid.
-   * @param {Array<Turf.Point>} grid A grid of Turf.js points
+   * @param {Array<Point>} grid A grid of Turf.js points
    * @param {Number} linkTolerance The minimum distance between points to be considered a 'link'.
    * @returns {Graph} A ngraph.graph object.
    */

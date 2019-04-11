@@ -52,7 +52,7 @@ export class ColorData {
    * Get the color palette of the image from google street view at the given lat, long, and orientation.
    * @param {String} lat Latitude of location.
    * @param {String} long Longitude of location.
-   * @param {String} heading Direction of google street view image (between 0 to 360).
+   * @param {number} heading Direction of google street view image (between 0 to 360).
    * @returns {Object} A collection of Objects containing color palette data.
    */
   static GetPalette(lat, long, heading) {

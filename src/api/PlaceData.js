@@ -22,56 +22,48 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-import YelpFusion from "yelp-fusion";
 import * as TurfDistance from "@turf/distance";
 import * as TurfHelpers from "@turf/helpers";
-import Bottleneck from "bottleneck";
 
-const apiKey = process.env.YELP_KEY || process.env.VUE_APP_YELP_KEY;
+const axios = require("axios");
 
-const limiter = new Bottleneck({
-  // maxConcurrent: 1,
-  minTime: 250
-});
+const gMapsApiKey = process.env.GMAPS_KEY || process.env.VUE_APP_GMAPS_KEY;
 
 /**
  * Module for getting nearby parks and other green public spaces.
  */
-export class YelpData {
+export class PlaceData {
   /**
-   * Get a collection of public parks from Yelp within the given radius from the origin lat/long point.
+   * Get a collection of public parks from Google Maps within the given radius from the origin lat/long point.
    * @param {Number} lat Latitude of location.
    * @param {Number} long Longitude of location.
    * @param {Number} radius The radius of the bounding geometry from the given lat/long origin.
    * @returns {Promise<Array>} A collection of nearby parks.
    */
   static ParkSearch(lat, long, radius) {
-    const searchRequest = {
-      term: "park",
-      latitude: lat,
-      longitude: long,
-      radius
-    };
+    const gMapsUrl =
+      `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${String(
+        lat
+      )},${String(long)}&radius=${String(radius)}&type=park` +
+      `&key=${String(gMapsApiKey)}`;
 
     const pointA = TurfHelpers.point([long, lat]);
 
-    const client = YelpFusion.client(apiKey);
     return new Promise((resolve, reject) => {
-      limiter
-        .schedule(() => client.search(searchRequest))
+      axios
+        .get(gMapsUrl)
         .then(response => {
-          // console.log(response.jsonBody.businesses);
-          const results = response.jsonBody.businesses;
+          const { results } = response.data;
 
           const parkData = results.map(r => {
             const pointB = TurfHelpers.point([
-              r.coordinates.longitude,
-              r.coordinates.latitude
+              r.geometry.location.lng,
+              r.geometry.location.lat
             ]);
             return {
               name: r.name,
               rating: r.rating,
-              coordinates: r.coordinates,
+              coordinates: r.geometry.location,
               distance: TurfDistance.default(pointA, pointB)
             };
           });

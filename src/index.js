@@ -1,7 +1,7 @@
 // @flow
 
 import { WeatherData } from "./api/WeatherData";
-import { YelpData } from "./api/YelpData";
+import { PlaceData } from "./api/PlaceData";
 import { ColorData } from "./api/ColorData";
 import { RouteData } from "./api/RouteData";
 
@@ -12,9 +12,9 @@ import { RouteData } from "./api/RouteData";
 export { WeatherData };
 /**
  * Yelp-related data for analysis.
- * @property {YelpData}
+ * @property {PlaceData}
  */
-export { YelpData };
+export { PlaceData };
 /**
  * Field of view analysis for nature/greenery.
  * @property {ColorData}
