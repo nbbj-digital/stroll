@@ -1,6 +1,6 @@
 const Stroll = require("@nbbj/stroll");
 
-const grid = Stroll.RouteData.GetPointGrid(47.651588, -122.415078, 0.5, 0.2);
+const grid = Stroll.TurfData.GetPointGrid(47.651588, -122.415078, 0.5, 0.2);
 
 Stroll.RouteData.GetGraph(grid, 0.3)
   .then(graph => Stroll.RouteData.FindAllNaturePaths(graph))

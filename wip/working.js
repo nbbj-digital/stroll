@@ -2,7 +2,7 @@ const stroll = require("../dist/index");
 // const stroll = require("../src/index");
 
 // ROUTE DATA
-const grid = stroll.RouteData.GetPointGrid(47.651588, -122.415078, 1, 0.8);
+const grid = stroll.TurfData.GetPointGrid(47.651588, -122.415078, 1, 0.8);
 
 // stroll.RouteData.GetGraphData(grid, 0.3).then(results => {
 //   console.log(results);

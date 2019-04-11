@@ -22,12 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-import * as TurfBBox from "@turf/bbox";
-import * as TurfCircle from "@turf/circle";
 import * as TurfDistance from "@turf/distance";
-import * as TurfHelpers from "@turf/helpers";
-import * as TurfPointGrid from "@turf/point-grid";
-import * as TurfRandom from "@turf/random";
 
 import { PlaceData } from "./PlaceData";
 import { ColorData } from "./ColorData";
@@ -40,53 +35,12 @@ const path = require("ngraph.path");
  */
 export class RouteData {
   /**
-   * Get a bounding box around a location with a given radius.
-   * @param {Number} lat Latitude of location.
-   * @param {Number} long Longitude of location.
-   * @param {Number} radius The radius of the bounding geometry from the given lat/long origin.
-   * @returns {BBox} A Turf.js bounding box object.
-   */
-  static BoundingBoxRadius(lat, long, radius) {
-    const point = TurfHelpers.point([long, lat]);
-    const buffer = TurfCircle.default(point, radius);
-    return TurfBBox.default(buffer);
-  }
-
-  /**
-   * Get a collection of random points which fall within a given bounding radius from an origin
-   * lat/long point.
-   * @param {Number} lat Latitude of location.
-   * @param {Number} long Longitude of location.
-   * @param {Number} radius The radius of the bounding geometry from the given lat/long origin.
-   * @param {Number} numPoints How many points to return
-   * @returns {FeatureCollection<Point, any>} A collection of Turf.JS points.
-   */
-  static GetRandomPointGrid(lat, long, radius, numPoints) {
-    const bbox = this.BoundingBoxRadius(lat, long, radius);
-    return TurfRandom.randomPoint(numPoints, bbox);
-  }
-
-  /**
-   * Get a collection of points in a gird which fall within a given bounding radius from an origin
-   * lat/long point.
-   * @param {Number} lat Latitude of location.
-   * @param {Number} long Longitude of location.
-   * @param {Number} radius The radius of the bounding geometry from the given lat/long origin.
-   * @param {Number} pointDist How far apart the points should be in the point grid.
-   * @returns {Array<Point>} A collection of Turf.JS points.
-   */
-  static GetPointGrid(lat, long, radius, pointDist) {
-    const bbox = this.BoundingBoxRadius(lat, long, radius);
-    return TurfPointGrid.default(bbox, pointDist);
-  }
-
-  /**
    * Get graph data from the points which are walkable given an origin lat/long, radius, and
    * distance between points for creation of a grid.
    * @param {Array<Point>} grid A grid of Turf.js points
    * @returns {Promise<Array>} A ngraph.graph object.
    */
-  static async GetGraphData(grid) {
+  static GetGraphData(grid) {
     console.log("Staring Get Graph Data");
     const promises = [];
 
@@ -298,6 +252,7 @@ export class RouteData {
         )},${String(pathObj.slice(-1)[0].data.x)}`;
         mapUrl += "&waypoints=";
 
+        // build endpoint for google maps directions
         let mapUrlDirections = mapUrl.replace(
           "https://www.google.com/maps/dir/?api=1&",
           "https://maps.googleapis.com/maps/api/directions/json?"
