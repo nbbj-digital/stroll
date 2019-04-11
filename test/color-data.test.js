@@ -16,7 +16,7 @@ test("GetPalette", async () => {
 });
 
 test("GetPaletteNames", async () => {
-  const result = await Color.GetPaletteNames(46.414382, 10.013988, 151.78);
+  const result = await Color.GetPaletteNames(46.414382, 10.013988);
   expect(result.length).toBe(3);
 });
 

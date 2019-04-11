@@ -37,9 +37,11 @@ export class Graph {
    * Get graph data from the points which are walkable given an origin lat/long, radius, and
    * distance between points for creation of a grid.
    * @param {Array<Point>} grid A grid of Turf.js points
+   * @param {String} apiKey (Optional) GoogleMaps API Key for the request. If none is provided, a process
+   * environment variable 'GMAPS_KEY' will be queried for the value.
    * @returns {Promise<Array>} A ngraph.graph object.
    */
-  static GetGraphData(grid) {
+  static GetGraphData(grid, apiKey = process.env.GMAPS_KEY) {
     console.log("Staring Get Graph Data");
     const promises = [];
 
@@ -49,10 +51,10 @@ export class Graph {
         const { coordinates } = point.geometry;
 
         // get color palette analysis from google street view images
-        Color.GetPaletteAnalysis(coordinates[1], coordinates[0])
+        Color.GetPaletteAnalysis(coordinates[1], coordinates[0], apiKey)
           .then(greenScore => {
             // get nearby parks and categorize based on distance from origin point
-            Place.ParkSearch(+coordinates[1], +coordinates[0], 1000)
+            Place.ParkSearch(+coordinates[1], +coordinates[0], 1000, apiKey)
               .then(yelpResult => {
                 const closestParks = yelpResult.filter(park => {
                   return park.distance < 0.3;
@@ -94,16 +96,18 @@ export class Graph {
    * distance between points for creation of a grid.
    * @param {Array<Point>} grid A grid of Turf.js points
    * @param {Number} linkTolerance The minimum distance between points to be considered a 'link'.
+   * @param {String} apiKey (Optional) GoogleMaps API Key for the request. If none is provided, a process
+   * environment variable 'GMAPS_KEY' will be queried for the value.
    * @returns {Graph} A ngraph.graph object.
    */
-  static GetGraph(grid, linkTolerance) {
+  static GetGraph(grid, linkTolerance, apiKey = process.env.GMAPS_KEY) {
     console.log(
       `Staring Get Graph | Grid Size: ${String(grid.features.length)}`
     );
     const self = this;
     return new Promise((resolve, reject) => {
       self
-        .GetGraphData(grid)
+        .GetGraphData(grid, apiKey)
         .then(points => {
           const graph = createGraph();
           points.map(o => {

@@ -27,8 +27,6 @@ import * as TurfHelpers from "@turf/helpers";
 
 const axios = require("axios");
 
-const gMapsApiKey = process.env.GMAPS_KEY || process.env.VUE_APP_GMAPS_KEY;
-
 /**
  * Module for getting nearby parks and other green public spaces.
  */
@@ -38,14 +36,16 @@ export class Place {
    * @param {Number} lat Latitude of location.
    * @param {Number} long Longitude of location.
    * @param {Number} radius The radius of the bounding geometry from the given lat/long origin.
+   * @param {String} apiKey (Optional) GoogleMaps API Key for the request. If none is provided, a process
+   * environment variable 'GMAPS_KEY' will be queried for the value.
    * @returns {Promise<Array>} A collection of nearby parks.
    */
-  static ParkSearch(lat, long, radius) {
+  static ParkSearch(lat, long, radius, apiKey = process.env.GMAPS_KEY) {
     const gMapsUrl =
       `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${String(
         lat
       )},${String(long)}&radius=${String(radius)}&type=park` +
-      `&key=${String(gMapsApiKey)}`;
+      `&key=${String(apiKey)}`;
 
     const pointA = TurfHelpers.point([long, lat]);
 

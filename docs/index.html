@@ -546,7 +546,7 @@
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>BuildRequest(lat, long, heading)</span>
+            <span class='code strong strong truncate'>BuildRequest(lat, long, heading, apiKey)</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -556,7 +556,7 @@
 
   <p>Build a url request for a google street view image.</p>
 
-    <div class='pre p1 fill-light mt0'>BuildRequest(lat: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, long: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, heading: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></div>
+    <div class='pre p1 fill-light mt0'>BuildRequest(lat: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, long: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, heading: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, apiKey: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></div>
   
   
 
@@ -598,6 +598,17 @@
           
         </div>
       
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>apiKey</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>
+            = <code>process.env.GMAPS_KEY</code>)</code>
+	    (Optional) GoogleMaps API Key for the request. If none is provided, a process
+environment variable 'GMAPS_KEY' will be queried for the value.
+
+          </div>
+          
+        </div>
+      
     </div>
   
 
@@ -633,7 +644,7 @@
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>GetPalette(lat, long, heading)</span>
+            <span class='code strong strong truncate'>GetPalette(lat, long, heading, apiKey)</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -643,7 +654,7 @@
 
   <p>Get the color palette of the image from google street view at the given lat, long, and orientation.</p>
 
-    <div class='pre p1 fill-light mt0'>GetPalette(lat: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, long: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, heading: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
+    <div class='pre p1 fill-light mt0'>GetPalette(lat: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, long: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, heading: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>, apiKey: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
   
   
 
@@ -685,6 +696,17 @@
           
         </div>
       
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>apiKey</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>
+            = <code>process.env.GMAPS_KEY</code>)</code>
+	    (Optional) GoogleMaps API Key for the request. If none is provided, a process
+environment variable 'GMAPS_KEY' will be queried for the value.
+
+          </div>
+          
+        </div>
+      
     </div>
   
 
@@ -720,7 +742,7 @@
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>GetPaletteNames(lat, long)</span>
+            <span class='code strong strong truncate'>GetPaletteNames(lat, long, apiKey)</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -732,7 +754,7 @@
 from google street view at the given lat, long, and orientation. Views will be taken at 0, 90 and 180 degrees
 around the central point.</p>
 
-    <div class='pre p1 fill-light mt0'>GetPaletteNames(lat: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, long: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
+    <div class='pre p1 fill-light mt0'>GetPaletteNames(lat: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, long: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, apiKey: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
   
   
 
@@ -760,6 +782,17 @@ around the central point.</p>
           <div>
             <span class='code bold'>long</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
 	    Longitude of location.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>apiKey</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>
+            = <code>process.env.GMAPS_KEY</code>)</code>
+	    (Optional) GoogleMaps API Key for the request. If none is provided, a process
+environment variable 'GMAPS_KEY' will be queried for the value.
 
           </div>
           
@@ -800,7 +833,7 @@ around the central point.</p>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>GetPaletteAnalysis(lat, long)</span>
+            <span class='code strong strong truncate'>GetPaletteAnalysis(lat, long, apiKey)</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -811,7 +844,7 @@ around the central point.</p>
   <p>Get a percentage of "greenery" visible (dominant in the image color palette) in a 360 panorama
 taken at the given latitude/longitude.</p>
 
-    <div class='pre p1 fill-light mt0'>GetPaletteAnalysis(lat: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, long: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>></div>
+    <div class='pre p1 fill-light mt0'>GetPaletteAnalysis(lat: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, long: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, apiKey: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>></div>
   
   
 
@@ -839,6 +872,17 @@ taken at the given latitude/longitude.</p>
           <div>
             <span class='code bold'>long</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
 	    Longitude of location.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>apiKey</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>
+            = <code>process.env.GMAPS_KEY</code>)</code>
+	    (Optional) GoogleMaps API Key for the request. If none is provided, a process
+environment variable 'GMAPS_KEY' will be queried for the value.
 
           </div>
           
@@ -1071,7 +1115,7 @@ taken at the given latitude/longitude.</p>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>BuildRequest(lat, long, heading)</span>
+            <span class='code strong strong truncate'>BuildRequest(lat, long, heading, apiKey)</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -1081,7 +1125,7 @@ taken at the given latitude/longitude.</p>
 
   <p>Build a url request for a google street view image.</p>
 
-    <div class='pre p1 fill-light mt0'>BuildRequest(lat: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, long: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, heading: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></div>
+    <div class='pre p1 fill-light mt0'>BuildRequest(lat: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, long: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, heading: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, apiKey: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></div>
   
   
 
@@ -1123,6 +1167,17 @@ taken at the given latitude/longitude.</p>
           
         </div>
       
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>apiKey</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>
+            = <code>process.env.GMAPS_KEY</code>)</code>
+	    (Optional) GoogleMaps API Key for the request. If none is provided, a process
+environment variable 'GMAPS_KEY' will be queried for the value.
+
+          </div>
+          
+        </div>
+      
     </div>
   
 
@@ -1158,7 +1213,7 @@ taken at the given latitude/longitude.</p>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>GetPalette(lat, long, heading)</span>
+            <span class='code strong strong truncate'>GetPalette(lat, long, heading, apiKey)</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -1168,7 +1223,7 @@ taken at the given latitude/longitude.</p>
 
   <p>Get the color palette of the image from google street view at the given lat, long, and orientation.</p>
 
-    <div class='pre p1 fill-light mt0'>GetPalette(lat: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, long: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, heading: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
+    <div class='pre p1 fill-light mt0'>GetPalette(lat: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, long: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, heading: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>, apiKey: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
   
   
 
@@ -1210,6 +1265,17 @@ taken at the given latitude/longitude.</p>
           
         </div>
       
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>apiKey</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>
+            = <code>process.env.GMAPS_KEY</code>)</code>
+	    (Optional) GoogleMaps API Key for the request. If none is provided, a process
+environment variable 'GMAPS_KEY' will be queried for the value.
+
+          </div>
+          
+        </div>
+      
     </div>
   
 
@@ -1245,7 +1311,7 @@ taken at the given latitude/longitude.</p>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>GetPaletteNames(lat, long)</span>
+            <span class='code strong strong truncate'>GetPaletteNames(lat, long, apiKey)</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -1257,7 +1323,7 @@ taken at the given latitude/longitude.</p>
 from google street view at the given lat, long, and orientation. Views will be taken at 0, 90 and 180 degrees
 around the central point.</p>
 
-    <div class='pre p1 fill-light mt0'>GetPaletteNames(lat: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, long: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
+    <div class='pre p1 fill-light mt0'>GetPaletteNames(lat: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, long: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, apiKey: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
   
   
 
@@ -1285,6 +1351,17 @@ around the central point.</p>
           <div>
             <span class='code bold'>long</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
 	    Longitude of location.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>apiKey</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>
+            = <code>process.env.GMAPS_KEY</code>)</code>
+	    (Optional) GoogleMaps API Key for the request. If none is provided, a process
+environment variable 'GMAPS_KEY' will be queried for the value.
 
           </div>
           
@@ -1325,7 +1402,7 @@ around the central point.</p>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>GetPaletteAnalysis(lat, long)</span>
+            <span class='code strong strong truncate'>GetPaletteAnalysis(lat, long, apiKey)</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -1336,7 +1413,7 @@ around the central point.</p>
   <p>Get a percentage of "greenery" visible (dominant in the image color palette) in a 360 panorama
 taken at the given latitude/longitude.</p>
 
-    <div class='pre p1 fill-light mt0'>GetPaletteAnalysis(lat: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, long: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>></div>
+    <div class='pre p1 fill-light mt0'>GetPaletteAnalysis(lat: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, long: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, apiKey: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>></div>
   
   
 
@@ -1364,6 +1441,17 @@ taken at the given latitude/longitude.</p>
           <div>
             <span class='code bold'>long</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
 	    Longitude of location.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>apiKey</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>
+            = <code>process.env.GMAPS_KEY</code>)</code>
+	    (Optional) GoogleMaps API Key for the request. If none is provided, a process
+environment variable 'GMAPS_KEY' will be queried for the value.
 
           </div>
           
@@ -2266,7 +2354,7 @@ lat/long point.</p>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>GetGraphData(grid)</span>
+            <span class='code strong strong truncate'>GetGraphData(grid, apiKey)</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -2277,7 +2365,7 @@ lat/long point.</p>
   <p>Get graph data from the points which are walkable given an origin lat/long, radius, and
 distance between points for creation of a grid.</p>
 
-    <div class='pre p1 fill-light mt0'>GetGraphData(grid: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Point>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>></div>
+    <div class='pre p1 fill-light mt0'>GetGraphData(grid: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Point>, apiKey: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>></div>
   
   
 
@@ -2296,6 +2384,17 @@ distance between points for creation of a grid.</p>
           <div>
             <span class='code bold'>grid</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Point>)</code>
 	    A grid of Turf.js points
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>apiKey</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>
+            = <code>process.env.GMAPS_KEY</code>)</code>
+	    (Optional) GoogleMaps API Key for the request. If none is provided, a process
+environment variable 'GMAPS_KEY' will be queried for the value.
 
           </div>
           
@@ -2336,7 +2435,7 @@ distance between points for creation of a grid.</p>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>GetGraph(grid, linkTolerance)</span>
+            <span class='code strong strong truncate'>GetGraph(grid, linkTolerance, apiKey)</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -2347,7 +2446,7 @@ distance between points for creation of a grid.</p>
   <p>Get graph object representing the points which are walkable given an origin lat/long, radius, and
 distance between points for creation of a grid.</p>
 
-    <div class='pre p1 fill-light mt0'>GetGraph(grid: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Point>, linkTolerance: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>): <a href="#graph">Graph</a></div>
+    <div class='pre p1 fill-light mt0'>GetGraph(grid: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Point>, linkTolerance: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, apiKey: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="#graph">Graph</a></div>
   
   
 
@@ -2375,6 +2474,17 @@ distance between points for creation of a grid.</p>
           <div>
             <span class='code bold'>linkTolerance</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
 	    The minimum distance between points to be considered a 'link'.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>apiKey</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>
+            = <code>process.env.GMAPS_KEY</code>)</code>
+	    (Optional) GoogleMaps API Key for the request. If none is provided, a process
+environment variable 'GMAPS_KEY' will be queried for the value.
 
           </div>
           
@@ -2469,7 +2579,7 @@ distance between points for creation of a grid.</p>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>GetGraphData(grid)</span>
+            <span class='code strong strong truncate'>GetGraphData(grid, apiKey)</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -2480,7 +2590,7 @@ distance between points for creation of a grid.</p>
   <p>Get graph data from the points which are walkable given an origin lat/long, radius, and
 distance between points for creation of a grid.</p>
 
-    <div class='pre p1 fill-light mt0'>GetGraphData(grid: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Point>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>></div>
+    <div class='pre p1 fill-light mt0'>GetGraphData(grid: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Point>, apiKey: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>></div>
   
   
 
@@ -2499,6 +2609,17 @@ distance between points for creation of a grid.</p>
           <div>
             <span class='code bold'>grid</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Point>)</code>
 	    A grid of Turf.js points
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>apiKey</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>
+            = <code>process.env.GMAPS_KEY</code>)</code>
+	    (Optional) GoogleMaps API Key for the request. If none is provided, a process
+environment variable 'GMAPS_KEY' will be queried for the value.
 
           </div>
           
@@ -2539,7 +2660,7 @@ distance between points for creation of a grid.</p>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>GetGraph(grid, linkTolerance)</span>
+            <span class='code strong strong truncate'>GetGraph(grid, linkTolerance, apiKey)</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -2550,7 +2671,7 @@ distance between points for creation of a grid.</p>
   <p>Get graph object representing the points which are walkable given an origin lat/long, radius, and
 distance between points for creation of a grid.</p>
 
-    <div class='pre p1 fill-light mt0'>GetGraph(grid: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Point>, linkTolerance: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>): <a href="#graph">Graph</a></div>
+    <div class='pre p1 fill-light mt0'>GetGraph(grid: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Point>, linkTolerance: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, apiKey: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="#graph">Graph</a></div>
   
   
 
@@ -2578,6 +2699,17 @@ distance between points for creation of a grid.</p>
           <div>
             <span class='code bold'>linkTolerance</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
 	    The minimum distance between points to be considered a 'link'.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>apiKey</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>
+            = <code>process.env.GMAPS_KEY</code>)</code>
+	    (Optional) GoogleMaps API Key for the request. If none is provided, a process
+environment variable 'GMAPS_KEY' will be queried for the value.
 
           </div>
           
@@ -2672,7 +2804,7 @@ distance between points for creation of a grid.</p>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>ParkSearch(lat, long, radius)</span>
+            <span class='code strong strong truncate'>ParkSearch(lat, long, radius, apiKey)</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -2682,7 +2814,7 @@ distance between points for creation of a grid.</p>
 
   <p>Get a collection of public parks from Google Maps within the given radius from the origin lat/long point.</p>
 
-    <div class='pre p1 fill-light mt0'>ParkSearch(lat: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, long: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, radius: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>></div>
+    <div class='pre p1 fill-light mt0'>ParkSearch(lat: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, long: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, radius: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, apiKey: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>></div>
   
   
 
@@ -2719,6 +2851,17 @@ distance between points for creation of a grid.</p>
           <div>
             <span class='code bold'>radius</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
 	    The radius of the bounding geometry from the given lat/long origin.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>apiKey</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>
+            = <code>process.env.GMAPS_KEY</code>)</code>
+	    (Optional) GoogleMaps API Key for the request. If none is provided, a process
+environment variable 'GMAPS_KEY' will be queried for the value.
 
           </div>
           
@@ -2813,7 +2956,7 @@ distance between points for creation of a grid.</p>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>ParkSearch(lat, long, radius)</span>
+            <span class='code strong strong truncate'>ParkSearch(lat, long, radius, apiKey)</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -2823,7 +2966,7 @@ distance between points for creation of a grid.</p>
 
   <p>Get a collection of public parks from Google Maps within the given radius from the origin lat/long point.</p>
 
-    <div class='pre p1 fill-light mt0'>ParkSearch(lat: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, long: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, radius: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>></div>
+    <div class='pre p1 fill-light mt0'>ParkSearch(lat: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, long: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, radius: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, apiKey: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>></div>
   
   
 
@@ -2860,6 +3003,17 @@ distance between points for creation of a grid.</p>
           <div>
             <span class='code bold'>radius</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
 	    The radius of the bounding geometry from the given lat/long origin.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>apiKey</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>
+            = <code>process.env.GMAPS_KEY</code>)</code>
+	    (Optional) GoogleMaps API Key for the request. If none is provided, a process
+environment variable 'GMAPS_KEY' will be queried for the value.
 
           </div>
           

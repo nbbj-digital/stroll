@@ -95,8 +95,10 @@ distance between points for creation of a grid.
 #### Parameters
 
 -   `grid` **[Array][81]&lt;Point>** A grid of Turf.js points
+-   `apiKey` **[String][82]** (Optional) GoogleMaps API Key for the request. If none is provided, a process
+    environment variable 'GMAPS_KEY' will be queried for the value. (optional, default `process.env.GMAPS_KEY`)
 
-Returns **[Promise][82]&lt;[Array][81]>** A ngraph.graph object.
+Returns **[Promise][83]&lt;[Array][81]>** A ngraph.graph object.
 
 ### GetGraph
 
@@ -106,9 +108,11 @@ distance between points for creation of a grid.
 #### Parameters
 
 -   `grid` **[Array][81]&lt;Point>** A grid of Turf.js points
--   `linkTolerance` **[Number][83]** The minimum distance between points to be considered a 'link'.
+-   `linkTolerance` **[Number][84]** The minimum distance between points to be considered a 'link'.
+-   `apiKey` **[String][82]** (Optional) GoogleMaps API Key for the request. If none is provided, a process
+    environment variable 'GMAPS_KEY' will be queried for the value. (optional, default `process.env.GMAPS_KEY`)
 
-Returns **[Graph][84]** A ngraph.graph object.
+Returns **[Graph][85]** A ngraph.graph object.
 
 ## Graph
 
@@ -122,8 +126,10 @@ distance between points for creation of a grid.
 #### Parameters
 
 -   `grid` **[Array][81]&lt;Point>** A grid of Turf.js points
+-   `apiKey` **[String][82]** (Optional) GoogleMaps API Key for the request. If none is provided, a process
+    environment variable 'GMAPS_KEY' will be queried for the value. (optional, default `process.env.GMAPS_KEY`)
 
-Returns **[Promise][82]&lt;[Array][81]>** A ngraph.graph object.
+Returns **[Promise][83]&lt;[Array][81]>** A ngraph.graph object.
 
 ### GetGraph
 
@@ -133,9 +139,11 @@ distance between points for creation of a grid.
 #### Parameters
 
 -   `grid` **[Array][81]&lt;Point>** A grid of Turf.js points
--   `linkTolerance` **[Number][83]** The minimum distance between points to be considered a 'link'.
+-   `linkTolerance` **[Number][84]** The minimum distance between points to be considered a 'link'.
+-   `apiKey` **[String][82]** (Optional) GoogleMaps API Key for the request. If none is provided, a process
+    environment variable 'GMAPS_KEY' will be queried for the value. (optional, default `process.env.GMAPS_KEY`)
 
-Returns **[Graph][84]** A ngraph.graph object.
+Returns **[Graph][85]** A ngraph.graph object.
 
 ## Geometry
 
@@ -147,9 +155,9 @@ Get a bounding box around a location with a given radius.
 
 #### Parameters
 
--   `lat` **[Number][83]** Latitude of location.
--   `long` **[Number][83]** Longitude of location.
--   `radius` **[Number][83]** The radius of the bounding geometry from the given lat/long origin.
+-   `lat` **[Number][84]** Latitude of location.
+-   `long` **[Number][84]** Longitude of location.
+-   `radius` **[Number][84]** The radius of the bounding geometry from the given lat/long origin.
 
 Returns **BBox** A Turf.js bounding box object.
 
@@ -160,10 +168,10 @@ lat/long point.
 
 #### Parameters
 
--   `lat` **[Number][83]** Latitude of location.
--   `long` **[Number][83]** Longitude of location.
--   `radius` **[Number][83]** The radius of the bounding geometry from the given lat/long origin.
--   `numPoints` **[Number][83]** How many points to return
+-   `lat` **[Number][84]** Latitude of location.
+-   `long` **[Number][84]** Longitude of location.
+-   `radius` **[Number][84]** The radius of the bounding geometry from the given lat/long origin.
+-   `numPoints` **[Number][84]** How many points to return
 
 Returns **FeatureCollection&lt;Point, any>** A collection of Turf.JS points.
 
@@ -174,10 +182,10 @@ lat/long point.
 
 #### Parameters
 
--   `lat` **[Number][83]** Latitude of location.
--   `long` **[Number][83]** Longitude of location.
--   `radius` **[Number][83]** The radius of the bounding geometry from the given lat/long origin.
--   `pointDist` **[Number][83]** How far apart the points should be in the point grid.
+-   `lat` **[Number][84]** Latitude of location.
+-   `long` **[Number][84]** Longitude of location.
+-   `radius` **[Number][84]** The radius of the bounding geometry from the given lat/long origin.
+-   `pointDist` **[Number][84]** How far apart the points should be in the point grid.
 
 Returns **[Array][81]&lt;Point>** A collection of Turf.JS points.
 
@@ -191,9 +199,9 @@ Get a bounding box around a location with a given radius.
 
 #### Parameters
 
--   `lat` **[Number][83]** Latitude of location.
--   `long` **[Number][83]** Longitude of location.
--   `radius` **[Number][83]** The radius of the bounding geometry from the given lat/long origin.
+-   `lat` **[Number][84]** Latitude of location.
+-   `long` **[Number][84]** Longitude of location.
+-   `radius` **[Number][84]** The radius of the bounding geometry from the given lat/long origin.
 
 Returns **BBox** A Turf.js bounding box object.
 
@@ -204,10 +212,10 @@ lat/long point.
 
 #### Parameters
 
--   `lat` **[Number][83]** Latitude of location.
--   `long` **[Number][83]** Longitude of location.
--   `radius` **[Number][83]** The radius of the bounding geometry from the given lat/long origin.
--   `numPoints` **[Number][83]** How many points to return
+-   `lat` **[Number][84]** Latitude of location.
+-   `long` **[Number][84]** Longitude of location.
+-   `radius` **[Number][84]** The radius of the bounding geometry from the given lat/long origin.
+-   `numPoints` **[Number][84]** How many points to return
 
 Returns **FeatureCollection&lt;Point, any>** A collection of Turf.JS points.
 
@@ -218,10 +226,10 @@ lat/long point.
 
 #### Parameters
 
--   `lat` **[Number][83]** Latitude of location.
--   `long` **[Number][83]** Longitude of location.
--   `radius` **[Number][83]** The radius of the bounding geometry from the given lat/long origin.
--   `pointDist` **[Number][83]** How far apart the points should be in the point grid.
+-   `lat` **[Number][84]** Latitude of location.
+-   `long` **[Number][84]** Longitude of location.
+-   `radius` **[Number][84]** The radius of the bounding geometry from the given lat/long origin.
+-   `pointDist` **[Number][84]** How far apart the points should be in the point grid.
 
 Returns **[Array][81]&lt;Point>** A collection of Turf.JS points.
 
@@ -235,10 +243,10 @@ Get a vector representation of the sun's position at the given location and toda
 
 #### Parameters
 
--   `lat` **[Number][83]** Latitude of location.
--   `long` **[Number][83]** Longitude of location.
+-   `lat` **[Number][84]** Latitude of location.
+-   `long` **[Number][84]** Longitude of location.
 
-Returns **[Object][85]** An object containing azimuth and sun angle properties.
+Returns **[Object][86]** An object containing azimuth and sun angle properties.
 
 ### GetSunPosition
 
@@ -246,11 +254,11 @@ Get a vector representation of the sun's position at the given location and date
 
 #### Parameters
 
--   `lat` **[Number][83]** Latitude of location.
--   `long` **[Number][83]** Longitude of location.
--   `date` **[Date][86]** Date to compute location at.
+-   `lat` **[Number][84]** Latitude of location.
+-   `long` **[Number][84]** Longitude of location.
+-   `date` **[Date][87]** Date to compute location at.
 
-Returns **[Object][85]** An object containing azimuth and sun angle properties.
+Returns **[Object][86]** An object containing azimuth and sun angle properties.
 
 ## Weather
 
@@ -262,10 +270,10 @@ Get a vector representation of the sun's position at the given location and toda
 
 #### Parameters
 
--   `lat` **[Number][83]** Latitude of location.
--   `long` **[Number][83]** Longitude of location.
+-   `lat` **[Number][84]** Latitude of location.
+-   `long` **[Number][84]** Longitude of location.
 
-Returns **[Object][85]** An object containing azimuth and sun angle properties.
+Returns **[Object][86]** An object containing azimuth and sun angle properties.
 
 ### GetSunPosition
 
@@ -273,11 +281,11 @@ Get a vector representation of the sun's position at the given location and date
 
 #### Parameters
 
--   `lat` **[Number][83]** Latitude of location.
--   `long` **[Number][83]** Longitude of location.
--   `date` **[Date][86]** Date to compute location at.
+-   `lat` **[Number][84]** Latitude of location.
+-   `long` **[Number][84]** Longitude of location.
+-   `date` **[Date][87]** Date to compute location at.
 
-Returns **[Object][85]** An object containing azimuth and sun angle properties.
+Returns **[Object][86]** An object containing azimuth and sun angle properties.
 
 ## Place
 
@@ -289,11 +297,13 @@ Get a collection of public parks from Google Maps within the given radius from t
 
 #### Parameters
 
--   `lat` **[Number][83]** Latitude of location.
--   `long` **[Number][83]** Longitude of location.
--   `radius` **[Number][83]** The radius of the bounding geometry from the given lat/long origin.
+-   `lat` **[Number][84]** Latitude of location.
+-   `long` **[Number][84]** Longitude of location.
+-   `radius` **[Number][84]** The radius of the bounding geometry from the given lat/long origin.
+-   `apiKey` **[String][82]** (Optional) GoogleMaps API Key for the request. If none is provided, a process
+    environment variable 'GMAPS_KEY' will be queried for the value. (optional, default `process.env.GMAPS_KEY`)
 
-Returns **[Promise][82]&lt;[Array][81]>** A collection of nearby parks.
+Returns **[Promise][83]&lt;[Array][81]>** A collection of nearby parks.
 
 ## Place
 
@@ -305,11 +315,13 @@ Get a collection of public parks from Google Maps within the given radius from t
 
 #### Parameters
 
--   `lat` **[Number][83]** Latitude of location.
--   `long` **[Number][83]** Longitude of location.
--   `radius` **[Number][83]** The radius of the bounding geometry from the given lat/long origin.
+-   `lat` **[Number][84]** Latitude of location.
+-   `long` **[Number][84]** Longitude of location.
+-   `radius` **[Number][84]** The radius of the bounding geometry from the given lat/long origin.
+-   `apiKey` **[String][82]** (Optional) GoogleMaps API Key for the request. If none is provided, a process
+    environment variable 'GMAPS_KEY' will be queried for the value. (optional, default `process.env.GMAPS_KEY`)
 
-Returns **[Promise][82]&lt;[Array][81]>** A collection of nearby parks.
+Returns **[Promise][83]&lt;[Array][81]>** A collection of nearby parks.
 
 ## Color
 
@@ -321,11 +333,13 @@ Build a url request for a google street view image.
 
 #### Parameters
 
--   `lat` **[String][87]** Latitude of location.
--   `long` **[String][87]** Longitude of location.
--   `heading` **[String][87]** Direction of google street view image (between 0 to 360).
+-   `lat` **[String][82]** Latitude of location.
+-   `long` **[String][82]** Longitude of location.
+-   `heading` **[String][82]** Direction of google street view image (between 0 to 360).
+-   `apiKey` **[String][82]** (Optional) GoogleMaps API Key for the request. If none is provided, a process
+    environment variable 'GMAPS_KEY' will be queried for the value. (optional, default `process.env.GMAPS_KEY`)
 
-Returns **[String][87]** A url for google maps.
+Returns **[String][82]** A url for google maps.
 
 ### GetPalette
 
@@ -333,11 +347,13 @@ Get the color palette of the image from google street view at the given lat, lon
 
 #### Parameters
 
--   `lat` **[String][87]** Latitude of location.
--   `long` **[String][87]** Longitude of location.
--   `heading` **[number][83]** Direction of google street view image (between 0 to 360).
+-   `lat` **[String][82]** Latitude of location.
+-   `long` **[String][82]** Longitude of location.
+-   `heading` **[number][84]** Direction of google street view image (between 0 to 360).
+-   `apiKey` **[String][82]** (Optional) GoogleMaps API Key for the request. If none is provided, a process
+    environment variable 'GMAPS_KEY' will be queried for the value. (optional, default `process.env.GMAPS_KEY`)
 
-Returns **[Object][85]** A collection of Objects containing color palette data.
+Returns **[Object][86]** A collection of Objects containing color palette data.
 
 ### GetPaletteNames
 
@@ -347,10 +363,12 @@ around the central point.
 
 #### Parameters
 
--   `lat` **[String][87]** Latitude of location.
--   `long` **[String][87]** Longitude of location.
+-   `lat` **[String][82]** Latitude of location.
+-   `long` **[String][82]** Longitude of location.
+-   `apiKey` **[String][82]** (Optional) GoogleMaps API Key for the request. If none is provided, a process
+    environment variable 'GMAPS_KEY' will be queried for the value. (optional, default `process.env.GMAPS_KEY`)
 
-Returns **[Object][85]** A collection of Objects containing color palette data.
+Returns **[Object][86]** A collection of Objects containing color palette data.
 
 ### GetPaletteAnalysis
 
@@ -359,10 +377,12 @@ taken at the given latitude/longitude.
 
 #### Parameters
 
--   `lat` **[String][87]** Latitude of location.
--   `long` **[String][87]** Longitude of location.
+-   `lat` **[String][82]** Latitude of location.
+-   `long` **[String][82]** Longitude of location.
+-   `apiKey` **[String][82]** (Optional) GoogleMaps API Key for the request. If none is provided, a process
+    environment variable 'GMAPS_KEY' will be queried for the value. (optional, default `process.env.GMAPS_KEY`)
 
-Returns **[Promise][82]&lt;[Number][83]>** A decimal percentage of the prevalence of green in the field of view.
+Returns **[Promise][83]&lt;[Number][84]>** A decimal percentage of the prevalence of green in the field of view.
 
 ### GetClosestShadeName
 
@@ -370,9 +390,9 @@ Get the closest color hue name to the input color in hex format.
 
 #### Parameters
 
--   `hex` **[String][87]** Hex code of color to parse.
+-   `hex` **[String][82]** Hex code of color to parse.
 
-Returns **[string][87]** A color name.
+Returns **[string][82]** A color name.
 
 ### GetClosestColorName
 
@@ -380,9 +400,9 @@ Get the closest color name to the input color in hex format.
 
 #### Parameters
 
--   `hex` **[String][87]** Hex code of color to parse.
+-   `hex` **[String][82]** Hex code of color to parse.
 
-Returns **[string][87]** A color name.
+Returns **[string][82]** A color name.
 
 ## Color
 
@@ -394,11 +414,13 @@ Build a url request for a google street view image.
 
 #### Parameters
 
--   `lat` **[String][87]** Latitude of location.
--   `long` **[String][87]** Longitude of location.
--   `heading` **[String][87]** Direction of google street view image (between 0 to 360).
+-   `lat` **[String][82]** Latitude of location.
+-   `long` **[String][82]** Longitude of location.
+-   `heading` **[String][82]** Direction of google street view image (between 0 to 360).
+-   `apiKey` **[String][82]** (Optional) GoogleMaps API Key for the request. If none is provided, a process
+    environment variable 'GMAPS_KEY' will be queried for the value. (optional, default `process.env.GMAPS_KEY`)
 
-Returns **[String][87]** A url for google maps.
+Returns **[String][82]** A url for google maps.
 
 ### GetPalette
 
@@ -406,11 +428,13 @@ Get the color palette of the image from google street view at the given lat, lon
 
 #### Parameters
 
--   `lat` **[String][87]** Latitude of location.
--   `long` **[String][87]** Longitude of location.
--   `heading` **[number][83]** Direction of google street view image (between 0 to 360).
+-   `lat` **[String][82]** Latitude of location.
+-   `long` **[String][82]** Longitude of location.
+-   `heading` **[number][84]** Direction of google street view image (between 0 to 360).
+-   `apiKey` **[String][82]** (Optional) GoogleMaps API Key for the request. If none is provided, a process
+    environment variable 'GMAPS_KEY' will be queried for the value. (optional, default `process.env.GMAPS_KEY`)
 
-Returns **[Object][85]** A collection of Objects containing color palette data.
+Returns **[Object][86]** A collection of Objects containing color palette data.
 
 ### GetPaletteNames
 
@@ -420,10 +444,12 @@ around the central point.
 
 #### Parameters
 
--   `lat` **[String][87]** Latitude of location.
--   `long` **[String][87]** Longitude of location.
+-   `lat` **[String][82]** Latitude of location.
+-   `long` **[String][82]** Longitude of location.
+-   `apiKey` **[String][82]** (Optional) GoogleMaps API Key for the request. If none is provided, a process
+    environment variable 'GMAPS_KEY' will be queried for the value. (optional, default `process.env.GMAPS_KEY`)
 
-Returns **[Object][85]** A collection of Objects containing color palette data.
+Returns **[Object][86]** A collection of Objects containing color palette data.
 
 ### GetPaletteAnalysis
 
@@ -432,10 +458,12 @@ taken at the given latitude/longitude.
 
 #### Parameters
 
--   `lat` **[String][87]** Latitude of location.
--   `long` **[String][87]** Longitude of location.
+-   `lat` **[String][82]** Latitude of location.
+-   `long` **[String][82]** Longitude of location.
+-   `apiKey` **[String][82]** (Optional) GoogleMaps API Key for the request. If none is provided, a process
+    environment variable 'GMAPS_KEY' will be queried for the value. (optional, default `process.env.GMAPS_KEY`)
 
-Returns **[Promise][82]&lt;[Number][83]>** A decimal percentage of the prevalence of green in the field of view.
+Returns **[Promise][83]&lt;[Number][84]>** A decimal percentage of the prevalence of green in the field of view.
 
 ### GetClosestShadeName
 
@@ -443,9 +471,9 @@ Get the closest color hue name to the input color in hex format.
 
 #### Parameters
 
--   `hex` **[String][87]** Hex code of color to parse.
+-   `hex` **[String][82]** Hex code of color to parse.
 
-Returns **[string][87]** A color name.
+Returns **[string][82]** A color name.
 
 ### GetClosestColorName
 
@@ -453,9 +481,9 @@ Get the closest color name to the input color in hex format.
 
 #### Parameters
 
--   `hex` **[String][87]** Hex code of color to parse.
+-   `hex` **[String][82]** Hex code of color to parse.
 
-Returns **[string][87]** A color name.
+Returns **[string][82]** A color name.
 
 ## Route
 
@@ -468,11 +496,11 @@ along the potential path.
 
 #### Parameters
 
--   `graph` **[Graph][84]** A ngraph.graph object with the nature-score data properties applied.
--   `idA` **[String][87]** Node ID of start point.
--   `idB` **[String][87]** Node ID of end point.
+-   `graph` **[Graph][85]** A ngraph.graph object with the nature-score data properties applied.
+-   `idA` **[String][82]** Node ID of start point.
+-   `idB` **[String][82]** Node ID of end point.
 
-Returns **[Object][85]** A ngraph.path object.
+Returns **[Object][86]** A ngraph.path object.
 
 ### FindAllNaturePaths
 
@@ -481,9 +509,9 @@ distance between points for creation of a grid.
 
 #### Parameters
 
--   `graph` **[Graph][84]** A ngraph.graph object with the nature-score data properties applied.
+-   `graph` **[Graph][85]** A ngraph.graph object with the nature-score data properties applied.
 
-Returns **[Promise][82]&lt;[Array][81]>** An array of all possible paths;
+Returns **[Promise][83]&lt;[Array][81]>** An array of all possible paths;
 
 ### FindTopNaturePaths
 
@@ -492,9 +520,9 @@ distance between points for creation of a grid. Sort with the top nature walks f
 
 #### Parameters
 
--   `json` **[Object][85]** The raw path output of FindAllNaturePaths().
+-   `json` **[Object][86]** The raw path output of FindAllNaturePaths().
 
-Returns **[Promise][82]&lt;[Array][81]>** A list of paths, sorted from most exposed to nature to least.
+Returns **[Promise][83]&lt;[Array][81]>** A list of paths, sorted from most exposed to nature to least.
 
 ## Route
 
@@ -507,11 +535,11 @@ along the potential path.
 
 #### Parameters
 
--   `graph` **[Graph][84]** A ngraph.graph object with the nature-score data properties applied.
--   `idA` **[String][87]** Node ID of start point.
--   `idB` **[String][87]** Node ID of end point.
+-   `graph` **[Graph][85]** A ngraph.graph object with the nature-score data properties applied.
+-   `idA` **[String][82]** Node ID of start point.
+-   `idB` **[String][82]** Node ID of end point.
 
-Returns **[Object][85]** A ngraph.path object.
+Returns **[Object][86]** A ngraph.path object.
 
 ### FindAllNaturePaths
 
@@ -520,9 +548,9 @@ distance between points for creation of a grid.
 
 #### Parameters
 
--   `graph` **[Graph][84]** A ngraph.graph object with the nature-score data properties applied.
+-   `graph` **[Graph][85]** A ngraph.graph object with the nature-score data properties applied.
 
-Returns **[Promise][82]&lt;[Array][81]>** An array of all possible paths;
+Returns **[Promise][83]&lt;[Array][81]>** An array of all possible paths;
 
 ### FindTopNaturePaths
 
@@ -531,9 +559,9 @@ distance between points for creation of a grid. Sort with the top nature walks f
 
 #### Parameters
 
--   `json` **[Object][85]** The raw path output of FindAllNaturePaths().
+-   `json` **[Object][86]** The raw path output of FindAllNaturePaths().
 
-Returns **[Promise][82]&lt;[Array][81]>** A list of paths, sorted from most exposed to nature to least.
+Returns **[Promise][83]&lt;[Array][81]>** A list of paths, sorted from most exposed to nature to least.
 
 [1]: #graph
 
@@ -697,14 +725,14 @@ Returns **[Promise][82]&lt;[Array][81]>** A list of paths, sorted from most expo
 
 [81]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
 
-[82]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise
+[82]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
-[83]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[83]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise
 
-[84]: #graph
+[84]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
 
-[85]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[85]: #graph
 
-[86]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date
+[86]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
 
-[87]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+[87]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date

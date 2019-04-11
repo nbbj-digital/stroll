@@ -38,7 +38,7 @@ stroll.Color.GetPalette(46.414382, 10.013988, 151.78).then(colors => {
   console.log("GET PALETTE COLORS", colors);
 });
 
-stroll.Color.GetPaletteNames(46.414382, 10.013988, 151.78).then(colors => {
+stroll.Color.GetPaletteNames(46.414382, 10.013988).then(colors => {
   console.log("GET PALETTE COLORS", colors);
 });
 
