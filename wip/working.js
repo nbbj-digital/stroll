@@ -3,7 +3,7 @@ const stroll = require("../dist/index");
 
 // ROUTE DATA
 const grid = stroll.Geometry.GetPointGrid(47.651588, -122.415078, 1, 0.8);
-const gKey = 'AIzaSyBUNFlc_YrmWgt1qBu_Om8UU5UVFbCN260'
+const gKey = 'YOUR_KEY_HERE'
 
 // stroll.Route.GetGraphData(grid, 0.3).then(results => {
 //   console.log(results);
