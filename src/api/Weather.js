@@ -27,7 +27,7 @@ import suncalc from "suncalc";
 /**
  * Module for getting weather-specific data from a place.
  */
-export class WeatherData {
+export class Weather {
   /**
    * Get a vector representation of the sun's position at the given location and today's date.
    * @param {Number} lat Latitude of location.

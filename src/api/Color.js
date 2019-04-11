@@ -29,21 +29,23 @@ const ntc = require("./ntc");
 /**
  * Module for getting color/color palette-specific data from points.
  */
-export class ColorData {
+export class Color {
   /**
    * Build a url request for a google street view image.
    * @param {String} lat Latitude of location.
    * @param {String} long Longitude of location.
    * @param {String} heading Direction of google street view image (between 0 to 360).
+   * @param {String} apiKey (Optional) GoogleMaps API Key for the request. If none is provided, a process
+   * environment variable 'GMAPS_KEY' will be queried for the value.
    * @returns {String} A url for google maps.
    */
-  static BuildRequest(lat, long, heading) {
+  static BuildRequest(lat, long, heading, apiKey = process.env.GMAPS_KEY) {
     const base = "https://maps.googleapis.com/maps/api/streetview?";
     const size = "size=800x400&";
     const location = `location=${String(lat)},${String(long)}&`;
     const headingStr = `heading=${heading}&` || "heading=0.0&";
     const pitch = "pitch=-0.76&";
-    const key = `key=${process.env.GMAPS_KEY || process.env.VUE_APP_GMAPS_KEY}`;
+    const key = `key=${apiKey}`;
 
     return base + size + location + headingStr + pitch + key;
   }
@@ -53,12 +55,14 @@ export class ColorData {
    * @param {String} lat Latitude of location.
    * @param {String} long Longitude of location.
    * @param {number} heading Direction of google street view image (between 0 to 360).
+   * @param {String} apiKey (Optional) GoogleMaps API Key for the request. If none is provided, a process
+   * environment variable 'GMAPS_KEY' will be queried for the value.
    * @returns {Object} A collection of Objects containing color palette data.
    */
-  static GetPalette(lat, long, heading) {
+  static GetPalette(lat, long, heading, apiKey = process.env.GMAPS_KEY) {
     const self = this;
     return new Promise((resolve, reject) => {
-      const url = self.BuildRequest(lat, long, heading);
+      const url = self.BuildRequest(lat, long, heading, apiKey);
       Vibrant.from(url)
         .getPalette()
         .then(palette => {
@@ -88,9 +92,11 @@ export class ColorData {
    * around the central point.
    * @param {String} lat Latitude of location.
    * @param {String} long Longitude of location.
+   * @param {String} apiKey (Optional) GoogleMaps API Key for the request. If none is provided, a process
+   * environment variable 'GMAPS_KEY' will be queried for the value.
    * @returns {Object} A collection of Objects containing color palette data.
    */
-  static GetPaletteNames(lat, long) {
+  static GetPaletteNames(lat, long, apiKey = process.env.GMAPS_KEY) {
     const self = this;
     const bearings = [0, 90, 180];
     const promises = [];
@@ -100,7 +106,7 @@ export class ColorData {
         const returnList = [];
 
         self
-          .GetPalette(lat, long, b)
+          .GetPalette(lat, long, b, apiKey)
           .then(colors => {
             // iterate over palette objects, parse color names
             for (const key in colors) {
@@ -126,13 +132,15 @@ export class ColorData {
    * taken at the given latitude/longitude.
    * @param {String} lat Latitude of location.
    * @param {String} long Longitude of location.
+   * @param {String} apiKey (Optional) GoogleMaps API Key for the request. If none is provided, a process
+   * environment variable 'GMAPS_KEY' will be queried for the value.
    * @returns {Promise<Number>} A decimal percentage of the prevalence of green in the field of view.
    */
-  static GetPaletteAnalysis(lat, long) {
+  static GetPaletteAnalysis(lat, long, apiKey = process.env.GMAPS_KEY) {
     const self = this;
     return new Promise((resolve, reject) => {
       self
-        .GetPaletteNames(lat, long)
+        .GetPaletteNames(lat, long, apiKey)
         .then(palette => {
           const merged = palette[0].concat(palette[1]).concat(palette[2]);
           const count = merged.reduce((n, val) => {

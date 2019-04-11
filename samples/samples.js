@@ -1,39 +1,47 @@
-const Stroll = require("@nbbj/stroll");
+// any of the following imports
+const stroll = require("@nbbj/stroll");
+const stroll = require("../dist/index");
+const stroll = require("../src/index");
 
-const grid = Stroll.RouteData.GetPointGrid(47.651588, -122.415078, 0.5, 0.2);
+// ROUTE DATA
+const grid = stroll.Geometry.GetPointGrid(47.651588, -122.415078, 1, 0.8);
 
-Stroll.RouteData.GetGraph(grid, 0.3)
-  .then(graph => Stroll.RouteData.FindAllNaturePaths(graph))
-  .then(paths => Stroll.RouteData.FindTopNaturePaths(paths))
+stroll.Graph.GetGraphData(grid, 0.3).then(results => {
+  console.log(results);
+});
+
+stroll.Graph.GetGraph(grid, 0.9).then(graph => {
+  console.log(results);
+});
+
+stroll.Graph.GetGraph(grid, 0.9)
+  .then(graph => stroll.Route.FindAllNaturePaths(graph))
+  .then(results => {
+    console.log(results);
+  });
+
+stroll.Graph.GetGraph(grid, 0.9)
+  .then(graph => stroll.Route.FindAllNaturePaths(graph))
+  .then(paths => stroll.Route.FindTopNaturePaths(paths))
   .then(results => {
     console.log(results);
   })
   .catch(err => console.error(err));
 
-Stroll.YelpData.ParkSearch(47.660273, -122.409887, 1000).then(d => {
-  console.log(d);
+// PLACE DATA
+stroll.Place.ParkSearch(47.660273, -122.409887, 2000).then(results => {
+  console.log(results);
 });
 
-const points = Stroll.RouteData.GetRandomPointGrid(-90.54863, 14.616599, 1, 10);
-console.log(points);
-
-const points2 = Stroll.RouteData.GetPointGrid(-90.54863, 14.616599, 1, 0.1);
-console.log(points2);
-
-const sunData = Stroll.WeatherData.GetSunPositionToday(
-  47.6694956,
-  -122.31547389999999
-);
-console.log(sunData);
-
-Stroll.ColorParse.GetPalette(46.414382, 10.013988, 151.78).then(colors => {
-  console.log(colors);
+// COLOR DATA
+stroll.Color.GetPalette(46.414382, 10.013988, 151.78).then(colors => {
+  console.log("GET PALETTE COLORS", colors);
 });
 
-Stroll.ColorParse.GetPaletteNames(46.414382, 10.013988).then(result => {
-  console.log(result);
+stroll.Color.GetPaletteNames(46.414382, 10.013988).then(colors => {
+  console.log("GET PALETTE COLORS", colors);
 });
 
-Stroll.ColorParse.GetPaletteAnalysis(47.660259, -122.408417).then(result => {
+stroll.Color.GetPaletteAnalysis(47.660259, -122.408417).then(result => {
   console.log(result);
 });

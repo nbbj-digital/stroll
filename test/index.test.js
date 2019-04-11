@@ -1,17 +1,25 @@
-import { WeatherData, PlaceData, ColorData, RouteData } from "../src";
+import { Weather, Place, Color, Route, Geometry, Graph } from "../src";
 
-test("import WeatherData", () => {
-  expect.anything(WeatherData);
+test("import Weather", () => {
+  expect.anything(Weather);
 });
 
-test("import PlaceData", () => {
-  expect.anything(PlaceData);
+test("import Place", () => {
+  expect.anything(Place);
 });
 
-test("import ColorData", () => {
-  expect.anything(ColorData);
+test("import Color", () => {
+  expect.anything(Color);
 });
 
-test("import RouteData", () => {
-  expect.anything(RouteData);
+test("import Route", () => {
+  expect.anything(Route);
+});
+
+test("import Geometry", () => {
+  expect.anything(Geometry);
+});
+
+test("import Graph", () => {
+  expect.anything(Graph);
 });

@@ -2,10 +2,10 @@
  * @jest-environment node
  */
 
-import { ColorData } from "../src";
+import { Color } from "../src";
 
 test("GetPalette", async () => {
-  const result = await ColorData.GetPalette(46.414382, 10.013988, 151.78);
+  const result = await Color.GetPalette(46.414382, 10.013988, 151.78);
   expect(result.DarkMuted.rgb.length).toBe(3);
   expect(result.DarkVibrant.rgb.length).toBe(3);
   expect(result.LightMuted.rgb.length).toBe(3);
@@ -16,11 +16,11 @@ test("GetPalette", async () => {
 });
 
 test("GetPaletteNames", async () => {
-  const result = await ColorData.GetPaletteNames(46.414382, 10.013988, 151.78);
+  const result = await Color.GetPaletteNames(46.414382, 10.013988);
   expect(result.length).toBe(3);
 });
 
 test("GetPaletteAnalysis", async () => {
-  const result = await ColorData.GetPaletteAnalysis(47.660259, -122.408417);
+  const result = await Color.GetPaletteAnalysis(47.660259, -122.408417);
   expect(result).toBeGreaterThan(0.05);
 });
