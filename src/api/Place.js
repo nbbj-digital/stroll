@@ -32,7 +32,7 @@ const gMapsApiKey = process.env.GMAPS_KEY || process.env.VUE_APP_GMAPS_KEY;
 /**
  * Module for getting nearby parks and other green public spaces.
  */
-export class PlaceData {
+export class Place {
   /**
    * Get a collection of public parks from Google Maps within the given radius from the origin lat/long point.
    * @param {Number} lat Latitude of location.

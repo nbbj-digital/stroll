@@ -31,7 +31,7 @@ import * as TurfRandom from "@turf/random";
 /**
  * Module for getting Turf.js geometry and helpers.
  */
-export class TurfData {
+export class Geometry {
   /**
    * Get a bounding box around a location with a given radius.
    * @param {Number} lat Latitude of location.

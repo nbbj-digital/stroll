@@ -58,15 +58,12 @@ import * as Stroll from from "@nbbj/stroll"; // from npm
 ```js
 // from source
 const ColorParse = require('./ColorParse');
-const PlaceData = requirePlaceDataa');
-const WeatherData = require('./WeatherData');
-const RouteData = require('./RouteData');
-import { WeatherData, PlaceData, ColorData, RouteData } from "../src"; // es6
+const Place = requirePlaceDataa');
+const Weather = require('./WWeather Route = require('./RRoutWeather
 
-// from npm
 const { RouteData } = require('@nbbj/stroll');
 const { ColorParse } = require('@nbbj/stroll');
-import { WeatherData, PlaceData, ColorData, RouteData } from "@nbbj/stroll"; // es6
+import { Weather, Place, Color, Route } from "@nbbj/stroll"; // es6
 ```
 
 ### Methods
@@ -80,7 +77,7 @@ Building graphs and calculating paths of travel.
 // Create a custom grid around a origin lat/long
 let grid = RouteData.GetPointGrid(47.660273, -122.409887, 1, 0.5);
 
-RouteData.GetGraph(grid, 0.7) // get a graph from point grid
+Route.GetGraph(grid, 0.7) // get a graph from point grid
   .then(graph => RouteData.FindAllNaturePaths(graph)) // find all possible paths
   .then(paths => RouteData.FindTopNaturePaths(paths)) // return sorted paths
   .then(results => {

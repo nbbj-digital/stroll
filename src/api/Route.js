@@ -27,7 +27,7 @@ const path = require("ngraph.path");
 /**
  * Module for computing the actual routes.
  */
-export class RouteData {
+export class Route {
   /**
    * Find a path between two nodes on the graph, weighted by the 'Green Score' weight of the nodes
    * along the potential path.

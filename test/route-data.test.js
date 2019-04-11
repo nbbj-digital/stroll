@@ -2,24 +2,24 @@
  * @jest-environment node
  */
 
-import { RouteData, TurfData, Graph } from "../src";
+import { Route, Geometry, Graph } from "../src";
 
 test("GetPointGrid", () => {
-  const result = TurfData.GetPointGrid(47.651588, -122.415078, 0.5, 0.2);
+  const result = Geometry.GetPointGrid(47.651588, -122.415078, 0.5, 0.2);
   console.log("POINT GRID", result.features.length);
   expect.anything(result.features);
   expect(result.features.length).toBeGreaterThan(10);
 });
 
 test("GetRandomPointGrid", () => {
-  const points = TurfData.GetRandomPointGrid(-90.54863, 14.616599, 1, 10);
+  const points = Geometry.GetRandomPointGrid(-90.54863, 14.616599, 1, 10);
   console.log("RANDOM POINT GRID", points.features.length);
   expect.anything(points.features);
   expect(points.features.length).toBe(10);
 });
 
 test("GetGraphData", async () => {
-  const grid = TurfData.GetPointGrid(47.651588, -122.415078, 1, 0.8);
+  const grid = Geometry.GetPointGrid(47.651588, -122.415078, 1, 0.8);
   const result = await Graph.GetGraphData(grid);
 
   function greenScore(item) {
@@ -52,7 +52,7 @@ test("GetGraphData", async () => {
 }, 8000);
 
 test("GetGraph", async () => {
-  const grid = TurfData.GetPointGrid(47.651588, -122.415078, 1, 0.8);
+  const grid = Geometry.GetPointGrid(47.651588, -122.415078, 1, 0.8);
   const graph = await Graph.GetGraph(grid, 0.9);
 
   expect.anything(graph);
@@ -70,19 +70,19 @@ test("GetGraph", async () => {
 }, 8000);
 
 // test("FindAllNaturePaths", async () => {
-//   const grid = TurfData.GetPointGrid(47.651588, -122.415078, 1, 0.8);
-//   const graph = await RouteData.GetGraph(grid, 0.9);
-//   const paths = await RouteData.FindAllNaturePaths(graph);
+//   const grid = Geometry.GetPointGrid(47.651588, -122.415078, 1, 0.8);
+//   const graph = await Route.GetGraph(grid, 0.9);
+//   const paths = await Route.FindAllNaturePaths(graph);
 
 //   expect.anything(paths);
 //   expect(paths.length).toBeGreaterThan(50);
 // }, 8000);
 
 test("FindTopNaturePaths", async () => {
-  const grid = TurfData.GetPointGrid(47.651588, -122.415078, 1, 0.8);
+  const grid = Geometry.GetPointGrid(47.651588, -122.415078, 1, 0.8);
   const graph = await Graph.GetGraph(grid, 0.9);
-  const paths = await RouteData.FindAllNaturePaths(graph);
-  const topPaths = await RouteData.FindTopNaturePaths(paths);
+  const paths = await Route.FindAllNaturePaths(graph);
+  const topPaths = await Route.FindTopNaturePaths(paths);
 
   expect.anything(topPaths);
   expect(topPaths.length).toBeGreaterThan(50);

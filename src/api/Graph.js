@@ -24,8 +24,8 @@ SOFTWARE.
 
 import * as TurfDistance from "@turf/distance";
 
-import { PlaceData } from "./PlaceData";
-import { ColorData } from "./ColorData";
+import { Place } from "./Place";
+import { Color } from "./Color";
 
 const createGraph = require("ngraph.graph");
 
@@ -49,10 +49,10 @@ export class Graph {
         const { coordinates } = point.geometry;
 
         // get color palette analysis from google street view images
-        ColorData.GetPaletteAnalysis(coordinates[1], coordinates[0])
+        Color.GetPaletteAnalysis(coordinates[1], coordinates[0])
           .then(greenScore => {
             // get nearby parks and categorize based on distance from origin point
-            PlaceData.ParkSearch(+coordinates[1], +coordinates[0], 1000)
+            Place.ParkSearch(+coordinates[1], +coordinates[0], 1000)
               .then(yelpResult => {
                 const closestParks = yelpResult.filter(park => {
                   return park.distance < 0.3;

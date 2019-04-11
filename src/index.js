@@ -1,10 +1,10 @@
 // @flow
 
-import { WeatherData } from "./api/WeatherData";
-import { PlaceData } from "./api/PlaceData";
-import { ColorData } from "./api/ColorData";
-import { RouteData } from "./api/RouteData";
-import { TurfData } from "./api/TurfData";
+import { Weather } from "./api/Weather";
+import { Place } from "./api/Place";
+import { Color } from "./api/Color";
+import { Route } from "./api/Route";
+import { Geometry } from "./api/Geometry";
 import { Graph } from "./api/Graph";
 
 /**
@@ -14,26 +14,26 @@ import { Graph } from "./api/Graph";
 export { Graph };
 /**
  * Turf.js data and geometry helpers
- * @property {TurfData}
+ * @property {Geometry}
  */
-export { TurfData };
+export { Geometry };
 /**
  * Weather-related data for analysis.
- * @property {WeatherData}
+ * @property {Weather}
  */
-export { WeatherData };
+export { Weather };
 /**
  * Yelp-related data for analysis.
- * @property {PlaceData}
+ * @property {Place}
  */
-export { PlaceData };
+export { Place };
 /**
  * Field of view analysis for nature/greenery.
- * @property {ColorData}
+ * @property {Color}
  */
-export { ColorData };
+export { Color };
 /**
  * Route-related data for analysis.
- * @property {RouteData}
+ * @property {Route}
  */
-export { RouteData };
+export { Route };

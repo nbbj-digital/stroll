@@ -4,16 +4,16 @@ const stroll = require("../dist/index");
 // ROUTE DATA
 const grid = stroll.TurfData.GetPointGrid(47.651588, -122.415078, 1, 0.8);
 
-// stroll.RouteData.GetGraphData(grid, 0.3).then(results => {
+// stroll.Route.GetGraphData(grid, 0.3).then(results => {
 //   console.log(results);
 // });
 
-// stroll.RouteData.GetGraph(grid, 0.9).then(graph => {
+// stroll.Route.GetGraph(grid, 0.9).then(graph => {
 //   console.log(results);
 // });
 
-// stroll.RouteData.GetGraph(grid, 0.9)
-//   .then(graph => stroll.RouteData.FindAllNaturePaths(graph))
+// stroll.Route.GetGraph(grid, 0.9)
+//   .then(graph => stroll.Route.FindAllNaturePaths(graph))
 //   .then(results => {
 //     console.log(results);
 //   });
@@ -28,19 +28,19 @@ stroll.RouteData.GetGraph(grid, 0.9)
   .catch(err => console.error(err));
 
 // // YELP DATA
-// stroll.PlaceData.ParkSearch(47.660273, -122.409887, 2000).then(results => {
+// stroll.Place.ParkSearch(47.660273, -122.409887, 2000).then(results => {
 //   console.log(results);
 // });
 
 // // COLOR DATA
-// stroll.ColorData.GetPalette(46.414382, 10.013988, 151.78).then(colors => {
+// stroll.Color.GetPalette(46.414382, 10.013988, 151.78).then(colors => {
 //   console.log("GET PALETTE COLORS", colors);
 // });
 
-// stroll.ColorData.GetPaletteNames(46.414382, 10.013988, 151.78).then(colors => {
+// stroll.Color.GetPaletteNames(46.414382, 10.013988, 151.78).then(colors => {
 //   console.log("GET PALETTE COLORS", colors);
 // });
 
-// stroll.ColorData.GetPaletteAnalysis(47.660259, -122.408417).then(result => {
+// stroll.Color.GetPaletteAnalysis(47.660259, -122.408417).then(result => {
 //   console.log(result);
 // });
