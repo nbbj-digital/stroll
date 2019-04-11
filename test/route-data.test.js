@@ -2,7 +2,7 @@
  * @jest-environment node
  */
 
-import { RouteData, TurfData } from "../src";
+import { RouteData, TurfData, Graph } from "../src";
 
 test("GetPointGrid", () => {
   const result = TurfData.GetPointGrid(47.651588, -122.415078, 0.5, 0.2);
@@ -20,7 +20,7 @@ test("GetRandomPointGrid", () => {
 
 test("GetGraphData", async () => {
   const grid = TurfData.GetPointGrid(47.651588, -122.415078, 1, 0.8);
-  const result = await RouteData.GetGraphData(grid);
+  const result = await Graph.GetGraphData(grid);
 
   function greenScore(item) {
     return item.greenScore;
@@ -53,7 +53,7 @@ test("GetGraphData", async () => {
 
 test("GetGraph", async () => {
   const grid = TurfData.GetPointGrid(47.651588, -122.415078, 1, 0.8);
-  const graph = await RouteData.GetGraph(grid, 0.9);
+  const graph = await Graph.GetGraph(grid, 0.9);
 
   expect.anything(graph);
 
@@ -80,7 +80,7 @@ test("GetGraph", async () => {
 
 test("FindTopNaturePaths", async () => {
   const grid = TurfData.GetPointGrid(47.651588, -122.415078, 1, 0.8);
-  const graph = await RouteData.GetGraph(grid, 0.9);
+  const graph = await Graph.GetGraph(grid, 0.9);
   const paths = await RouteData.FindAllNaturePaths(graph);
   const topPaths = await RouteData.FindTopNaturePaths(paths);
 

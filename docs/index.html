@@ -142,6 +142,40 @@
               
                 
                 <li><a
+                  href='#graph'
+                  class=" toggle-sibling">
+                  Graph
+                  <span class='icon'>▸</span>
+                </a>
+                
+                <div class='toggle-target display-none'>
+                  
+                  <ul class='list-reset py1-ul pl1'>
+                    <li class='h5'><span>Static members</span></li>
+                    
+                      <li><a
+                        href='#graphgetgraphdata'
+                        class='regular pre-open'>
+                        .GetGraphData
+                      </a></li>
+                    
+                      <li><a
+                        href='#graphgetgraph'
+                        class='regular pre-open'>
+                        .GetGraph
+                      </a></li>
+                    
+                    </ul>
+                  
+                  
+                  
+                  
+                </div>
+                
+                </li>
+              
+                
+                <li><a
                   href='#placedata'
                   class=" toggle-sibling">
                   PlaceData
@@ -208,18 +242,6 @@
                   
                   <ul class='list-reset py1-ul pl1'>
                     <li class='h5'><span>Static members</span></li>
-                    
-                      <li><a
-                        href='#routedatagetgraphdata'
-                        class='regular pre-open'>
-                        .GetGraphData
-                      </a></li>
-                    
-                      <li><a
-                        href='#routedatagetgraph'
-                        class='regular pre-open'>
-                        .GetGraph
-                      </a></li>
                     
                       <li><a
                         href='#routedatafindnaturepath'
@@ -260,18 +282,6 @@
                   
                   <ul class='list-reset py1-ul pl1'>
                     <li class='h5'><span>Static members</span></li>
-                    
-                      <li><a
-                        href='#routedatagetgraphdata'
-                        class='regular pre-open'>
-                        .GetGraphData
-                      </a></li>
-                    
-                      <li><a
-                        href='#routedatagetgraph'
-                        class='regular pre-open'>
-                        .GetGraph
-                      </a></li>
                     
                       <li><a
                         href='#routedatafindnaturepath'
@@ -1513,6 +1523,209 @@ taken at the given latitude/longitude.</p>
   
   <div class='clearfix'>
     
+    <h3 class='fl m0' id='graph'>
+      Graph
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Module for getting weather-specific data from a place.</p>
+
+    <div class='pre p1 fill-light mt0'>new Graph()</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Static Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='graphgetgraphdata'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>GetGraphData(grid)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Get graph data from the points which are walkable given an origin lat/long, radius, and
+distance between points for creation of a grid.</p>
+
+    <div class='pre p1 fill-light mt0'>GetGraphData(grid: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Point>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>grid</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Point>)</code>
+	    A grid of Turf.js points
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>></code>:
+        A ngraph.graph object.
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='graphgetgraph'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>GetGraph(grid, linkTolerance)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Get graph object representing the points which are walkable given an origin lat/long, radius, and
+distance between points for creation of a grid.</p>
+
+    <div class='pre p1 fill-light mt0'>GetGraph(grid: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Point>, linkTolerance: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>): <a href="#graph">Graph</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>grid</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Point>)</code>
+	    A grid of Turf.js points
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>linkTolerance</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
+	    The minimum distance between points to be considered a 'link'.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#graph">Graph</a></code>:
+        A ngraph.graph object.
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
     <h3 class='fl m0' id='placedata'>
       PlaceData
     </h3>
@@ -1830,155 +2043,6 @@ taken at the given latitude/longitude.</p>
     <div class='py1 quiet mt1 prose-big'>Static Members</div>
     <div class="clearfix">
   
-    <div class='border-bottom' id='routedatagetgraphdata'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>GetGraphData(grid)</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Get graph data from the points which are walkable given an origin lat/long, radius, and
-distance between points for creation of a grid.</p>
-
-    <div class='pre p1 fill-light mt0'>GetGraphData(grid: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Point>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>></div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>grid</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Point>)</code>
-	    A grid of Turf.js points
-
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>></code>:
-        A ngraph.graph object.
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='routedatagetgraph'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>GetGraph(grid, linkTolerance)</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Get graph object representing the points which are walkable given an origin lat/long, radius, and
-distance between points for creation of a grid.</p>
-
-    <div class='pre p1 fill-light mt0'>GetGraph(grid: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Point>, linkTolerance: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>): Graph</div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>grid</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Point>)</code>
-	    A grid of Turf.js points
-
-          </div>
-          
-        </div>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>linkTolerance</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
-	    The minimum distance between points to be considered a 'link'.
-
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code>Graph</code>:
-        A ngraph.graph object.
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
     <div class='border-bottom' id='routedatafindnaturepath'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
@@ -1994,7 +2058,7 @@ distance between points for creation of a grid.</p>
   <p>Find a path between two nodes on the graph, weighted by the 'Green Score' weight of the nodes
 along the potential path.</p>
 
-    <div class='pre p1 fill-light mt0'>FindNaturePath(graph: Graph, idA: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, idB: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
+    <div class='pre p1 fill-light mt0'>FindNaturePath(graph: <a href="#graph">Graph</a>, idA: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, idB: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
   
   
 
@@ -2011,7 +2075,7 @@ along the potential path.</p>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>graph</span> <code class='quiet'>(Graph)</code>
+            <span class='code bold'>graph</span> <code class='quiet'>(<a href="#graph">Graph</a>)</code>
 	    A ngraph.graph object with the nature-score data properties applied.
 
           </div>
@@ -2082,7 +2146,7 @@ along the potential path.</p>
   <p>Evaluate a walkable region with views to naturegiven an origin lat/long, radius, and
 distance between points for creation of a grid.</p>
 
-    <div class='pre p1 fill-light mt0'>FindAllNaturePaths(graph: Graph): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>></div>
+    <div class='pre p1 fill-light mt0'>FindAllNaturePaths(graph: <a href="#graph">Graph</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>></div>
   
   
 
@@ -2099,7 +2163,7 @@ distance between points for creation of a grid.</p>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>graph</span> <code class='quiet'>(Graph)</code>
+            <span class='code bold'>graph</span> <code class='quiet'>(<a href="#graph">Graph</a>)</code>
 	    A ngraph.graph object with the nature-score data properties applied.
 
           </div>
@@ -2261,155 +2325,6 @@ distance between points for creation of a grid. Sort with the top nature walks f
     <div class='py1 quiet mt1 prose-big'>Static Members</div>
     <div class="clearfix">
   
-    <div class='border-bottom' id='routedatagetgraphdata'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>GetGraphData(grid)</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Get graph data from the points which are walkable given an origin lat/long, radius, and
-distance between points for creation of a grid.</p>
-
-    <div class='pre p1 fill-light mt0'>GetGraphData(grid: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Point>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>></div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>grid</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Point>)</code>
-	    A grid of Turf.js points
-
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>></code>:
-        A ngraph.graph object.
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='routedatagetgraph'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>GetGraph(grid, linkTolerance)</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Get graph object representing the points which are walkable given an origin lat/long, radius, and
-distance between points for creation of a grid.</p>
-
-    <div class='pre p1 fill-light mt0'>GetGraph(grid: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Point>, linkTolerance: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>): Graph</div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>grid</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Point>)</code>
-	    A grid of Turf.js points
-
-          </div>
-          
-        </div>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>linkTolerance</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
-	    The minimum distance between points to be considered a 'link'.
-
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code>Graph</code>:
-        A ngraph.graph object.
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
     <div class='border-bottom' id='routedatafindnaturepath'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
@@ -2425,7 +2340,7 @@ distance between points for creation of a grid.</p>
   <p>Find a path between two nodes on the graph, weighted by the 'Green Score' weight of the nodes
 along the potential path.</p>
 
-    <div class='pre p1 fill-light mt0'>FindNaturePath(graph: Graph, idA: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, idB: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
+    <div class='pre p1 fill-light mt0'>FindNaturePath(graph: <a href="#graph">Graph</a>, idA: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, idB: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
   
   
 
@@ -2442,7 +2357,7 @@ along the potential path.</p>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>graph</span> <code class='quiet'>(Graph)</code>
+            <span class='code bold'>graph</span> <code class='quiet'>(<a href="#graph">Graph</a>)</code>
 	    A ngraph.graph object with the nature-score data properties applied.
 
           </div>
@@ -2513,7 +2428,7 @@ along the potential path.</p>
   <p>Evaluate a walkable region with views to naturegiven an origin lat/long, radius, and
 distance between points for creation of a grid.</p>
 
-    <div class='pre p1 fill-light mt0'>FindAllNaturePaths(graph: Graph): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>></div>
+    <div class='pre p1 fill-light mt0'>FindAllNaturePaths(graph: <a href="#graph">Graph</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>></div>
   
   
 
@@ -2530,7 +2445,7 @@ distance between points for creation of a grid.</p>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>graph</span> <code class='quiet'>(Graph)</code>
+            <span class='code bold'>graph</span> <code class='quiet'>(<a href="#graph">Graph</a>)</code>
 	    A ngraph.graph object with the nature-score data properties applied.
 
           </div>
@@ -2665,7 +2580,7 @@ distance between points for creation of a grid. Sort with the top nature walks f
   </div>
   
 
-  <p>Module for getting weather-specific data from a place.</p>
+  <p>Module for getting Turf.js geometry and helpers.</p>
 
     <div class='pre p1 fill-light mt0'>new TurfData()</div>
   

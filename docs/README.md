@@ -3,34 +3,34 @@
 ### Table of Contents
 
 -   [TurfData][1]
--   [WeatherData][2]
-    -   [GetSunPositionToday][3]
-        -   [Parameters][4]
-    -   [GetSunPosition][5]
-        -   [Parameters][6]
--   [WeatherData][7]
-    -   [GetSunPositionToday][8]
-        -   [Parameters][9]
-    -   [GetSunPosition][10]
-        -   [Parameters][11]
--   [PlaceData][12]
-    -   [ParkSearch][13]
+    -   [BoundingBoxRadius][2]
+        -   [Parameters][3]
+    -   [GetRandomPointGrid][4]
+        -   [Parameters][5]
+    -   [GetPointGrid][6]
+        -   [Parameters][7]
+-   [TurfData][8]
+    -   [BoundingBoxRadius][9]
+        -   [Parameters][10]
+    -   [GetRandomPointGrid][11]
+        -   [Parameters][12]
+    -   [GetPointGrid][13]
         -   [Parameters][14]
--   [PlaceData][15]
-    -   [ParkSearch][16]
+-   [WeatherData][15]
+    -   [GetSunPositionToday][16]
         -   [Parameters][17]
--   [ColorData][18]
-    -   [BuildRequest][19]
-        -   [Parameters][20]
-    -   [GetPalette][21]
+    -   [GetSunPosition][18]
+        -   [Parameters][19]
+-   [WeatherData][20]
+    -   [GetSunPositionToday][21]
         -   [Parameters][22]
-    -   [GetPaletteNames][23]
+    -   [GetSunPosition][23]
         -   [Parameters][24]
-    -   [GetPaletteAnalysis][25]
-        -   [Parameters][26]
-    -   [GetClosestShadeName][27]
-        -   [Parameters][28]
-    -   [GetClosestColorName][29]
+-   [PlaceData][25]
+    -   [ParkSearch][26]
+        -   [Parameters][27]
+-   [PlaceData][28]
+    -   [ParkSearch][29]
         -   [Parameters][30]
 -   [ColorData][31]
     -   [BuildRequest][32]
@@ -45,32 +45,121 @@
         -   [Parameters][41]
     -   [GetClosestColorName][42]
         -   [Parameters][43]
--   [RouteData][44]
-    -   [GetGraphData][45]
+-   [ColorData][44]
+    -   [BuildRequest][45]
         -   [Parameters][46]
-    -   [GetGraph][47]
+    -   [GetPalette][47]
         -   [Parameters][48]
-    -   [FindNaturePath][49]
+    -   [GetPaletteNames][49]
         -   [Parameters][50]
-    -   [FindAllNaturePaths][51]
+    -   [GetPaletteAnalysis][51]
         -   [Parameters][52]
-    -   [FindTopNaturePaths][53]
+    -   [GetClosestShadeName][53]
         -   [Parameters][54]
--   [RouteData][55]
-    -   [GetGraphData][56]
-        -   [Parameters][57]
-    -   [GetGraph][58]
+    -   [GetClosestColorName][55]
+        -   [Parameters][56]
+-   [RouteData][57]
+    -   [FindNaturePath][58]
         -   [Parameters][59]
-    -   [FindNaturePath][60]
+    -   [FindAllNaturePaths][60]
         -   [Parameters][61]
-    -   [FindAllNaturePaths][62]
+    -   [FindTopNaturePaths][62]
         -   [Parameters][63]
-    -   [FindTopNaturePaths][64]
-        -   [Parameters][65]
+-   [RouteData][64]
+    -   [FindNaturePath][65]
+        -   [Parameters][66]
+    -   [FindAllNaturePaths][67]
+        -   [Parameters][68]
+    -   [FindTopNaturePaths][69]
+        -   [Parameters][70]
 
 ## TurfData
 
 Turf.js data and geometry helpers
+
+### BoundingBoxRadius
+
+Get a bounding box around a location with a given radius.
+
+#### Parameters
+
+-   `lat` **[Number][71]** Latitude of location.
+-   `long` **[Number][71]** Longitude of location.
+-   `radius` **[Number][71]** The radius of the bounding geometry from the given lat/long origin.
+
+Returns **BBox** A Turf.js bounding box object.
+
+### GetRandomPointGrid
+
+Get a collection of random points which fall within a given bounding radius from an origin
+lat/long point.
+
+#### Parameters
+
+-   `lat` **[Number][71]** Latitude of location.
+-   `long` **[Number][71]** Longitude of location.
+-   `radius` **[Number][71]** The radius of the bounding geometry from the given lat/long origin.
+-   `numPoints` **[Number][71]** How many points to return
+
+Returns **FeatureCollection&lt;Point, any>** A collection of Turf.JS points.
+
+### GetPointGrid
+
+Get a collection of points in a gird which fall within a given bounding radius from an origin
+lat/long point.
+
+#### Parameters
+
+-   `lat` **[Number][71]** Latitude of location.
+-   `long` **[Number][71]** Longitude of location.
+-   `radius` **[Number][71]** The radius of the bounding geometry from the given lat/long origin.
+-   `pointDist` **[Number][71]** How far apart the points should be in the point grid.
+
+Returns **[Array][72]&lt;Point>** A collection of Turf.JS points.
+
+## TurfData
+
+Module for getting Turf.js geometry and helpers.
+
+### BoundingBoxRadius
+
+Get a bounding box around a location with a given radius.
+
+#### Parameters
+
+-   `lat` **[Number][71]** Latitude of location.
+-   `long` **[Number][71]** Longitude of location.
+-   `radius` **[Number][71]** The radius of the bounding geometry from the given lat/long origin.
+
+Returns **BBox** A Turf.js bounding box object.
+
+### GetRandomPointGrid
+
+Get a collection of random points which fall within a given bounding radius from an origin
+lat/long point.
+
+#### Parameters
+
+-   `lat` **[Number][71]** Latitude of location.
+-   `long` **[Number][71]** Longitude of location.
+-   `radius` **[Number][71]** The radius of the bounding geometry from the given lat/long origin.
+-   `numPoints` **[Number][71]** How many points to return
+
+Returns **FeatureCollection&lt;Point, any>** A collection of Turf.JS points.
+
+### GetPointGrid
+
+Get a collection of points in a gird which fall within a given bounding radius from an origin
+lat/long point.
+
+#### Parameters
+
+-   `lat` **[Number][71]** Latitude of location.
+-   `long` **[Number][71]** Longitude of location.
+-   `radius` **[Number][71]** The radius of the bounding geometry from the given lat/long origin.
+-   `pointDist` **[Number][71]** How far apart the points should be in the point grid.
+
+Returns **[Array][72]&lt;Point>** A collection of Turf.JS points.
 
 ## WeatherData
 
@@ -82,10 +171,10 @@ Get a vector representation of the sun's position at the given location and toda
 
 #### Parameters
 
--   `lat` **[Number][66]** Latitude of location.
--   `long` **[Number][66]** Longitude of location.
+-   `lat` **[Number][71]** Latitude of location.
+-   `long` **[Number][71]** Longitude of location.
 
-Returns **[Object][67]** An object containing azimuth and sun angle properties.
+Returns **[Object][73]** An object containing azimuth and sun angle properties.
 
 ### GetSunPosition
 
@@ -93,11 +182,11 @@ Get a vector representation of the sun's position at the given location and date
 
 #### Parameters
 
--   `lat` **[Number][66]** Latitude of location.
--   `long` **[Number][66]** Longitude of location.
--   `date` **[Date][68]** Date to compute location at.
+-   `lat` **[Number][71]** Latitude of location.
+-   `long` **[Number][71]** Longitude of location.
+-   `date` **[Date][74]** Date to compute location at.
 
-Returns **[Object][67]** An object containing azimuth and sun angle properties.
+Returns **[Object][73]** An object containing azimuth and sun angle properties.
 
 ## WeatherData
 
@@ -109,10 +198,10 @@ Get a vector representation of the sun's position at the given location and toda
 
 #### Parameters
 
--   `lat` **[Number][66]** Latitude of location.
--   `long` **[Number][66]** Longitude of location.
+-   `lat` **[Number][71]** Latitude of location.
+-   `long` **[Number][71]** Longitude of location.
 
-Returns **[Object][67]** An object containing azimuth and sun angle properties.
+Returns **[Object][73]** An object containing azimuth and sun angle properties.
 
 ### GetSunPosition
 
@@ -120,11 +209,11 @@ Get a vector representation of the sun's position at the given location and date
 
 #### Parameters
 
--   `lat` **[Number][66]** Latitude of location.
--   `long` **[Number][66]** Longitude of location.
--   `date` **[Date][68]** Date to compute location at.
+-   `lat` **[Number][71]** Latitude of location.
+-   `long` **[Number][71]** Longitude of location.
+-   `date` **[Date][74]** Date to compute location at.
 
-Returns **[Object][67]** An object containing azimuth and sun angle properties.
+Returns **[Object][73]** An object containing azimuth and sun angle properties.
 
 ## PlaceData
 
@@ -136,11 +225,11 @@ Get a collection of public parks from Google Maps within the given radius from t
 
 #### Parameters
 
--   `lat` **[Number][66]** Latitude of location.
--   `long` **[Number][66]** Longitude of location.
--   `radius` **[Number][66]** The radius of the bounding geometry from the given lat/long origin.
+-   `lat` **[Number][71]** Latitude of location.
+-   `long` **[Number][71]** Longitude of location.
+-   `radius` **[Number][71]** The radius of the bounding geometry from the given lat/long origin.
 
-Returns **[Promise][69]&lt;[Array][70]>** A collection of nearby parks.
+Returns **[Promise][75]&lt;[Array][72]>** A collection of nearby parks.
 
 ## PlaceData
 
@@ -152,11 +241,11 @@ Get a collection of public parks from Google Maps within the given radius from t
 
 #### Parameters
 
--   `lat` **[Number][66]** Latitude of location.
--   `long` **[Number][66]** Longitude of location.
--   `radius` **[Number][66]** The radius of the bounding geometry from the given lat/long origin.
+-   `lat` **[Number][71]** Latitude of location.
+-   `long` **[Number][71]** Longitude of location.
+-   `radius` **[Number][71]** The radius of the bounding geometry from the given lat/long origin.
 
-Returns **[Promise][69]&lt;[Array][70]>** A collection of nearby parks.
+Returns **[Promise][75]&lt;[Array][72]>** A collection of nearby parks.
 
 ## ColorData
 
@@ -168,11 +257,11 @@ Build a url request for a google street view image.
 
 #### Parameters
 
--   `lat` **[String][71]** Latitude of location.
--   `long` **[String][71]** Longitude of location.
--   `heading` **[String][71]** Direction of google street view image (between 0 to 360).
+-   `lat` **[String][76]** Latitude of location.
+-   `long` **[String][76]** Longitude of location.
+-   `heading` **[String][76]** Direction of google street view image (between 0 to 360).
 
-Returns **[String][71]** A url for google maps.
+Returns **[String][76]** A url for google maps.
 
 ### GetPalette
 
@@ -180,11 +269,11 @@ Get the color palette of the image from google street view at the given lat, lon
 
 #### Parameters
 
--   `lat` **[String][71]** Latitude of location.
--   `long` **[String][71]** Longitude of location.
--   `heading` **[number][66]** Direction of google street view image (between 0 to 360).
+-   `lat` **[String][76]** Latitude of location.
+-   `long` **[String][76]** Longitude of location.
+-   `heading` **[number][71]** Direction of google street view image (between 0 to 360).
 
-Returns **[Object][67]** A collection of Objects containing color palette data.
+Returns **[Object][73]** A collection of Objects containing color palette data.
 
 ### GetPaletteNames
 
@@ -194,10 +283,10 @@ around the central point.
 
 #### Parameters
 
--   `lat` **[String][71]** Latitude of location.
--   `long` **[String][71]** Longitude of location.
+-   `lat` **[String][76]** Latitude of location.
+-   `long` **[String][76]** Longitude of location.
 
-Returns **[Object][67]** A collection of Objects containing color palette data.
+Returns **[Object][73]** A collection of Objects containing color palette data.
 
 ### GetPaletteAnalysis
 
@@ -206,10 +295,10 @@ taken at the given latitude/longitude.
 
 #### Parameters
 
--   `lat` **[String][71]** Latitude of location.
--   `long` **[String][71]** Longitude of location.
+-   `lat` **[String][76]** Latitude of location.
+-   `long` **[String][76]** Longitude of location.
 
-Returns **[Promise][69]&lt;[Number][66]>** A decimal percentage of the prevalence of green in the field of view.
+Returns **[Promise][75]&lt;[Number][71]>** A decimal percentage of the prevalence of green in the field of view.
 
 ### GetClosestShadeName
 
@@ -217,9 +306,9 @@ Get the closest color hue name to the input color in hex format.
 
 #### Parameters
 
--   `hex` **[String][71]** Hex code of color to parse.
+-   `hex` **[String][76]** Hex code of color to parse.
 
-Returns **[string][71]** A color name.
+Returns **[string][76]** A color name.
 
 ### GetClosestColorName
 
@@ -227,9 +316,9 @@ Get the closest color name to the input color in hex format.
 
 #### Parameters
 
--   `hex` **[String][71]** Hex code of color to parse.
+-   `hex` **[String][76]** Hex code of color to parse.
 
-Returns **[string][71]** A color name.
+Returns **[string][76]** A color name.
 
 ## ColorData
 
@@ -241,11 +330,11 @@ Build a url request for a google street view image.
 
 #### Parameters
 
--   `lat` **[String][71]** Latitude of location.
--   `long` **[String][71]** Longitude of location.
--   `heading` **[String][71]** Direction of google street view image (between 0 to 360).
+-   `lat` **[String][76]** Latitude of location.
+-   `long` **[String][76]** Longitude of location.
+-   `heading` **[String][76]** Direction of google street view image (between 0 to 360).
 
-Returns **[String][71]** A url for google maps.
+Returns **[String][76]** A url for google maps.
 
 ### GetPalette
 
@@ -253,11 +342,11 @@ Get the color palette of the image from google street view at the given lat, lon
 
 #### Parameters
 
--   `lat` **[String][71]** Latitude of location.
--   `long` **[String][71]** Longitude of location.
--   `heading` **[number][66]** Direction of google street view image (between 0 to 360).
+-   `lat` **[String][76]** Latitude of location.
+-   `long` **[String][76]** Longitude of location.
+-   `heading` **[number][71]** Direction of google street view image (between 0 to 360).
 
-Returns **[Object][67]** A collection of Objects containing color palette data.
+Returns **[Object][73]** A collection of Objects containing color palette data.
 
 ### GetPaletteNames
 
@@ -267,10 +356,10 @@ around the central point.
 
 #### Parameters
 
--   `lat` **[String][71]** Latitude of location.
--   `long` **[String][71]** Longitude of location.
+-   `lat` **[String][76]** Latitude of location.
+-   `long` **[String][76]** Longitude of location.
 
-Returns **[Object][67]** A collection of Objects containing color palette data.
+Returns **[Object][73]** A collection of Objects containing color palette data.
 
 ### GetPaletteAnalysis
 
@@ -279,10 +368,10 @@ taken at the given latitude/longitude.
 
 #### Parameters
 
--   `lat` **[String][71]** Latitude of location.
--   `long` **[String][71]** Longitude of location.
+-   `lat` **[String][76]** Latitude of location.
+-   `long` **[String][76]** Longitude of location.
 
-Returns **[Promise][69]&lt;[Number][66]>** A decimal percentage of the prevalence of green in the field of view.
+Returns **[Promise][75]&lt;[Number][71]>** A decimal percentage of the prevalence of green in the field of view.
 
 ### GetClosestShadeName
 
@@ -290,9 +379,9 @@ Get the closest color hue name to the input color in hex format.
 
 #### Parameters
 
--   `hex` **[String][71]** Hex code of color to parse.
+-   `hex` **[String][76]** Hex code of color to parse.
 
-Returns **[string][71]** A color name.
+Returns **[string][76]** A color name.
 
 ### GetClosestColorName
 
@@ -300,37 +389,14 @@ Get the closest color name to the input color in hex format.
 
 #### Parameters
 
--   `hex` **[String][71]** Hex code of color to parse.
+-   `hex` **[String][76]** Hex code of color to parse.
 
-Returns **[string][71]** A color name.
+Returns **[string][76]** A color name.
 
 ## RouteData
 
 Route-related data for analysis.
 
-### GetGraphData
-
-Get graph data from the points which are walkable given an origin lat/long, radius, and
-distance between points for creation of a grid.
-
-#### Parameters
-
--   `grid` **[Array][70]&lt;Point>** A grid of Turf.js points
-
-Returns **[Promise][69]&lt;[Array][70]>** A ngraph.graph object.
-
-### GetGraph
-
-Get graph object representing the points which are walkable given an origin lat/long, radius, and
-distance between points for creation of a grid.
-
-#### Parameters
-
--   `grid` **[Array][70]&lt;Point>** A grid of Turf.js points
--   `linkTolerance` **[Number][66]** The minimum distance between points to be considered a 'link'.
-
-Returns **Graph** A ngraph.graph object.
-
 ### FindNaturePath
 
 Find a path between two nodes on the graph, weighted by the 'Green Score' weight of the nodes
@@ -339,10 +405,10 @@ along the potential path.
 #### Parameters
 
 -   `graph` **Graph** A ngraph.graph object with the nature-score data properties applied.
--   `idA` **[String][71]** Node ID of start point.
--   `idB` **[String][71]** Node ID of end point.
+-   `idA` **[String][76]** Node ID of start point.
+-   `idB` **[String][76]** Node ID of end point.
 
-Returns **[Object][67]** A ngraph.path object.
+Returns **[Object][73]** A ngraph.path object.
 
 ### FindAllNaturePaths
 
@@ -353,7 +419,7 @@ distance between points for creation of a grid.
 
 -   `graph` **Graph** A ngraph.graph object with the nature-score data properties applied.
 
-Returns **[Promise][69]&lt;[Array][70]>** An array of all possible paths;
+Returns **[Promise][75]&lt;[Array][72]>** An array of all possible paths;
 
 ### FindTopNaturePaths
 
@@ -362,37 +428,14 @@ distance between points for creation of a grid. Sort with the top nature walks f
 
 #### Parameters
 
--   `json` **[Object][67]** The raw path output of FindAllNaturePaths().
+-   `json` **[Object][73]** The raw path output of FindAllNaturePaths().
 
-Returns **[Promise][69]&lt;[Array][70]>** A list of paths, sorted from most exposed to nature to least.
+Returns **[Promise][75]&lt;[Array][72]>** A list of paths, sorted from most exposed to nature to least.
 
 ## RouteData
 
 Module for computing the actual routes.
 
-### GetGraphData
-
-Get graph data from the points which are walkable given an origin lat/long, radius, and
-distance between points for creation of a grid.
-
-#### Parameters
-
--   `grid` **[Array][70]&lt;Point>** A grid of Turf.js points
-
-Returns **[Promise][69]&lt;[Array][70]>** A ngraph.graph object.
-
-### GetGraph
-
-Get graph object representing the points which are walkable given an origin lat/long, radius, and
-distance between points for creation of a grid.
-
-#### Parameters
-
--   `grid` **[Array][70]&lt;Point>** A grid of Turf.js points
--   `linkTolerance` **[Number][66]** The minimum distance between points to be considered a 'link'.
-
-Returns **Graph** A ngraph.graph object.
-
 ### FindNaturePath
 
 Find a path between two nodes on the graph, weighted by the 'Green Score' weight of the nodes
@@ -401,10 +444,10 @@ along the potential path.
 #### Parameters
 
 -   `graph` **Graph** A ngraph.graph object with the nature-score data properties applied.
--   `idA` **[String][71]** Node ID of start point.
--   `idB` **[String][71]** Node ID of end point.
+-   `idA` **[String][76]** Node ID of start point.
+-   `idB` **[String][76]** Node ID of end point.
 
-Returns **[Object][67]** A ngraph.path object.
+Returns **[Object][73]** A ngraph.path object.
 
 ### FindAllNaturePaths
 
@@ -415,7 +458,7 @@ distance between points for creation of a grid.
 
 -   `graph` **Graph** A ngraph.graph object with the nature-score data properties applied.
 
-Returns **[Promise][69]&lt;[Array][70]>** An array of all possible paths;
+Returns **[Promise][75]&lt;[Array][72]>** An array of all possible paths;
 
 ### FindTopNaturePaths
 
@@ -424,148 +467,158 @@ distance between points for creation of a grid. Sort with the top nature walks f
 
 #### Parameters
 
--   `json` **[Object][67]** The raw path output of FindAllNaturePaths().
+-   `json` **[Object][73]** The raw path output of FindAllNaturePaths().
 
-Returns **[Promise][69]&lt;[Array][70]>** A list of paths, sorted from most exposed to nature to least.
+Returns **[Promise][75]&lt;[Array][72]>** A list of paths, sorted from most exposed to nature to least.
 
 [1]: #turfdata
 
-[2]: #weatherdata
+[2]: #boundingboxradius
 
-[3]: #getsunpositiontoday
+[3]: #parameters
 
-[4]: #parameters
+[4]: #getrandompointgrid
 
-[5]: #getsunposition
+[5]: #parameters-1
 
-[6]: #parameters-1
+[6]: #getpointgrid
 
-[7]: #weatherdata-1
+[7]: #parameters-2
 
-[8]: #getsunpositiontoday-1
+[8]: #turfdata-1
 
-[9]: #parameters-2
+[9]: #boundingboxradius-1
 
-[10]: #getsunposition-1
+[10]: #parameters-3
 
-[11]: #parameters-3
+[11]: #getrandompointgrid-1
 
-[12]: #placedata
+[12]: #parameters-4
 
-[13]: #parksearch
+[13]: #getpointgrid-1
 
-[14]: #parameters-4
+[14]: #parameters-5
 
-[15]: #placedata-1
+[15]: #weatherdata
 
-[16]: #parksearch-1
+[16]: #getsunpositiontoday
 
-[17]: #parameters-5
+[17]: #parameters-6
 
-[18]: #colordata
+[18]: #getsunposition
 
-[19]: #buildrequest
+[19]: #parameters-7
 
-[20]: #parameters-6
+[20]: #weatherdata-1
 
-[21]: #getpalette
+[21]: #getsunpositiontoday-1
 
-[22]: #parameters-7
+[22]: #parameters-8
 
-[23]: #getpalettenames
+[23]: #getsunposition-1
 
-[24]: #parameters-8
+[24]: #parameters-9
 
-[25]: #getpaletteanalysis
+[25]: #placedata
 
-[26]: #parameters-9
+[26]: #parksearch
 
-[27]: #getclosestshadename
+[27]: #parameters-10
 
-[28]: #parameters-10
+[28]: #placedata-1
 
-[29]: #getclosestcolorname
+[29]: #parksearch-1
 
 [30]: #parameters-11
 
-[31]: #colordata-1
+[31]: #colordata
 
-[32]: #buildrequest-1
+[32]: #buildrequest
 
 [33]: #parameters-12
 
-[34]: #getpalette-1
+[34]: #getpalette
 
 [35]: #parameters-13
 
-[36]: #getpalettenames-1
+[36]: #getpalettenames
 
 [37]: #parameters-14
 
-[38]: #getpaletteanalysis-1
+[38]: #getpaletteanalysis
 
 [39]: #parameters-15
 
-[40]: #getclosestshadename-1
+[40]: #getclosestshadename
 
 [41]: #parameters-16
 
-[42]: #getclosestcolorname-1
+[42]: #getclosestcolorname
 
 [43]: #parameters-17
 
-[44]: #routedata
+[44]: #colordata-1
 
-[45]: #getgraphdata
+[45]: #buildrequest-1
 
 [46]: #parameters-18
 
-[47]: #getgraph
+[47]: #getpalette-1
 
 [48]: #parameters-19
 
-[49]: #findnaturepath
+[49]: #getpalettenames-1
 
 [50]: #parameters-20
 
-[51]: #findallnaturepaths
+[51]: #getpaletteanalysis-1
 
 [52]: #parameters-21
 
-[53]: #findtopnaturepaths
+[53]: #getclosestshadename-1
 
 [54]: #parameters-22
 
-[55]: #routedata-1
+[55]: #getclosestcolorname-1
 
-[56]: #getgraphdata-1
+[56]: #parameters-23
 
-[57]: #parameters-23
+[57]: #routedata
 
-[58]: #getgraph-1
+[58]: #findnaturepath
 
 [59]: #parameters-24
 
-[60]: #findnaturepath-1
+[60]: #findallnaturepaths
 
 [61]: #parameters-25
 
-[62]: #findallnaturepaths-1
+[62]: #findtopnaturepaths
 
 [63]: #parameters-26
 
-[64]: #findtopnaturepaths-1
+[64]: #routedata-1
 
-[65]: #parameters-27
+[65]: #findnaturepath-1
 
-[66]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[66]: #parameters-27
 
-[67]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[67]: #findallnaturepaths-1
 
-[68]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date
+[68]: #parameters-28
 
-[69]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise
+[69]: #findtopnaturepaths-1
 
-[70]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+[70]: #parameters-29
 
-[71]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+[71]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+
+[72]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+
+[73]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+
+[74]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date
+
+[75]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise
+
+[76]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String

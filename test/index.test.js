@@ -1,4 +1,11 @@
-import { WeatherData, PlaceData, ColorData, RouteData, TurfData } from "../src";
+import {
+  WeatherData,
+  PlaceData,
+  ColorData,
+  RouteData,
+  TurfData,
+  Graph
+} from "../src";
 
 test("import WeatherData", () => {
   expect.anything(WeatherData);
@@ -18,4 +25,8 @@ test("import RouteData", () => {
 
 test("import TurfData", () => {
   expect.anything(TurfData);
+});
+
+test("import Graph", () => {
+  expect.anything(Graph);
 });
