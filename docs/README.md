@@ -521,6 +521,8 @@ distance between points for creation of a grid. Sort with the top nature walks f
 #### Parameters
 
 -   `json` **[Object][86]** The raw path output of FindAllNaturePaths().
+-   `apiKey` **[String][82]** (Optional) GoogleMaps API Key for the request. If none is provided, a process
+    environment variable 'GMAPS_KEY' will be queried for the value. (optional, default `process.env.GMAPS_KEY`)
 
 Returns **[Promise][83]&lt;[Array][81]>** A list of paths, sorted from most exposed to nature to least.
 
@@ -560,6 +562,8 @@ distance between points for creation of a grid. Sort with the top nature walks f
 #### Parameters
 
 -   `json` **[Object][86]** The raw path output of FindAllNaturePaths().
+-   `apiKey` **[String][82]** (Optional) GoogleMaps API Key for the request. If none is provided, a process
+    environment variable 'GMAPS_KEY' will be queried for the value. (optional, default `process.env.GMAPS_KEY`)
 
 Returns **[Promise][83]&lt;[Array][81]>** A list of paths, sorted from most exposed to nature to least.
 

@@ -100,9 +100,11 @@ export class Route {
    * Get graph data from the points which are walkable given an origin lat/long, radius, and
    * distance between points for creation of a grid. Sort with the top nature walks first.
    * @param {Object} json The raw path output of FindAllNaturePaths().
+   * @param {String} apiKey (Optional) GoogleMaps API Key for the request. If none is provided, a process
+   * environment variable 'GMAPS_KEY' will be queried for the value.
    * @returns {Promise<Array>} A list of paths, sorted from most exposed to nature to least.
    */
-  static FindTopNaturePaths(json) {
+  static FindTopNaturePaths(json, apiKey = process.env.GMAPS_KEY) {
     return new Promise((resolve, reject) => {
       const returnObj = [];
 
@@ -151,8 +153,7 @@ export class Route {
         });
 
         // add key to directions, and travel mode to direct link
-        mapUrlDirections = `${mapUrlDirections}&key=${process.env.GMAPS_KEY ||
-          process.env.VUE_APP_GMAPS_KEY}`;
+        mapUrlDirections = `${mapUrlDirections}&key=${apiKey}`;
         mapUrl += "&travelmode=walking";
 
         // finalize the return object data model

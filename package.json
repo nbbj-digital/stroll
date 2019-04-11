@@ -1,6 +1,6 @@
 {
   "name": "@nbbj/stroll",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "Computational library for finding the optimal walking path to be as exposed to nature as possible.",
   "license": "MIT",
   "homepage": "https://github.com/nbbj-digital/stroll#readme",

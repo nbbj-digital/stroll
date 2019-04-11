@@ -3266,7 +3266,7 @@ distance between points for creation of a grid.</p>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>FindTopNaturePaths(json)</span>
+            <span class='code strong strong truncate'>FindTopNaturePaths(json, apiKey)</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -3277,7 +3277,7 @@ distance between points for creation of a grid.</p>
   <p>Get graph data from the points which are walkable given an origin lat/long, radius, and
 distance between points for creation of a grid. Sort with the top nature walks first.</p>
 
-    <div class='pre p1 fill-light mt0'>FindTopNaturePaths(json: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>></div>
+    <div class='pre p1 fill-light mt0'>FindTopNaturePaths(json: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>, apiKey: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>></div>
   
   
 
@@ -3296,6 +3296,17 @@ distance between points for creation of a grid. Sort with the top nature walks f
           <div>
             <span class='code bold'>json</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
 	    The raw path output of FindAllNaturePaths().
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>apiKey</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>
+            = <code>process.env.GMAPS_KEY</code>)</code>
+	    (Optional) GoogleMaps API Key for the request. If none is provided, a process
+environment variable 'GMAPS_KEY' will be queried for the value.
 
           </div>
           
@@ -3548,7 +3559,7 @@ distance between points for creation of a grid.</p>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>FindTopNaturePaths(json)</span>
+            <span class='code strong strong truncate'>FindTopNaturePaths(json, apiKey)</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -3559,7 +3570,7 @@ distance between points for creation of a grid.</p>
   <p>Get graph data from the points which are walkable given an origin lat/long, radius, and
 distance between points for creation of a grid. Sort with the top nature walks first.</p>
 
-    <div class='pre p1 fill-light mt0'>FindTopNaturePaths(json: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>></div>
+    <div class='pre p1 fill-light mt0'>FindTopNaturePaths(json: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>, apiKey: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>></div>
   
   
 
@@ -3578,6 +3589,17 @@ distance between points for creation of a grid. Sort with the top nature walks f
           <div>
             <span class='code bold'>json</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
 	    The raw path output of FindAllNaturePaths().
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>apiKey</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>
+            = <code>process.env.GMAPS_KEY</code>)</code>
+	    (Optional) GoogleMaps API Key for the request. If none is provided, a process
+environment variable 'GMAPS_KEY' will be queried for the value.
 
           </div>
           
