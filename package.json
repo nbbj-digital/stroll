@@ -1,6 +1,6 @@
 {
   "name": "@nbbj/stroll",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Computational library for finding the optimal walking path to be as exposed to nature as possible.",
   "license": "MIT",
   "homepage": "https://github.com/nbbj-digital/stroll#readme",
@@ -83,7 +83,6 @@
     "ngraph.graph": "0.0.18",
     "ngraph.path": "^1.1.0",
     "node-vibrant": "3.2.0-alpha",
-    "npm": "6.9.0",
     "suncalc": "1.8.0"
   },
   "devDependencies": {
