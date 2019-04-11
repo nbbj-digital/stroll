@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset='utf-8' />
-  <title>@nbbj/stroll 2.1.0 | Documentation</title>
+  <title>@nbbj/stroll 2.1.1 | Documentation</title>
   <meta name='description' content='Computational library for finding the optimal walking path to be as exposed to nature as possible.'>
   <meta name='viewport' content='width=device-width,initial-scale=1'>
   <link href='assets/bass.css' rel='stylesheet' />
@@ -15,7 +15,7 @@
       <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
         <div class='py1 px2'>
           <h3 class='mb0 no-anchor'>@nbbj/stroll</h3>
-          <div class='mb1'><code>2.1.0</code></div>
+          <div class='mb1'><code>2.1.1</code></div>
           <input
             placeholder='Filter'
             id='filter-input'
@@ -555,7 +555,7 @@
 
   <p>Get the color palette of the image from google street view at the given lat, long, and orientation.</p>
 
-    <div class='pre p1 fill-light mt0'>GetPalette(lat: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, long: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, heading: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
+    <div class='pre p1 fill-light mt0'>GetPalette(lat: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, long: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, heading: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
   
   
 
@@ -590,7 +590,7 @@
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>heading</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
+            <span class='code bold'>heading</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
 	    Direction of google street view image (between 0 to 360).
 
           </div>
@@ -1080,7 +1080,7 @@ taken at the given latitude/longitude.</p>
 
   <p>Get the color palette of the image from google street view at the given lat, long, and orientation.</p>
 
-    <div class='pre p1 fill-light mt0'>GetPalette(lat: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, long: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, heading: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
+    <div class='pre p1 fill-light mt0'>GetPalette(lat: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, long: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, heading: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
   
   
 
@@ -1115,7 +1115,7 @@ taken at the given latitude/longitude.</p>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>heading</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
+            <span class='code bold'>heading</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
 	    Direction of google street view image (between 0 to 360).
 
           </div>
@@ -1516,7 +1516,7 @@ taken at the given latitude/longitude.</p>
 
   
 
-  <p>Get a collection of public parks from Yelp within the given radius from the origin lat/long point.</p>
+  <p>Get a collection of public parks from Google Maps within the given radius from the origin lat/long point.</p>
 
     <div class='pre p1 fill-light mt0'>ParkSearch(lat: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, long: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, radius: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>></div>
   
@@ -1657,7 +1657,7 @@ taken at the given latitude/longitude.</p>
 
   
 
-  <p>Get a collection of public parks from Yelp within the given radius from the origin lat/long point.</p>
+  <p>Get a collection of public parks from Google Maps within the given radius from the origin lat/long point.</p>
 
     <div class='pre p1 fill-light mt0'>ParkSearch(lat: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, long: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, radius: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>></div>
   
@@ -1800,7 +1800,7 @@ taken at the given latitude/longitude.</p>
 
   <p>Get a bounding box around a location with a given radius.</p>
 
-    <div class='pre p1 fill-light mt0'>BoundingBoxRadius(lat: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, long: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, radius: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>): Turf.bbox</div>
+    <div class='pre p1 fill-light mt0'>BoundingBoxRadius(lat: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, long: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, radius: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>): BBox</div>
   
   
 
@@ -1850,7 +1850,7 @@ taken at the given latitude/longitude.</p>
   
     
       <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code>Turf.bbox</code>:
+      <code>BBox</code>:
         A Turf.js bounding box object.
 
       
@@ -1888,7 +1888,7 @@ taken at the given latitude/longitude.</p>
   <p>Get a collection of random points which fall within a given bounding radius from an origin
 lat/long point.</p>
 
-    <div class='pre p1 fill-light mt0'>GetRandomPointGrid(lat: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, long: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, radius: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, numPoints: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Turf.Point></div>
+    <div class='pre p1 fill-light mt0'>GetRandomPointGrid(lat: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, long: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, radius: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, numPoints: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>): FeatureCollection&#x3C;Point, any></div>
   
   
 
@@ -1932,7 +1932,7 @@ lat/long point.</p>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>numPoints</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
+            <span class='code bold'>numPoints</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
 	    How many points to return
 
           </div>
@@ -1947,7 +1947,7 @@ lat/long point.</p>
   
     
       <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Turf.Point></code>:
+      <code>FeatureCollection&#x3C;Point, any></code>:
         A collection of Turf.JS points.
 
       
@@ -1985,7 +1985,7 @@ lat/long point.</p>
   <p>Get a collection of points in a gird which fall within a given bounding radius from an origin
 lat/long point.</p>
 
-    <div class='pre p1 fill-light mt0'>GetPointGrid(lat: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, long: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, radius: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, pointDist: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Turf.Point></div>
+    <div class='pre p1 fill-light mt0'>GetPointGrid(lat: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, long: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, radius: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, pointDist: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Point></div>
   
   
 
@@ -2044,7 +2044,7 @@ lat/long point.</p>
   
     
       <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Turf.Point></code>:
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Point></code>:
         A collection of Turf.JS points.
 
       
@@ -2082,7 +2082,7 @@ lat/long point.</p>
   <p>Get graph data from the points which are walkable given an origin lat/long, radius, and
 distance between points for creation of a grid.</p>
 
-    <div class='pre p1 fill-light mt0'>GetGraphData(grid: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Turf.Point>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>></div>
+    <div class='pre p1 fill-light mt0'>GetGraphData(grid: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Point>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>></div>
   
   
 
@@ -2099,7 +2099,7 @@ distance between points for creation of a grid.</p>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>grid</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Turf.Point>)</code>
+            <span class='code bold'>grid</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Point>)</code>
 	    A grid of Turf.js points
 
           </div>
@@ -2152,7 +2152,7 @@ distance between points for creation of a grid.</p>
   <p>Get graph object representing the points which are walkable given an origin lat/long, radius, and
 distance between points for creation of a grid.</p>
 
-    <div class='pre p1 fill-light mt0'>GetGraph(grid: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Turf.Point>, linkTolerance: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>): Graph</div>
+    <div class='pre p1 fill-light mt0'>GetGraph(grid: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Point>, linkTolerance: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>): Graph</div>
   
   
 
@@ -2169,7 +2169,7 @@ distance between points for creation of a grid.</p>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>grid</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Turf.Point>)</code>
+            <span class='code bold'>grid</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Point>)</code>
 	    A grid of Turf.js points
 
           </div>
@@ -2512,7 +2512,7 @@ distance between points for creation of a grid. Sort with the top nature walks f
 
   <p>Get a bounding box around a location with a given radius.</p>
 
-    <div class='pre p1 fill-light mt0'>BoundingBoxRadius(lat: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, long: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, radius: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>): Turf.bbox</div>
+    <div class='pre p1 fill-light mt0'>BoundingBoxRadius(lat: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, long: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, radius: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>): BBox</div>
   
   
 
@@ -2562,7 +2562,7 @@ distance between points for creation of a grid. Sort with the top nature walks f
   
     
       <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code>Turf.bbox</code>:
+      <code>BBox</code>:
         A Turf.js bounding box object.
 
       
@@ -2600,7 +2600,7 @@ distance between points for creation of a grid. Sort with the top nature walks f
   <p>Get a collection of random points which fall within a given bounding radius from an origin
 lat/long point.</p>
 
-    <div class='pre p1 fill-light mt0'>GetRandomPointGrid(lat: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, long: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, radius: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, numPoints: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Turf.Point></div>
+    <div class='pre p1 fill-light mt0'>GetRandomPointGrid(lat: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, long: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, radius: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, numPoints: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>): FeatureCollection&#x3C;Point, any></div>
   
   
 
@@ -2644,7 +2644,7 @@ lat/long point.</p>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>numPoints</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
+            <span class='code bold'>numPoints</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
 	    How many points to return
 
           </div>
@@ -2659,7 +2659,7 @@ lat/long point.</p>
   
     
       <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Turf.Point></code>:
+      <code>FeatureCollection&#x3C;Point, any></code>:
         A collection of Turf.JS points.
 
       
@@ -2697,7 +2697,7 @@ lat/long point.</p>
   <p>Get a collection of points in a gird which fall within a given bounding radius from an origin
 lat/long point.</p>
 
-    <div class='pre p1 fill-light mt0'>GetPointGrid(lat: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, long: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, radius: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, pointDist: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Turf.Point></div>
+    <div class='pre p1 fill-light mt0'>GetPointGrid(lat: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, long: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, radius: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, pointDist: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Point></div>
   
   
 
@@ -2756,7 +2756,7 @@ lat/long point.</p>
   
     
       <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Turf.Point></code>:
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Point></code>:
         A collection of Turf.JS points.
 
       
@@ -2794,7 +2794,7 @@ lat/long point.</p>
   <p>Get graph data from the points which are walkable given an origin lat/long, radius, and
 distance between points for creation of a grid.</p>
 
-    <div class='pre p1 fill-light mt0'>GetGraphData(grid: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Turf.Point>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>></div>
+    <div class='pre p1 fill-light mt0'>GetGraphData(grid: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Point>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>></div>
   
   
 
@@ -2811,7 +2811,7 @@ distance between points for creation of a grid.</p>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>grid</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Turf.Point>)</code>
+            <span class='code bold'>grid</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Point>)</code>
 	    A grid of Turf.js points
 
           </div>
@@ -2864,7 +2864,7 @@ distance between points for creation of a grid.</p>
   <p>Get graph object representing the points which are walkable given an origin lat/long, radius, and
 distance between points for creation of a grid.</p>
 
-    <div class='pre p1 fill-light mt0'>GetGraph(grid: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Turf.Point>, linkTolerance: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>): Graph</div>
+    <div class='pre p1 fill-light mt0'>GetGraph(grid: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Point>, linkTolerance: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>): Graph</div>
   
   
 
@@ -2881,7 +2881,7 @@ distance between points for creation of a grid.</p>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>grid</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Turf.Point>)</code>
+            <span class='code bold'>grid</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;Point>)</code>
 	    A grid of Turf.js points
 
           </div>

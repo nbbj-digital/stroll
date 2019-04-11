@@ -28,9 +28,11 @@ To use this module, install locally using the command below, or clone this repos
 npm i @nbbj/stroll
 ```
 
-### Environment Variables
+### Environment Variables & API Provisioning
 
-Before using this module, the `GMAPS_KEY` environment variable must be set on your machine with your specific Google Maps API Key.
+Before using this module, the `GMAPS_KEY` environment variable must be set on your machine with your specific Google Maps API Key. Additionally, you must provision your Google account for access to these specific Google Maps APIs: Directions API, Geocoding API, Maps JavaScript API, Places API, and Street View Static API.
+
+**This package will not working without the following configurations and provisions**, so please make sure to check those settings if you are getting errors.
 
 #### User API Usage Notice
 

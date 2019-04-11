@@ -298,6 +298,11 @@ export class RouteData {
         )},${String(pathObj.slice(-1)[0].data.x)}`;
         mapUrl += "&waypoints=";
 
+        let mapUrlDirections = mapUrl.replace(
+          "https://www.google.com/maps/dir/?api=1&",
+          "https://maps.googleapis.com/maps/api/directions/json?"
+        );
+
         // iterate over the path nodes to build a url and calculate totals
         pathObj.map(node => {
           totalGreenScore =
@@ -314,14 +319,24 @@ export class RouteData {
               mapUrl = `${mapUrl}%7C${String(node.data.y)},${String(
                 node.data.x
               )}`;
+              mapUrlDirections = `${mapUrlDirections}%7C${String(
+                node.data.y
+              )},${String(node.data.x)}`;
           }
           count++;
         });
+
+        // add key to directions, and travel mode to direct link
+        mapUrlDirections = `${mapUrlDirections}&key=${process.env.GMAPS_KEY ||
+          process.env.VUE_APP_GMAPS_KEY}`;
         mapUrl += "&travelmode=walking";
+
+        // finalize the return object data model
         returnObj.push({
           path: pathObj.map(node => node.data),
           totalGreenScore,
-          mapUrl
+          mapUrl,
+          mapUrlDirections
         });
       });
 

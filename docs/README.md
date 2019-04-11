@@ -139,7 +139,7 @@ Yelp-related data for analysis.
 
 ### ParkSearch
 
-Get a collection of public parks from Yelp within the given radius from the origin lat/long point.
+Get a collection of public parks from Google Maps within the given radius from the origin lat/long point.
 
 #### Parameters
 
@@ -155,7 +155,7 @@ Module for getting nearby parks and other green public spaces.
 
 ### ParkSearch
 
-Get a collection of public parks from Yelp within the given radius from the origin lat/long point.
+Get a collection of public parks from Google Maps within the given radius from the origin lat/long point.
 
 #### Parameters
 
@@ -189,7 +189,7 @@ Get the color palette of the image from google street view at the given lat, lon
 
 -   `lat` **[String][82]** Latitude of location.
 -   `long` **[String][82]** Longitude of location.
--   `heading` **[String][82]** Direction of google street view image (between 0 to 360).
+-   `heading` **[number][77]** Direction of google street view image (between 0 to 360).
 
 Returns **[Object][78]** A collection of Objects containing color palette data.
 
@@ -262,7 +262,7 @@ Get the color palette of the image from google street view at the given lat, lon
 
 -   `lat` **[String][82]** Latitude of location.
 -   `long` **[String][82]** Longitude of location.
--   `heading` **[String][82]** Direction of google street view image (between 0 to 360).
+-   `heading` **[number][77]** Direction of google street view image (between 0 to 360).
 
 Returns **[Object][78]** A collection of Objects containing color palette data.
 
@@ -325,7 +325,7 @@ Get a bounding box around a location with a given radius.
 -   `long` **[Number][77]** Longitude of location.
 -   `radius` **[Number][77]** The radius of the bounding geometry from the given lat/long origin.
 
-Returns **Turf.bbox** A Turf.js bounding box object.
+Returns **BBox** A Turf.js bounding box object.
 
 ### GetRandomPointGrid
 
@@ -337,9 +337,9 @@ lat/long point.
 -   `lat` **[Number][77]** Latitude of location.
 -   `long` **[Number][77]** Longitude of location.
 -   `radius` **[Number][77]** The radius of the bounding geometry from the given lat/long origin.
--   `numPoints` **[String][82]** How many points to return
+-   `numPoints` **[Number][77]** How many points to return
 
-Returns **[Array][81]&lt;Turf.Point>** A collection of Turf.JS points.
+Returns **FeatureCollection&lt;Point, any>** A collection of Turf.JS points.
 
 ### GetPointGrid
 
@@ -353,7 +353,7 @@ lat/long point.
 -   `radius` **[Number][77]** The radius of the bounding geometry from the given lat/long origin.
 -   `pointDist` **[Number][77]** How far apart the points should be in the point grid.
 
-Returns **[Array][81]&lt;Turf.Point>** A collection of Turf.JS points.
+Returns **[Array][81]&lt;Point>** A collection of Turf.JS points.
 
 ### GetGraphData
 
@@ -362,7 +362,7 @@ distance between points for creation of a grid.
 
 #### Parameters
 
--   `grid` **[Array][81]&lt;Turf.Point>** A grid of Turf.js points
+-   `grid` **[Array][81]&lt;Point>** A grid of Turf.js points
 
 Returns **[Promise][80]&lt;[Array][81]>** A ngraph.graph object.
 
@@ -373,7 +373,7 @@ distance between points for creation of a grid.
 
 #### Parameters
 
--   `grid` **[Array][81]&lt;Turf.Point>** A grid of Turf.js points
+-   `grid` **[Array][81]&lt;Point>** A grid of Turf.js points
 -   `linkTolerance` **[Number][77]** The minimum distance between points to be considered a 'link'.
 
 Returns **Graph** A ngraph.graph object.
@@ -427,7 +427,7 @@ Get a bounding box around a location with a given radius.
 -   `long` **[Number][77]** Longitude of location.
 -   `radius` **[Number][77]** The radius of the bounding geometry from the given lat/long origin.
 
-Returns **Turf.bbox** A Turf.js bounding box object.
+Returns **BBox** A Turf.js bounding box object.
 
 ### GetRandomPointGrid
 
@@ -439,9 +439,9 @@ lat/long point.
 -   `lat` **[Number][77]** Latitude of location.
 -   `long` **[Number][77]** Longitude of location.
 -   `radius` **[Number][77]** The radius of the bounding geometry from the given lat/long origin.
--   `numPoints` **[String][82]** How many points to return
+-   `numPoints` **[Number][77]** How many points to return
 
-Returns **[Array][81]&lt;Turf.Point>** A collection of Turf.JS points.
+Returns **FeatureCollection&lt;Point, any>** A collection of Turf.JS points.
 
 ### GetPointGrid
 
@@ -455,7 +455,7 @@ lat/long point.
 -   `radius` **[Number][77]** The radius of the bounding geometry from the given lat/long origin.
 -   `pointDist` **[Number][77]** How far apart the points should be in the point grid.
 
-Returns **[Array][81]&lt;Turf.Point>** A collection of Turf.JS points.
+Returns **[Array][81]&lt;Point>** A collection of Turf.JS points.
 
 ### GetGraphData
 
@@ -464,7 +464,7 @@ distance between points for creation of a grid.
 
 #### Parameters
 
--   `grid` **[Array][81]&lt;Turf.Point>** A grid of Turf.js points
+-   `grid` **[Array][81]&lt;Point>** A grid of Turf.js points
 
 Returns **[Promise][80]&lt;[Array][81]>** A ngraph.graph object.
 
@@ -475,7 +475,7 @@ distance between points for creation of a grid.
 
 #### Parameters
 
--   `grid` **[Array][81]&lt;Turf.Point>** A grid of Turf.js points
+-   `grid` **[Array][81]&lt;Point>** A grid of Turf.js points
 -   `linkTolerance` **[Number][77]** The minimum distance between points to be considered a 'link'.
 
 Returns **Graph** A ngraph.graph object.
