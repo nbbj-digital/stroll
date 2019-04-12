@@ -3,7 +3,6 @@ const stroll = require("../dist/index");
 
 // ROUTE DATA
 const grid = stroll.Geometry.GetPointGrid(47.651588, -122.415078, 1, 0.8);
-const gKey = 'YOUR_KEY_HERE'
 
 // stroll.Route.GetGraphData(grid, 0.3).then(results => {
 //   console.log(results);
@@ -28,8 +27,8 @@ const gKey = 'YOUR_KEY_HERE'
 //   })
 //   .catch(err => console.error(err));
 
-stroll.Graph.GetGraph(grid, 0.9, gKey)
-  .then(graph => stroll.Route.FindAllNaturePaths(graph))
+stroll.Graph.GetGraph(grid, 0.9)
+  .then(graph => stroll.Route.PathsFrom(graph, 47.651588, -122.415078))
   .then(paths => stroll.Route.FindTopNaturePaths(paths))
   .then(results => {
     console.log(results);

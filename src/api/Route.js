@@ -21,6 +21,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+import * as TurfHelpers from "@turf/helpers";
+import * as TurfDistance from "@turf/distance";
 
 const path = require("ngraph.path");
 
@@ -60,8 +62,7 @@ export class Route {
   }
 
   /**
-   * Evaluate a walkable region with views to naturegiven an origin lat/long, radius, and
-   * distance between points for creation of a grid.
+   * Compute all possible paths within the graph.
    * @param {Graph} graph A ngraph.graph object with the nature-score data properties applied.
    * @returns {Promise<Array>} An array of all possible paths;
    */
@@ -90,6 +91,55 @@ export class Route {
       });
 
       if (paths === null) {
+        reject(paths);
+      }
+      resolve(paths);
+    }).catch(err => console.error(err));
+  }
+
+  /**
+   * Compute all possible paths within the graph which start from the given start point.
+   * @param {Graph} graph A ngraph.graph object with the nature-score data properties applied.
+   * @param {Number} lat Latitude of start location.
+   * @param {Number} long Longitude of start location.
+   * @returns {Promise<Array>} An array of all possible paths;
+   */
+  static PathsFrom(graph, lat, long) {
+    const self = this;
+    console.log("Staring Find Nature Path");
+    return new Promise((resolve, reject) => {
+      const paths = [];
+      const nodes = [];
+      let nearestDistance = 100;
+      let nearestNodeId = "none";
+
+      // find the node in the graph which is nearest to our origin
+      graph.forEachNode(node => {
+        const distance = TurfDistance.default(
+          TurfHelpers.point([long, lat]),
+          TurfHelpers.point([node.data.x, node.data.y])
+        );
+
+        // if distance is closer than the last, set it as the current
+        if (distance < nearestDistance) {
+          nearestDistance = distance;
+          nearestNodeId = node.id;
+        }
+
+        nodes.push(node);
+      });
+
+      // find all paths that are possible from the node which is nearest to the input lat/long
+      nodes.map(nodeB => {
+        const foundPath = self.FindNaturePath(graph, nearestNodeId, nodeB.id);
+
+        // if it isn't a path to itself, add to list
+        if (foundPath.length > 1) {
+          paths.push(foundPath);
+        }
+      });
+
+      if (paths.length < 1) {
         reject(paths);
       }
       resolve(paths);
