@@ -75,7 +75,7 @@
         -   [Parameters][71]
     -   [PathsFrom][72]
         -   [Parameters][73]
-    -   [FindTopNaturePaths][74]
+    -   [ParsePaths][74]
         -   [Parameters][75]
 -   [Route][76]
     -   [Path][77]
@@ -84,7 +84,7 @@
         -   [Parameters][80]
     -   [PathsFrom][81]
         -   [Parameters][82]
-    -   [FindTopNaturePaths][83]
+    -   [ParsePaths][83]
         -   [Parameters][84]
 
 ## Graph
@@ -528,7 +528,7 @@ Compute all possible paths within the graph which start from the given start poi
 
 Returns **[Promise][87]&lt;[Array][85]>** An array of all possible paths;
 
-### FindTopNaturePaths
+### ParsePaths
 
 Get graph data from the points which are walkable given an origin lat/long, radius, and
 distance between points for creation of a grid. Sort with the top nature walks first.
@@ -580,7 +580,7 @@ Compute all possible paths within the graph which start from the given start poi
 
 Returns **[Promise][87]&lt;[Array][85]>** An array of all possible paths;
 
-### FindTopNaturePaths
+### ParsePaths
 
 Get graph data from the points which are walkable given an origin lat/long, radius, and
 distance between points for creation of a grid. Sort with the top nature walks first.

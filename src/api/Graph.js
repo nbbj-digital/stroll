@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+import * as TurfHelpers from "@turf/helpers";
 import * as TurfDistance from "@turf/distance";
 
 import { Place } from "./Place";
@@ -160,5 +161,33 @@ export class Graph {
           reject(err);
         });
     });
+  }
+
+  /**
+   * Find the node in the graph which is nearest to the lat/long provided.
+   * @param {Graph} graph A ngraph.graph object with the nature-score data properties applied.
+   * @param {Number} lat Latitude of start location.
+   * @param {Number} long Longitude of start location.
+   * @returns {String} The id of the nearest node.
+   */
+  static GetNearestNodeId(graph, lat, long) {
+    let nearestDistance = 100;
+    let nearestNodeId = "none";
+
+    // find the node in the graph which is nearest to our origin
+    graph.forEachNode(node => {
+      const distance = TurfDistance.default(
+        TurfHelpers.point([long, lat]),
+        TurfHelpers.point([node.data.x, node.data.y])
+      );
+
+      // if distance is closer than the last, set it as the current
+      if (distance < nearestDistance) {
+        nearestDistance = distance;
+        nearestNodeId = node.id;
+      }
+    });
+
+    return nearestNodeId;
   }
 }

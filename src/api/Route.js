@@ -24,6 +24,8 @@ SOFTWARE.
 import * as TurfHelpers from "@turf/helpers";
 import * as TurfDistance from "@turf/distance";
 
+import { Graph } from "./Graph";
+
 const path = require("ngraph.path");
 
 /**
@@ -43,11 +45,11 @@ export class Route {
       distance(fromNode, toNode, link) {
         return (
           1 /
-          (link.data.greenScore * 8 +
-            link.data.parkScore * 2 +
-            link.data.closeParkScore * 10 +
-            link.data.mediumParkScore * 5 +
-            link.data.farParkScore * 2 +
+          (link.data.greenScore * 5 +
+            link.data.parkScore * 1 +
+            link.data.closeParkScore * 4 +
+            link.data.mediumParkScore * 2 +
+            link.data.farParkScore * 1 +
             0.0000000000000001)
         );
       },
@@ -109,28 +111,10 @@ export class Route {
     console.log("Staring Find Nature Path");
     return new Promise((resolve, reject) => {
       const paths = [];
-      const nodes = [];
-      let nearestDistance = 100;
-      let nearestNodeId = "none";
-
-      // find the node in the graph which is nearest to our origin
-      graph.forEachNode(node => {
-        const distance = TurfDistance.default(
-          TurfHelpers.point([long, lat]),
-          TurfHelpers.point([node.data.x, node.data.y])
-        );
-
-        // if distance is closer than the last, set it as the current
-        if (distance < nearestDistance) {
-          nearestDistance = distance;
-          nearestNodeId = node.id;
-        }
-
-        nodes.push(node);
-      });
+      const nearestNodeId = Graph.GetNearestNodeId(graph, lat, long);
 
       // find all paths that are possible from the node which is nearest to the input lat/long
-      nodes.map(nodeB => {
+      graph.forEachNode(nodeB => {
         const foundPath = self.Path(graph, nearestNodeId, nodeB.id);
 
         // if it isn't a path to itself, add to list
@@ -154,7 +138,7 @@ export class Route {
    * environment variable 'GMAPS_KEY' will be queried for the value.
    * @returns {Promise<Array>} A list of paths, sorted from most exposed to nature to least.
    */
-  static FindTopNaturePaths(json, apiKey = process.env.GMAPS_KEY) {
+  static ParsePaths(json, apiKey = process.env.GMAPS_KEY) {
     return new Promise((resolve, reject) => {
       const returnObj = [];
 
@@ -162,6 +146,8 @@ export class Route {
       json.map(pathObj => {
         let count = 0;
         let totalGreenScore = 0;
+        let distance = 0;
+        let lastNode = null;
 
         // build google maps url
         let mapUrl = "https://www.google.com/maps/dir/?api=1&";
@@ -179,25 +165,37 @@ export class Route {
           "https://maps.googleapis.com/maps/api/directions/json?"
         );
 
-        // iterate over the path nodes to build a url and calculate totals
+        // iterate over the path nodes to build urls and quantify totals
         pathObj.map(node => {
+          let dist;
           totalGreenScore =
             totalGreenScore + node.data.greenScore + node.data.parkScore;
 
           switch (count) {
             case 0:
               // do nothing, first point in path added above
+              lastNode = node;
               break;
             case pathObj.length + 1:
               // do nothing, last point in path added above
               break;
             default:
+              // add waypoints to map url
               mapUrl = `${mapUrl}%7C${String(node.data.y)},${String(
                 node.data.x
               )}`;
               mapUrlDirections = `${mapUrlDirections}%7C${String(
                 node.data.y
               )},${String(node.data.x)}`;
+
+              // add to path distance
+              dist = TurfDistance.default(
+                TurfHelpers.point([lastNode.data.x, lastNode.data.y]),
+                TurfHelpers.point([node.data.x, node.data.y])
+              );
+
+              lastNode = node;
+              distance += dist;
           }
           count++;
         });
@@ -211,7 +209,9 @@ export class Route {
           path: pathObj.map(node => node.data),
           totalGreenScore,
           mapUrl,
-          mapUrlDirections
+          mapUrlDirections,
+          distance,
+          time: (distance / 3.1) * 60
         });
       });
 

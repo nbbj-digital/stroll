@@ -78,11 +78,11 @@ test("GetGraph", async () => {
 //   expect(paths.length).toBeGreaterThan(50);
 // }, 8000);
 
-test("FindTopNaturePaths", async () => {
+test("ParsePaths", async () => {
   const grid = Geometry.GetPointGrid(47.651588, -122.415078, 1, 0.8);
   const graph = await Graph.GetGraph(grid, 0.9);
   const paths = await Route.PathsAll(graph);
-  const topPaths = await Route.FindTopNaturePaths(paths);
+  const topPaths = await Route.ParsePaths(paths);
 
   expect.anything(topPaths);
   expect(topPaths.length).toBeGreaterThan(50);

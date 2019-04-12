@@ -20,7 +20,7 @@ const grid = stroll.Geometry.GetPointGrid(47.651588, -122.415078, 1, 0.8);
 
 // stroll.Graph.GetGraph(grid, 0.9)
 //   .then(graph => stroll.Route.PathsAll(graph))
-//   .then(paths => stroll.Route.FindTopNaturePaths(paths))
+//   .then(paths => stroll.Route.ParsePaths(paths))
 //   .then(results => {
 //     console.log(results);
 //     console.log(results);
@@ -29,7 +29,7 @@ const grid = stroll.Geometry.GetPointGrid(47.651588, -122.415078, 1, 0.8);
 
 stroll.Graph.GetGraph(grid, 0.9)
   .then(graph => stroll.Route.PathsFrom(graph, 47.651588, -122.415078))
-  .then(paths => stroll.Route.FindTopNaturePaths(paths))
+  .then(paths => stroll.Route.ParsePaths(paths))
   .then(results => {
     console.log(results);
     console.log(results);

@@ -22,7 +22,7 @@ stroll.Graph.GetGraph(grid, 0.9)
 
 stroll.Graph.GetGraph(grid, 0.9)
   .then(graph => stroll.Route.PathsAll(graph))
-  .then(paths => stroll.Route.FindTopNaturePaths(paths))
+  .then(paths => stroll.Route.ParsePaths(paths))
   .then(results => {
     console.log(results);
   })
