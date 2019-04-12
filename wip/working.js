@@ -13,13 +13,13 @@ const grid = stroll.Geometry.GetPointGrid(47.651588, -122.415078, 1, 0.8);
 // });
 
 // stroll.Route.GetGraph(grid, 0.9)
-//   .then(graph => stroll.Route.FindAllNaturePaths(graph))
+//   .then(graph => stroll.Route.PathsAll(graph))
 //   .then(results => {
 //     console.log(results);
 //   });
 
 // stroll.Graph.GetGraph(grid, 0.9)
-//   .then(graph => stroll.Route.FindAllNaturePaths(graph))
+//   .then(graph => stroll.Route.PathsAll(graph))
 //   .then(paths => stroll.Route.FindTopNaturePaths(paths))
 //   .then(results => {
 //     console.log(results);

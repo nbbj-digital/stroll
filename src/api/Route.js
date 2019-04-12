@@ -38,7 +38,7 @@ export class Route {
    * @param {String} idB Node ID of end point.
    * @returns {Object} A ngraph.path object.
    */
-  static FindNaturePath(graph, idA, idB) {
+  static Path(graph, idA, idB) {
     const pathFinder = path.aStar(graph, {
       distance(fromNode, toNode, link) {
         return (
@@ -66,7 +66,7 @@ export class Route {
    * @param {Graph} graph A ngraph.graph object with the nature-score data properties applied.
    * @returns {Promise<Array>} An array of all possible paths;
    */
-  static FindAllNaturePaths(graph) {
+  static PathsAll(graph) {
     const self = this;
     console.log("Staring Find Nature Path");
     return new Promise((resolve, reject) => {
@@ -81,7 +81,7 @@ export class Route {
       nodes.map(nodeA => {
         // tier 2 loop
         nodes.map(nodeB => {
-          const foundPath = self.FindNaturePath(graph, nodeA.id, nodeB.id);
+          const foundPath = self.Path(graph, nodeA.id, nodeB.id);
 
           // if it isn't a path to itself, add to list
           if (foundPath.length > 1) {
@@ -131,7 +131,7 @@ export class Route {
 
       // find all paths that are possible from the node which is nearest to the input lat/long
       nodes.map(nodeB => {
-        const foundPath = self.FindNaturePath(graph, nearestNodeId, nodeB.id);
+        const foundPath = self.Path(graph, nearestNodeId, nodeB.id);
 
         // if it isn't a path to itself, add to list
         if (foundPath.length > 1) {
@@ -149,7 +149,7 @@ export class Route {
   /**
    * Get graph data from the points which are walkable given an origin lat/long, radius, and
    * distance between points for creation of a grid. Sort with the top nature walks first.
-   * @param {Object} json The raw path output of FindAllNaturePaths().
+   * @param {Object} json The raw path output of PathsAll().
    * @param {String} apiKey (Optional) GoogleMaps API Key for the request. If none is provided, a process
    * environment variable 'GMAPS_KEY' will be queried for the value.
    * @returns {Promise<Array>} A list of paths, sorted from most exposed to nature to least.

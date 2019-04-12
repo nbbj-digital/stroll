@@ -358,15 +358,15 @@
                     <li class='h5'><span>Static members</span></li>
                     
                       <li><a
-                        href='#routefindnaturepath'
+                        href='#routepath'
                         class='regular pre-open'>
-                        .FindNaturePath
+                        .Path
                       </a></li>
                     
                       <li><a
-                        href='#routefindallnaturepaths'
+                        href='#routeallpaths'
                         class='regular pre-open'>
-                        .FindAllNaturePaths
+                        .PathsAll
                       </a></li>
                     
                       <li><a
@@ -404,15 +404,15 @@
                     <li class='h5'><span>Static members</span></li>
                     
                       <li><a
-                        href='#routefindnaturepath'
+                        href='#routepath'
                         class='regular pre-open'>
-                        .FindNaturePath
+                        .Path
                       </a></li>
                     
                       <li><a
-                        href='#routefindallnaturepaths'
+                        href='#routeallpaths'
                         class='regular pre-open'>
-                        .FindAllNaturePaths
+                        .PathsAll
                       </a></li>
                     
                       <li><a
@@ -3116,11 +3116,11 @@ environment variable 'GMAPS_KEY' will be queried for the value.
     <div class='py1 quiet mt1 prose-big'>Static Members</div>
     <div class="clearfix">
   
-    <div class='border-bottom' id='routefindnaturepath'>
+    <div class='border-bottom' id='routepath'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>FindNaturePath(graph, idA, idB)</span>
+            <span class='code strong strong truncate'>Path(graph, idA, idB)</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -3131,7 +3131,7 @@ environment variable 'GMAPS_KEY' will be queried for the value.
   <p>Find a path between two nodes on the graph, weighted by the 'Green Score' weight of the nodes
 along the potential path.</p>
 
-    <div class='pre p1 fill-light mt0'>FindNaturePath(graph: <a href="#graph">Graph</a>, idA: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, idB: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
+    <div class='pre p1 fill-light mt0'>Path(graph: <a href="#graph">Graph</a>, idA: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, idB: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
   
   
 
@@ -3204,11 +3204,11 @@ along the potential path.</p>
       </div>
     </div>
   
-    <div class='border-bottom' id='routefindallnaturepaths'>
+    <div class='border-bottom' id='routeallpaths'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>FindAllNaturePaths(graph)</span>
+            <span class='code strong strong truncate'>PathsAll(graph)</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -3218,7 +3218,7 @@ along the potential path.</p>
 
   <p>Compute all possible paths within the graph.</p>
 
-    <div class='pre p1 fill-light mt0'>FindAllNaturePaths(graph: <a href="#graph">Graph</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>></div>
+    <div class='pre p1 fill-light mt0'>PathsAll(graph: <a href="#graph">Graph</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>></div>
   
   
 
@@ -3393,7 +3393,7 @@ distance between points for creation of a grid. Sort with the top nature walks f
         <div class='space-bottom0'>
           <div>
             <span class='code bold'>json</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
-	    The raw path output of FindAllNaturePaths().
+	    The raw path output of PathsAll().
 
           </div>
           
@@ -3495,11 +3495,11 @@ environment variable 'GMAPS_KEY' will be queried for the value.
     <div class='py1 quiet mt1 prose-big'>Static Members</div>
     <div class="clearfix">
   
-    <div class='border-bottom' id='routefindnaturepath'>
+    <div class='border-bottom' id='routepath'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>FindNaturePath(graph, idA, idB)</span>
+            <span class='code strong strong truncate'>Path(graph, idA, idB)</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -3510,7 +3510,7 @@ environment variable 'GMAPS_KEY' will be queried for the value.
   <p>Find a path between two nodes on the graph, weighted by the 'Green Score' weight of the nodes
 along the potential path.</p>
 
-    <div class='pre p1 fill-light mt0'>FindNaturePath(graph: <a href="#graph">Graph</a>, idA: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, idB: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
+    <div class='pre p1 fill-light mt0'>Path(graph: <a href="#graph">Graph</a>, idA: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, idB: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
   
   
 
@@ -3583,11 +3583,11 @@ along the potential path.</p>
       </div>
     </div>
   
-    <div class='border-bottom' id='routefindallnaturepaths'>
+    <div class='border-bottom' id='routeallpaths'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>FindAllNaturePaths(graph)</span>
+            <span class='code strong strong truncate'>PathsAll(graph)</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -3597,7 +3597,7 @@ along the potential path.</p>
 
   <p>Compute all possible paths within the graph.</p>
 
-    <div class='pre p1 fill-light mt0'>FindAllNaturePaths(graph: <a href="#graph">Graph</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>></div>
+    <div class='pre p1 fill-light mt0'>PathsAll(graph: <a href="#graph">Graph</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>></div>
   
   
 
@@ -3772,7 +3772,7 @@ distance between points for creation of a grid. Sort with the top nature walks f
         <div class='space-bottom0'>
           <div>
             <span class='code bold'>json</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
-	    The raw path output of FindAllNaturePaths().
+	    The raw path output of PathsAll().
 
           </div>
           

@@ -69,18 +69,18 @@
     -   [GetClosestColorName][65]
         -   [Parameters][66]
 -   [Route][67]
-    -   [FindNaturePath][68]
+    -   [Path][68]
         -   [Parameters][69]
-    -   [FindAllNaturePaths][70]
+    -   [PathsAll][70]
         -   [Parameters][71]
     -   [PathsFrom][72]
         -   [Parameters][73]
     -   [FindTopNaturePaths][74]
         -   [Parameters][75]
 -   [Route][76]
-    -   [FindNaturePath][77]
+    -   [Path][77]
         -   [Parameters][78]
-    -   [FindAllNaturePaths][79]
+    -   [PathsAll][79]
         -   [Parameters][80]
     -   [PathsFrom][81]
         -   [Parameters][82]
@@ -493,7 +493,7 @@ Returns **[string][86]** A color name.
 
 Route-related data for analysis.
 
-### FindNaturePath
+### Path
 
 Find a path between two nodes on the graph, weighted by the 'Green Score' weight of the nodes
 along the potential path.
@@ -506,7 +506,7 @@ along the potential path.
 
 Returns **[Object][90]** A ngraph.path object.
 
-### FindAllNaturePaths
+### PathsAll
 
 Compute all possible paths within the graph.
 
@@ -535,7 +535,7 @@ distance between points for creation of a grid. Sort with the top nature walks f
 
 #### Parameters
 
--   `json` **[Object][90]** The raw path output of FindAllNaturePaths().
+-   `json` **[Object][90]** The raw path output of PathsAll().
 -   `apiKey` **[String][86]** (Optional) GoogleMaps API Key for the request. If none is provided, a process
     environment variable 'GMAPS_KEY' will be queried for the value. (optional, default `process.env.GMAPS_KEY`)
 
@@ -545,7 +545,7 @@ Returns **[Promise][87]&lt;[Array][85]>** A list of paths, sorted from most expo
 
 Module for computing the actual routes.
 
-### FindNaturePath
+### Path
 
 Find a path between two nodes on the graph, weighted by the 'Green Score' weight of the nodes
 along the potential path.
@@ -558,7 +558,7 @@ along the potential path.
 
 Returns **[Object][90]** A ngraph.path object.
 
-### FindAllNaturePaths
+### PathsAll
 
 Compute all possible paths within the graph.
 
@@ -587,7 +587,7 @@ distance between points for creation of a grid. Sort with the top nature walks f
 
 #### Parameters
 
--   `json` **[Object][90]** The raw path output of FindAllNaturePaths().
+-   `json` **[Object][90]** The raw path output of PathsAll().
 -   `apiKey` **[String][86]** (Optional) GoogleMaps API Key for the request. If none is provided, a process
     environment variable 'GMAPS_KEY' will be queried for the value. (optional, default `process.env.GMAPS_KEY`)
 
@@ -727,11 +727,11 @@ Returns **[Promise][87]&lt;[Array][85]>** A list of paths, sorted from most expo
 
 [67]: #route
 
-[68]: #findnaturepath
+[68]: #path
 
 [69]: #parameters-28
 
-[70]: #findallnaturepaths
+[70]: #allpaths
 
 [71]: #parameters-29
 
@@ -745,11 +745,11 @@ Returns **[Promise][87]&lt;[Array][85]>** A list of paths, sorted from most expo
 
 [76]: #route-1
 
-[77]: #findnaturepath-1
+[77]: #path-1
 
 [78]: #parameters-32
 
-[79]: #findallnaturepaths-1
+[79]: #allpaths-1
 
 [80]: #parameters-33
 

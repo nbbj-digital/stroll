@@ -78,7 +78,7 @@ Building graphs and calculating paths of travel.
 let grid = RouteData.GetPointGrid(47.660273, -122.409887, 1, 0.5);
 
 Route.GetGraph(grid, 0.7) // get a graph from point grid
-  .then(graph => RouteData.FindAllNaturePaths(graph)) // find all possible paths
+  .then(graph => RouteData.PathsAll(graph)) // find all possible paths
   .then(paths => RouteData.FindTopNaturePaths(paths)) // return sorted paths
   .then(results => {
     console.log(results); // do something with results (array of all possible paths)
