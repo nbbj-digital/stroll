@@ -245,6 +245,12 @@
                         .GetGraph
                       </a></li>
                     
+                      <li><a
+                        href='#graphgetnearestnodeid'
+                        class='regular pre-open'>
+                        .GetNearestNodeId
+                      </a></li>
+                    
                     </ul>
                   
                   
@@ -279,6 +285,12 @@
                         .GetGraph
                       </a></li>
                     
+                      <li><a
+                        href='#graphgetnearestnodeid'
+                        class='regular pre-open'>
+                        .GetNearestNodeId
+                      </a></li>
+                    
                     </ul>
                   
                   
@@ -364,7 +376,7 @@
                       </a></li>
                     
                       <li><a
-                        href='#routeallpaths'
+                        href='#routepathsall'
                         class='regular pre-open'>
                         .PathsAll
                       </a></li>
@@ -376,7 +388,13 @@
                       </a></li>
                     
                       <li><a
-                        href='#routefindtopnaturepaths'
+                        href='#routepathsloop'
+                        class='regular pre-open'>
+                        .PathsLoop
+                      </a></li>
+                    
+                      <li><a
+                        href='#routeparsepaths'
                         class='regular pre-open'>
                         .ParsePaths
                       </a></li>
@@ -410,7 +428,7 @@
                       </a></li>
                     
                       <li><a
-                        href='#routeallpaths'
+                        href='#routepathsall'
                         class='regular pre-open'>
                         .PathsAll
                       </a></li>
@@ -422,7 +440,13 @@
                       </a></li>
                     
                       <li><a
-                        href='#routefindtopnaturepaths'
+                        href='#routepathsloop'
+                        class='regular pre-open'>
+                        .PathsLoop
+                      </a></li>
+                    
+                      <li><a
+                        href='#routeparsepaths'
                         class='regular pre-open'>
                         .ParsePaths
                       </a></li>
@@ -2533,6 +2557,93 @@ environment variable 'GMAPS_KEY' will be queried for the value.
       </div>
     </div>
   
+    <div class='border-bottom' id='graphgetnearestnodeid'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>GetNearestNodeId(graph, lat, long)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Find the node in the graph which is nearest to the lat/long provided.</p>
+
+    <div class='pre p1 fill-light mt0'>GetNearestNodeId(graph: <a href="#graph">Graph</a>, lat: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, long: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>graph</span> <code class='quiet'>(<a href="#graph">Graph</a>)</code>
+	    A ngraph.graph object with the nature-score data properties applied.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>lat</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
+	    Latitude of start location.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>long</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
+	    Longitude of start location.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></code>:
+        The id of the nearest node.
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
 </div>
 
   
@@ -2737,6 +2848,93 @@ environment variable 'GMAPS_KEY' will be queried for the value.
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#graph">Graph</a></code>:
         A ngraph.graph object.
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='graphgetnearestnodeid'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>GetNearestNodeId(graph, lat, long)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Find the node in the graph which is nearest to the lat/long provided.</p>
+
+    <div class='pre p1 fill-light mt0'>GetNearestNodeId(graph: <a href="#graph">Graph</a>, lat: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, long: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>graph</span> <code class='quiet'>(<a href="#graph">Graph</a>)</code>
+	    A ngraph.graph object with the nature-score data properties applied.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>lat</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
+	    Latitude of start location.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>long</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
+	    Longitude of start location.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></code>:
+        The id of the nearest node.
 
       
     
@@ -3204,7 +3402,7 @@ along the potential path.</p>
       </div>
     </div>
   
-    <div class='border-bottom' id='routeallpaths'>
+    <div class='border-bottom' id='routepathsall'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
@@ -3360,7 +3558,94 @@ along the potential path.</p>
       </div>
     </div>
   
-    <div class='border-bottom' id='routefindtopnaturepaths'>
+    <div class='border-bottom' id='routepathsloop'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>PathsLoop(graph, lat, long)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Compute all possible looping paths within the graph which start and end at the given lat/long.</p>
+
+    <div class='pre p1 fill-light mt0'>PathsLoop(graph: <a href="#graph">Graph</a>, lat: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, long: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>graph</span> <code class='quiet'>(<a href="#graph">Graph</a>)</code>
+	    A ngraph.graph object with the nature-score data properties applied.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>lat</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
+	    Latitude of start location.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>long</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
+	    Longitude of start location.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>></code>:
+        An array of all possible paths;
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='routeparsepaths'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
@@ -3583,7 +3868,7 @@ along the potential path.</p>
       </div>
     </div>
   
-    <div class='border-bottom' id='routeallpaths'>
+    <div class='border-bottom' id='routepathsall'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
@@ -3739,7 +4024,94 @@ along the potential path.</p>
       </div>
     </div>
   
-    <div class='border-bottom' id='routefindtopnaturepaths'>
+    <div class='border-bottom' id='routepathsloop'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>PathsLoop(graph, lat, long)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Compute all possible looping paths within the graph which start and end at the given lat/long.</p>
+
+    <div class='pre p1 fill-light mt0'>PathsLoop(graph: <a href="#graph">Graph</a>, lat: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, long: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>graph</span> <code class='quiet'>(<a href="#graph">Graph</a>)</code>
+	    A ngraph.graph object with the nature-score data properties applied.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>lat</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
+	    Latitude of start location.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>long</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
+	    Longitude of start location.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>></code>:
+        An array of all possible paths;
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='routeparsepaths'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
