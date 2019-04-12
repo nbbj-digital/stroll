@@ -131,6 +131,43 @@ export class Route {
   }
 
   /**
+   * Compute all possible looping paths within the graph which start and end at the given lat/long.
+   * @param {Graph} graph A ngraph.graph object with the nature-score data properties applied.
+   * @param {Number} lat Latitude of start location.
+   * @param {Number} long Longitude of start location.
+   * @returns {Promise<Array>} An array of all possible paths;
+   */
+  static PathsLoop(graph, lat, long) {
+    const self = this;
+    console.log("Staring Find Nature Path");
+    return new Promise((resolve, reject) => {
+      const paths = [];
+      const nearestNodeId = Graph.GetNearestNodeId(graph, lat, long);
+
+      // find all paths that are possible from the node which is nearest to the input lat/long
+      graph.forEachNode(nodeB => {
+        const foundPath = self.Path(graph, nearestNodeId, nodeB.id);
+
+        // if the first trip exists
+        if (foundPath.length > 1) {
+          // compute the return trip
+          const foundPathReturn = self.Path(graph, nodeB.id, nearestNodeId);
+
+          if (foundPathReturn.length > 1) {
+            paths.push(foundPath.concat(foundPathReturn));
+          }
+        }
+      });
+
+      if (paths.length < 1) {
+        reject(paths);
+      }
+
+      resolve(paths);
+    }).catch(err => console.error(err));
+  }
+
+  /**
    * Get graph data from the points which are walkable given an origin lat/long, radius, and
    * distance between points for creation of a grid. Sort with the top nature walks first.
    * @param {Object} json The raw path output of PathsAll().
@@ -151,12 +188,13 @@ export class Route {
 
         // build google maps url
         let mapUrl = "https://www.google.com/maps/dir/?api=1&";
-        mapUrl = `${mapUrl}origin=${String(pathObj[0].data.y)},${String(
-          pathObj[0].data.x
-        )}`;
-        mapUrl = `${mapUrl}&destination=${String(
+        mapUrl = `${mapUrl}origin=${String(
           pathObj.slice(-1)[0].data.y
         )},${String(pathObj.slice(-1)[0].data.x)}`;
+
+        mapUrl = `${mapUrl}&destination=${String(pathObj[0].data.y)},${String(
+          pathObj[0].data.x
+        )}`;
         mapUrl += "&waypoints=";
 
         // build endpoint for google maps directions

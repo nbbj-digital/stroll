@@ -23,7 +23,6 @@ const grid = stroll.Geometry.GetPointGrid(47.651588, -122.415078, 1, 0.8);
 //   .then(paths => stroll.Route.ParsePaths(paths))
 //   .then(results => {
 //     console.log(results);
-//     console.log(results);
 //   })
 //   .catch(err => console.error(err));
 
@@ -35,6 +34,15 @@ stroll.Graph.GetGraph(grid, 0.9)
     console.log(results);
   })
   .catch(err => console.error(err));
+
+// stroll.Graph.GetGraph(grid, 0.9)
+//   .then(graph => stroll.Route.PathsLoop(graph, 47.651588, -122.415078))
+//   .then(paths => stroll.Route.ParsePaths(paths))
+//   .then(results => {
+//     console.log(results);
+//     console.log(results);
+//   })
+//   .catch(err => console.error(err));
 
 // // YELP DATA
 // stroll.Place.ParkSearch(47.660273, -122.409887, 2000).then(results => {
