@@ -154,7 +154,7 @@ export class Route {
           const foundPathReturn = self.Path(graph, nodeB.id, nearestNodeId);
 
           if (foundPathReturn.length > 1) {
-            paths.push(foundPath.concat(foundPathReturn));
+            paths.push(foundPath.concat(foundPathReturn.reverse()));
           }
         }
       });
