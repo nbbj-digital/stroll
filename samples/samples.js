@@ -11,7 +11,7 @@ stroll.Graph.GetGraphData(grid, 0.3).then(results => {
 });
 
 stroll.Graph.GetGraph(grid, 0.9).then(graph => {
-  console.log(results);
+  console.log(graph);
 });
 
 stroll.Graph.GetGraph(grid, 0.9)
@@ -22,6 +22,22 @@ stroll.Graph.GetGraph(grid, 0.9)
 
 stroll.Graph.GetGraph(grid, 0.9)
   .then(graph => stroll.Route.PathsAll(graph))
+  .then(paths => stroll.Route.ParsePaths(paths))
+  .then(results => {
+    console.log(results);
+  })
+  .catch(err => console.error(err));
+
+stroll.Graph.GetGraph(grid, 0.9)
+  .then(graph => stroll.Route.PathsFrom(graph, 47.651588, -122.415078))
+  .then(paths => stroll.Route.ParsePaths(paths))
+  .then(results => {
+    console.log(results);
+  })
+  .catch(err => console.error(err));
+
+stroll.Graph.GetGraph(grid, 0.9)
+  .then(graph => stroll.Route.PathsLoop(graph, 47.651588, -122.415078))
   .then(paths => stroll.Route.ParsePaths(paths))
   .then(results => {
     console.log(results);
