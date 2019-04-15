@@ -1,5 +1,5 @@
 
-![first path](assets/screenshots/tree.png)
+![first path](assets/logo/strollLogo.png)
 
 # Stroll
 
