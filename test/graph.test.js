@@ -2,7 +2,7 @@
  * @jest-environment node
  */
 
-import { Route, Geometry, Graph } from "../src";
+import { Geometry, Graph } from "../src";
 
 test("GetPointGrid", () => {
   const result = Geometry.GetPointGrid(47.651588, -122.415078, 0.5, 0.2);
@@ -67,25 +67,4 @@ test("GetGraph", async () => {
     expect(node.data.x).not.toBeNaN();
     expect(node.data.y).not.toBeNaN();
   });
-}, 8000);
-
-// test("PathsAll", async () => {
-//   const grid = Geometry.GetPointGrid(47.651588, -122.415078, 1, 0.8);
-//   const graph = await Route.GetGraph(grid, 0.9);
-//   const paths = await Route.PathsAll(graph);
-
-//   expect.anything(paths);
-//   expect(paths.length).toBeGreaterThan(50);
-// }, 8000);
-
-test("ParsePaths", async () => {
-  const grid = Geometry.GetPointGrid(47.651588, -122.415078, 1, 0.8);
-  const graph = await Graph.GetGraph(grid, 0.9);
-  const paths = await Route.PathsAll(graph);
-  const topPaths = await Route.ParsePaths(paths);
-
-  expect.anything(topPaths);
-  expect(topPaths.length).toBeGreaterThan(50);
-  expect(topPaths[0].totalGreenScore).toBeGreaterThan(1);
-  expect(topPaths[0].path.length).toBeGreaterThan(1);
 }, 8000);

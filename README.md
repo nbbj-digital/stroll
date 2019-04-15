@@ -14,7 +14,7 @@ Originally started at the [TT West AEC Hackathon in Seattle, 2019](http://core.t
 
 ## Proof of Concept
 
-Currently, the library computes only an A to B path within the boundaries of the user-defined grid (created from the user's origin and desired radius). Future development will target more route-finding options such as loops, distance constraints, sun/shade preferences, etc.
+Currently, the library computes paths within the boundaries of the user-defined grid (created from the user's origin and desired radius). Future development will target more route-finding options such as loops, distance constraints, sun/shade preferences, etc.
 
 ![first path](assets/screenshots/firstMap.png)
 
@@ -55,12 +55,12 @@ import * as Stroll from from "@nbbj/stroll"; // from npm
 
 ```js
 // from source
-const ColorParse = require('./ColorParse');
-const Place = requirePlaceDataa');
-const Weather = require('./WWeather Route = require('./RRoutWeather
+const Color = require('./Color');
+const Place = require('./Place');
+const Weather = require('./Weather');
 
-const { RouteData } = require('@nbbj/stroll');
-const { ColorParse } = require('@nbbj/stroll');
+const { Route } = require('@nbbj/stroll');
+const { Color } = require('@nbbj/stroll');
 import { Weather, Place, Color, Route } from "@nbbj/stroll"; // es6
 ```
 
