@@ -148,12 +148,13 @@ export class Route {
       graph.forEachNode(nodeB => {
         const foundPath = self.Path(graph, nearestNodeId, nodeB.id);
 
-        // if the first trip exists
+        // if the first trip exists, compute the return trip
         if (foundPath.length > 1) {
-          // compute the return trip
           const foundPathReturn = self.Path(graph, nodeB.id, nearestNodeId);
 
           if (foundPathReturn.length > 1) {
+            // join the one way trip with the return trip. add the end point to the start to complete
+            // the loop when parsing with the ParsePaths method laster
             const rawPath = foundPath.concat(foundPathReturn.reverse());
             rawPath.unshift(rawPath[rawPath.length - 1]);
             paths.push(rawPath);
@@ -216,8 +217,15 @@ export class Route {
               // do nothing, first point in path added above
               lastNode = node;
               break;
-            case pathObj.length + 1:
-              // do nothing, last point in path added above
+            case pathObj.length - 1:
+              // last point, add to path distance, but don't add as waypoint
+              dist = TurfDistance.default(
+                TurfHelpers.point([lastNode.data.x, lastNode.data.y]),
+                TurfHelpers.point([node.data.x, node.data.y])
+              );
+
+              lastNode = node;
+              distance += dist;
               break;
             default:
               // add waypoints to map url
