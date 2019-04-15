@@ -1,8 +1,6 @@
 
 ![first path](assets/logo/strollLogo.png)
 
-# Stroll
-
 [![Generic badge](https://img.shields.io/badge/Docs-Web-Green.svg)](https://nbbj-digital.github.io/stroll/) [![Generic badge](https://img.shields.io/badge/Docs-MD-Green.svg)](docs/README.md) [![Generic badge](https://img.shields.io/badge/Samples-JS-Green.svg)](samples/strollSamples.js) ![NPM](https://img.shields.io/npm/l/@nbbj/stroll.svg)
 
 [![npm](https://img.shields.io/npm/v/@nbbj/stroll.svg)](https://www.npmjs.com/package/@nbbj/stroll) [![npm bundle size](https://img.shields.io/bundlephobia/min/@nbbj/stroll.svg)](https://bundlephobia.com/result?p=@nbbj/stroll) [![npm](https://img.shields.io/npm/dw/@nbbj/stroll.svg)](https://www.npmjs.com/package/@nbbj/stroll) [![npm2](https://img.shields.io/npm/dt/@nbbj/stroll.svg)](https://www.npmjs.com/package/@nbbj/stroll)
