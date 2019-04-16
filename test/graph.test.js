@@ -4,23 +4,23 @@
 
 import { Geometry, Graph } from "../src";
 
-test("GetPointGrid", () => {
-  const result = Geometry.GetPointGrid(47.651588, -122.415078, 0.5, 0.2);
+test("PointGrid", () => {
+  const result = Geometry.PointGrid(47.651588, -122.415078, 0.5, 0.2);
   console.log("POINT GRID", result.features.length);
   expect.anything(result.features);
   expect(result.features.length).toBeGreaterThan(10);
 });
 
-test("GetRandomPointGrid", () => {
-  const points = Geometry.GetRandomPointGrid(-90.54863, 14.616599, 1, 10);
+test("PointGridRandom", () => {
+  const points = Geometry.PointGridRandom(-90.54863, 14.616599, 1, 10);
   console.log("RANDOM POINT GRID", points.features.length);
   expect.anything(points.features);
   expect(points.features.length).toBe(10);
 });
 
-test("GetGraphData", async () => {
-  const grid = Geometry.GetPointGrid(47.651588, -122.415078, 1, 0.8);
-  const result = await Graph.GetGraphData(grid);
+test("GetData", async () => {
+  const grid = Geometry.PointGrid(47.651588, -122.415078, 1, 0.8);
+  const result = await Graph.GetData(grid);
 
   function greenScore(item) {
     return item.greenScore;
@@ -51,9 +51,9 @@ test("GetGraphData", async () => {
   expect(parkScoreSum).toBeGreaterThan(0);
 }, 8000);
 
-test("GetGraph", async () => {
-  const grid = Geometry.GetPointGrid(47.651588, -122.415078, 1, 0.8);
-  const graph = await Graph.GetGraph(grid, 0.9);
+test("Create", async () => {
+  const grid = Geometry.PointGrid(47.651588, -122.415078, 1, 0.8);
+  const graph = await Graph.Create(grid, 0.9);
 
   expect.anything(graph);
 

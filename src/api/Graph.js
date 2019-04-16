@@ -42,7 +42,7 @@ export class Graph {
    * environment variable 'GMAPS_KEY' will be queried for the value.
    * @returns {Promise<Array>} A ngraph.graph object.
    */
-  static GetGraphData(grid, apiKey = process.env.GMAPS_KEY) {
+  static GetData(grid, apiKey = process.env.GMAPS_KEY) {
     console.log("Staring Get Graph Data");
     const promises = [];
 
@@ -52,7 +52,7 @@ export class Graph {
         const { coordinates } = point.geometry;
 
         // get color palette analysis from google street view images
-        Color.GetPaletteAnalysis(coordinates[1], coordinates[0], apiKey)
+        Color.PaletteAnalysis(coordinates[1], coordinates[0], apiKey)
           .then(greenScore => {
             // get nearby parks and categorize based on distance from origin point
             Place.ParkSearch(+coordinates[1], +coordinates[0], 1000, apiKey)
@@ -101,14 +101,14 @@ export class Graph {
    * environment variable 'GMAPS_KEY' will be queried for the value.
    * @returns {Graph} A ngraph.graph object.
    */
-  static GetGraph(grid, linkTolerance, apiKey = process.env.GMAPS_KEY) {
+  static Create(grid, linkTolerance, apiKey = process.env.GMAPS_KEY) {
     console.log(
       `Staring Get Graph | Grid Size: ${String(grid.features.length)}`
     );
     const self = this;
     return new Promise((resolve, reject) => {
       self
-        .GetGraphData(grid, apiKey)
+        .GetData(grid, apiKey)
         .then(points => {
           const graph = createGraph();
           points.map(o => {
@@ -170,7 +170,7 @@ export class Graph {
    * @param {Number} long Longitude of start location.
    * @returns {String} The id of the nearest node.
    */
-  static GetNearestNodeId(graph, lat, long) {
+  static NearestNodeId(graph, lat, long) {
     let nearestDistance = 100;
     let nearestNodeId = "none";
 

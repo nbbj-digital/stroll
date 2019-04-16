@@ -39,7 +39,7 @@ export class Geometry {
    * @param {Number} radius The radius of the bounding geometry from the given lat/long origin.
    * @returns {BBox} A Turf.js bounding box object.
    */
-  static BoundingBoxRadius(lat, long, radius) {
+  static BoundingBoxByRadius(lat, long, radius) {
     const point = TurfHelpers.point([long, lat]);
     const buffer = TurfCircle.default(point, radius);
     return TurfBBox.default(buffer);
@@ -54,8 +54,8 @@ export class Geometry {
    * @param {Number} numPoints How many points to return
    * @returns {FeatureCollection<Point, any>} A collection of Turf.JS points.
    */
-  static GetRandomPointGrid(lat, long, radius, numPoints) {
-    const bbox = this.BoundingBoxRadius(lat, long, radius);
+  static PointGridRandom(lat, long, radius, numPoints) {
+    const bbox = this.BoundingBoxByRadius(lat, long, radius);
     return TurfRandom.randomPoint(numPoints, bbox);
   }
 
@@ -68,8 +68,8 @@ export class Geometry {
    * @param {Number} pointDist How far apart the points should be in the point grid.
    * @returns {Array<Point>} A collection of Turf.JS points.
    */
-  static GetPointGrid(lat, long, radius, pointDist) {
-    const bbox = this.BoundingBoxRadius(lat, long, radius);
+  static PointGrid(lat, long, radius, pointDist) {
+    const bbox = this.BoundingBoxByRadius(lat, long, radius);
     return TurfPointGrid.default(bbox, pointDist);
   }
 }

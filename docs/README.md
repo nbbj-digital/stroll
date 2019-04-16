@@ -3,42 +3,42 @@
 ### Table of Contents
 
 -   [Graph][1]
-    -   [GetGraphData][2]
+    -   [GetData][2]
         -   [Parameters][3]
-    -   [GetGraph][4]
+    -   [Create][4]
         -   [Parameters][5]
-    -   [GetNearestNodeId][6]
+    -   [NearestNodeId][6]
         -   [Parameters][7]
 -   [Graph][8]
-    -   [GetGraphData][9]
+    -   [GetData][9]
         -   [Parameters][10]
-    -   [GetGraph][11]
+    -   [Create][11]
         -   [Parameters][12]
-    -   [GetNearestNodeId][13]
+    -   [NearestNodeId][13]
         -   [Parameters][14]
 -   [Geometry][15]
-    -   [BoundingBoxRadius][16]
+    -   [BoundingBoxByRadius][16]
         -   [Parameters][17]
-    -   [GetRandomPointGrid][18]
+    -   [PointGridRandom][18]
         -   [Parameters][19]
-    -   [GetPointGrid][20]
+    -   [PointGrid][20]
         -   [Parameters][21]
 -   [Geometry][22]
-    -   [BoundingBoxRadius][23]
+    -   [BoundingBoxByRadius][23]
         -   [Parameters][24]
-    -   [GetRandomPointGrid][25]
+    -   [PointGridRandom][25]
         -   [Parameters][26]
-    -   [GetPointGrid][27]
+    -   [PointGrid][27]
         -   [Parameters][28]
 -   [Weather][29]
-    -   [GetSunPositionToday][30]
+    -   [SunPositionToday][30]
         -   [Parameters][31]
-    -   [GetSunPosition][32]
+    -   [SunPosition][32]
         -   [Parameters][33]
 -   [Weather][34]
-    -   [GetSunPositionToday][35]
+    -   [SunPositionToday][35]
         -   [Parameters][36]
-    -   [GetSunPosition][37]
+    -   [SunPosition][37]
         -   [Parameters][38]
 -   [Place][39]
     -   [ParkSearch][40]
@@ -49,28 +49,28 @@
 -   [Color][45]
     -   [BuildRequest][46]
         -   [Parameters][47]
-    -   [GetPalette][48]
+    -   [Palette][48]
         -   [Parameters][49]
-    -   [GetPaletteNames][50]
+    -   [PaletteNames][50]
         -   [Parameters][51]
-    -   [GetPaletteAnalysis][52]
+    -   [PaletteAnalysis][52]
         -   [Parameters][53]
-    -   [GetClosestShadeName][54]
+    -   [ClosestShadeName][54]
         -   [Parameters][55]
-    -   [GetClosestColorName][56]
+    -   [ClosestColorName][56]
         -   [Parameters][57]
 -   [Color][58]
     -   [BuildRequest][59]
         -   [Parameters][60]
-    -   [GetPalette][61]
+    -   [Palette][61]
         -   [Parameters][62]
-    -   [GetPaletteNames][63]
+    -   [PaletteNames][63]
         -   [Parameters][64]
-    -   [GetPaletteAnalysis][65]
+    -   [PaletteAnalysis][65]
         -   [Parameters][66]
-    -   [GetClosestShadeName][67]
+    -   [ClosestShadeName][67]
         -   [Parameters][68]
-    -   [GetClosestColorName][69]
+    -   [ClosestColorName][69]
         -   [Parameters][70]
 -   [Route][71]
     -   [Path][72]
@@ -99,7 +99,7 @@
 
 ngraph.graph helper functions for weighted graph computation
 
-### GetGraphData
+### GetData
 
 Get graph data from the points which are walkable given an origin lat/long, radius, and
 distance between points for creation of a grid.
@@ -112,7 +112,7 @@ distance between points for creation of a grid.
 
 Returns **[Promise][95]&lt;[Array][93]>** A ngraph.graph object.
 
-### GetGraph
+### Create
 
 Get graph object representing the points which are walkable given an origin lat/long, radius, and
 distance between points for creation of a grid.
@@ -126,7 +126,7 @@ distance between points for creation of a grid.
 
 Returns **[Graph][97]** A ngraph.graph object.
 
-### GetNearestNodeId
+### NearestNodeId
 
 Find the node in the graph which is nearest to the lat/long provided.
 
@@ -142,7 +142,7 @@ Returns **[String][94]** The id of the nearest node.
 
 Module for getting weather-specific data from a place.
 
-### GetGraphData
+### GetData
 
 Get graph data from the points which are walkable given an origin lat/long, radius, and
 distance between points for creation of a grid.
@@ -155,7 +155,7 @@ distance between points for creation of a grid.
 
 Returns **[Promise][95]&lt;[Array][93]>** A ngraph.graph object.
 
-### GetGraph
+### Create
 
 Get graph object representing the points which are walkable given an origin lat/long, radius, and
 distance between points for creation of a grid.
@@ -169,7 +169,7 @@ distance between points for creation of a grid.
 
 Returns **[Graph][97]** A ngraph.graph object.
 
-### GetNearestNodeId
+### NearestNodeId
 
 Find the node in the graph which is nearest to the lat/long provided.
 
@@ -185,7 +185,7 @@ Returns **[String][94]** The id of the nearest node.
 
 Turf.js data and geometry helpers
 
-### BoundingBoxRadius
+### BoundingBoxByRadius
 
 Get a bounding box around a location with a given radius.
 
@@ -197,7 +197,7 @@ Get a bounding box around a location with a given radius.
 
 Returns **BBox** A Turf.js bounding box object.
 
-### GetRandomPointGrid
+### PointGridRandom
 
 Get a collection of random points which fall within a given bounding radius from an origin
 lat/long point.
@@ -211,7 +211,7 @@ lat/long point.
 
 Returns **FeatureCollection&lt;Point, any>** A collection of Turf.JS points.
 
-### GetPointGrid
+### PointGrid
 
 Get a collection of points in a gird which fall within a given bounding radius from an origin
 lat/long point.
@@ -229,7 +229,7 @@ Returns **[Array][93]&lt;Point>** A collection of Turf.JS points.
 
 Module for getting Turf.js geometry and helpers.
 
-### BoundingBoxRadius
+### BoundingBoxByRadius
 
 Get a bounding box around a location with a given radius.
 
@@ -241,7 +241,7 @@ Get a bounding box around a location with a given radius.
 
 Returns **BBox** A Turf.js bounding box object.
 
-### GetRandomPointGrid
+### PointGridRandom
 
 Get a collection of random points which fall within a given bounding radius from an origin
 lat/long point.
@@ -255,7 +255,7 @@ lat/long point.
 
 Returns **FeatureCollection&lt;Point, any>** A collection of Turf.JS points.
 
-### GetPointGrid
+### PointGrid
 
 Get a collection of points in a gird which fall within a given bounding radius from an origin
 lat/long point.
@@ -273,7 +273,7 @@ Returns **[Array][93]&lt;Point>** A collection of Turf.JS points.
 
 Weather-related data for analysis.
 
-### GetSunPositionToday
+### SunPositionToday
 
 Get a vector representation of the sun's position at the given location and today's date.
 
@@ -284,7 +284,7 @@ Get a vector representation of the sun's position at the given location and toda
 
 Returns **[Object][98]** An object containing azimuth and sun angle properties.
 
-### GetSunPosition
+### SunPosition
 
 Get a vector representation of the sun's position at the given location and date.
 
@@ -300,7 +300,7 @@ Returns **[Object][98]** An object containing azimuth and sun angle properties.
 
 Module for getting weather-specific data from a place.
 
-### GetSunPositionToday
+### SunPositionToday
 
 Get a vector representation of the sun's position at the given location and today's date.
 
@@ -311,7 +311,7 @@ Get a vector representation of the sun's position at the given location and toda
 
 Returns **[Object][98]** An object containing azimuth and sun angle properties.
 
-### GetSunPosition
+### SunPosition
 
 Get a vector representation of the sun's position at the given location and date.
 
@@ -377,7 +377,7 @@ Build a url request for a google street view image.
 
 Returns **[String][94]** A url for google maps.
 
-### GetPalette
+### Palette
 
 Get the color palette of the image from google street view at the given lat, long, and orientation.
 
@@ -391,7 +391,7 @@ Get the color palette of the image from google street view at the given lat, lon
 
 Returns **[Object][98]** A collection of Objects containing color palette data.
 
-### GetPaletteNames
+### PaletteNames
 
 Get the color palette of a location as names of primary colors
 from google street view at the given lat, long, and orientation. Views will be taken at 0, 90 and 180 degrees
@@ -406,7 +406,7 @@ around the central point.
 
 Returns **[Object][98]** A collection of Objects containing color palette data.
 
-### GetPaletteAnalysis
+### PaletteAnalysis
 
 Get a percentage of "greenery" visible (dominant in the image color palette) in a 360 panorama
 taken at the given latitude/longitude.
@@ -420,7 +420,7 @@ taken at the given latitude/longitude.
 
 Returns **[Promise][95]&lt;[Number][96]>** A decimal percentage of the prevalence of green in the field of view.
 
-### GetClosestShadeName
+### ClosestShadeName
 
 Get the closest color hue name to the input color in hex format.
 
@@ -430,7 +430,7 @@ Get the closest color hue name to the input color in hex format.
 
 Returns **[string][94]** A color name.
 
-### GetClosestColorName
+### ClosestColorName
 
 Get the closest color name to the input color in hex format.
 
@@ -458,7 +458,7 @@ Build a url request for a google street view image.
 
 Returns **[String][94]** A url for google maps.
 
-### GetPalette
+### Palette
 
 Get the color palette of the image from google street view at the given lat, long, and orientation.
 
@@ -472,7 +472,7 @@ Get the color palette of the image from google street view at the given lat, lon
 
 Returns **[Object][98]** A collection of Objects containing color palette data.
 
-### GetPaletteNames
+### PaletteNames
 
 Get the color palette of a location as names of primary colors
 from google street view at the given lat, long, and orientation. Views will be taken at 0, 90 and 180 degrees
@@ -487,7 +487,7 @@ around the central point.
 
 Returns **[Object][98]** A collection of Objects containing color palette data.
 
-### GetPaletteAnalysis
+### PaletteAnalysis
 
 Get a percentage of "greenery" visible (dominant in the image color palette) in a 360 panorama
 taken at the given latitude/longitude.
@@ -501,7 +501,7 @@ taken at the given latitude/longitude.
 
 Returns **[Promise][95]&lt;[Number][96]>** A decimal percentage of the prevalence of green in the field of view.
 
-### GetClosestShadeName
+### ClosestShadeName
 
 Get the closest color hue name to the input color in hex format.
 
@@ -511,7 +511,7 @@ Get the closest color hue name to the input color in hex format.
 
 Returns **[string][94]** A color name.
 
-### GetClosestColorName
+### ClosestColorName
 
 Get the closest color name to the input color in hex format.
 
@@ -651,77 +651,77 @@ Returns **[Promise][95]&lt;[Array][93]>** A list of paths, sorted from most expo
 
 [1]: #graph
 
-[2]: #getgraphdata
+[2]: #getdata
 
 [3]: #parameters
 
-[4]: #getgraph
+[4]: #create
 
 [5]: #parameters-1
 
-[6]: #getnearestnodeid
+[6]: #nearestnodeid
 
 [7]: #parameters-2
 
 [8]: #graph-1
 
-[9]: #getgraphdata-1
+[9]: #getdata-1
 
 [10]: #parameters-3
 
-[11]: #getgraph-1
+[11]: #create-1
 
 [12]: #parameters-4
 
-[13]: #getnearestnodeid-1
+[13]: #nearestnodeid-1
 
 [14]: #parameters-5
 
 [15]: #geometry
 
-[16]: #boundingboxradius
+[16]: #boundingboxbyradius
 
 [17]: #parameters-6
 
-[18]: #getrandompointgrid
+[18]: #pointgridrandom
 
 [19]: #parameters-7
 
-[20]: #getpointgrid
+[20]: #pointgrid
 
 [21]: #parameters-8
 
 [22]: #geometry-1
 
-[23]: #boundingboxradius-1
+[23]: #boundingboxbyradius-1
 
 [24]: #parameters-9
 
-[25]: #getrandompointgrid-1
+[25]: #pointgridrandom-1
 
 [26]: #parameters-10
 
-[27]: #getpointgrid-1
+[27]: #pointgrid-1
 
 [28]: #parameters-11
 
 [29]: #weather
 
-[30]: #getsunpositiontoday
+[30]: #sunpositiontoday
 
 [31]: #parameters-12
 
-[32]: #getsunposition
+[32]: #sunposition
 
 [33]: #parameters-13
 
 [34]: #weather-1
 
-[35]: #getsunpositiontoday-1
+[35]: #sunpositiontoday-1
 
 [36]: #parameters-14
 
-[37]: #getsunposition-1
+[37]: #sunposition-1
 
 [38]: #parameters-15
 
@@ -743,23 +743,23 @@ Returns **[Promise][95]&lt;[Array][93]>** A list of paths, sorted from most expo
 
 [47]: #parameters-18
 
-[48]: #getpalette
+[48]: #palette
 
 [49]: #parameters-19
 
-[50]: #getpalettenames
+[50]: #palettenames
 
 [51]: #parameters-20
 
-[52]: #getpaletteanalysis
+[52]: #paletteanalysis
 
 [53]: #parameters-21
 
-[54]: #getclosestshadename
+[54]: #closestshadename
 
 [55]: #parameters-22
 
-[56]: #getclosestcolorname
+[56]: #closestcolorname
 
 [57]: #parameters-23
 
@@ -769,23 +769,23 @@ Returns **[Promise][95]&lt;[Array][93]>** A list of paths, sorted from most expo
 
 [60]: #parameters-24
 
-[61]: #getpalette-1
+[61]: #palette-1
 
 [62]: #parameters-25
 
-[63]: #getpalettenames-1
+[63]: #palettenames-1
 
 [64]: #parameters-26
 
-[65]: #getpaletteanalysis-1
+[65]: #paletteanalysis-1
 
 [66]: #parameters-27
 
-[67]: #getclosestshadename-1
+[67]: #closestshadename-1
 
 [68]: #parameters-28
 
-[69]: #getclosestcolorname-1
+[69]: #closestcolorname-1
 
 [70]: #parameters-29
 

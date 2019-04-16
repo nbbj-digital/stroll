@@ -66,16 +66,17 @@ import { Weather, Place, Color, Route } from "@nbbj/stroll"; // es6
 
 ### Methods
 
+The collection below is just a sample of methods and may be out of date. For the most recent examples, please see the [samples](samples/) folder in the root directory of this repository.
+
 #### Pathfinding Data
 
 Building graphs and calculating paths of travel.
 
 ```js
-
 // Create a custom grid around a origin lat/long
-let grid = RouteData.GetPointGrid(47.660273, -122.409887, 1, 0.5);
+let grid = Geometry.PointGrid(47.660273, -122.409887, 1, 0.5);
 
-Geometry.GetGraph(grid, 0.7) // get a graph from point grid
+Graph.Create(grid, 0.7) // get a graph from point grid
   .then(graph => Route.PathsAll(graph)) // find all possible paths
   .then(paths => Route.ParsePaths(paths)) // return sorted paths
   .then(results => {
@@ -98,7 +99,7 @@ Place.ParkSearch(47.660273, -122.409887, 1000).then(results => {
 Weather data analysis. Currently not used in the nature score calculation, but itended to be added.
 
 ```js
-let sunData = Weather.GetSunPositionToday(47.6694956, -122.31547389999999);
+let sunData = Weather.SunPositionToday(47.6694956, -122.31547389999999);
 console.log(sunData);
 ```
 
@@ -107,19 +108,19 @@ console.log(sunData);
 Color palette analysis in field of view. Used for calculating how much of the visible color palette at any point on earth (lat/long) is green (nature).
 
 ```js
-Color.GetPalette(46.414382, 10.013988, 151.78).then(colors => {
+Color.Palette(46.414382, 10.013988, 151.78).then(colors => {
   console.log(colors);
 });
 ```
 
 ```js
-Color.GetPaletteNames(46.414382, 10.013988).then(names => {
+Color.PaletteNames(46.414382, 10.013988).then(names => {
   console.log(names);
 })
 ```
 
 ```js
-Color.GetPaletteAnalysis(47.660259, -122.408417).then(result => {
+Color.PaletteAnalysis(47.660259, -122.408417).then(result => {
   console.log(result);
 })
 ```
@@ -156,5 +157,5 @@ npm test # run tests with Jest
 npm run coverage # run tests with coverage and open it on browser
 npm run lint # lint code
 npm run docs # generate docs
-npm run build # generate docs and transpile code
+npm run build # transpile code
 ```

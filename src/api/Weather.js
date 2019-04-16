@@ -34,7 +34,7 @@ export class Weather {
    * @param {Number} long Longitude of location.
    * @returns {Object} An object containing azimuth and sun angle properties.
    */
-  static GetSunPositionToday(lat, long) {
+  static SunPositionToday(lat, long) {
     return suncalc.getPosition(Date.now(), lat, long);
   }
 
@@ -45,7 +45,7 @@ export class Weather {
    * @param {Date} date Date to compute location at.
    * @returns {Object} An object containing azimuth and sun angle properties.
    */
-  static GetSunPosition(lat, long, date) {
+  static SunPosition(lat, long, date) {
     return suncalc.getPosition(date, lat, long);
   }
 }

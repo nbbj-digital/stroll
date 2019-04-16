@@ -111,7 +111,7 @@ export class Route {
     console.log("Staring Find Nature Path");
     return new Promise((resolve, reject) => {
       const paths = [];
-      const nearestNodeId = Graph.GetNearestNodeId(graph, lat, long);
+      const nearestNodeId = Graph.NearestNodeId(graph, lat, long);
 
       // find all paths that are possible from the node which is nearest to the input lat/long
       graph.forEachNode(nodeB => {
@@ -142,7 +142,7 @@ export class Route {
     console.log("Staring Find Nature Path");
     return new Promise((resolve, reject) => {
       const paths = [];
-      const nearestNodeId = Graph.GetNearestNodeId(graph, lat, long);
+      const nearestNodeId = Graph.NearestNodeId(graph, lat, long);
 
       // find all paths that are possible from the node which is nearest to the input lat/long
       graph.forEachNode(nodeB => {

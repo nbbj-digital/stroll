@@ -59,7 +59,7 @@ export class Color {
    * environment variable 'GMAPS_KEY' will be queried for the value.
    * @returns {Object} A collection of Objects containing color palette data.
    */
-  static GetPalette(lat, long, heading, apiKey = process.env.GMAPS_KEY) {
+  static Palette(lat, long, heading, apiKey = process.env.GMAPS_KEY) {
     const self = this;
     return new Promise((resolve, reject) => {
       const url = self.BuildRequest(lat, long, heading, apiKey);
@@ -69,10 +69,10 @@ export class Color {
           // iterate over palette objects, parse color names
           for (const key in palette) {
             if (palette.hasOwnProperty(key)) {
-              palette[key].closestShade = self.GetClosestShadeName(
+              palette[key].closestShade = self.ClosestShadeName(
                 palette[key].hex
               );
-              palette[key].closestColor = self.GetClosestColorName(
+              palette[key].closestColor = self.ClosestColorName(
                 palette[key].hex
               );
             }
@@ -96,7 +96,7 @@ export class Color {
    * environment variable 'GMAPS_KEY' will be queried for the value.
    * @returns {Object} A collection of Objects containing color palette data.
    */
-  static GetPaletteNames(lat, long, apiKey = process.env.GMAPS_KEY) {
+  static PaletteNames(lat, long, apiKey = process.env.GMAPS_KEY) {
     const self = this;
     const bearings = [0, 90, 180];
     const promises = [];
@@ -106,7 +106,7 @@ export class Color {
         const returnList = [];
 
         self
-          .GetPalette(lat, long, b, apiKey)
+          .Palette(lat, long, b, apiKey)
           .then(colors => {
             // iterate over palette objects, parse color names
             for (const key in colors) {
@@ -136,11 +136,11 @@ export class Color {
    * environment variable 'GMAPS_KEY' will be queried for the value.
    * @returns {Promise<Number>} A decimal percentage of the prevalence of green in the field of view.
    */
-  static GetPaletteAnalysis(lat, long, apiKey = process.env.GMAPS_KEY) {
+  static PaletteAnalysis(lat, long, apiKey = process.env.GMAPS_KEY) {
     const self = this;
     return new Promise((resolve, reject) => {
       self
-        .GetPaletteNames(lat, long, apiKey)
+        .PaletteNames(lat, long, apiKey)
         .then(palette => {
           const merged = palette[0].concat(palette[1]).concat(palette[2]);
           const count = merged.reduce((n, val) => {
@@ -160,7 +160,7 @@ export class Color {
    * @param {String} hex Hex code of color to parse.
    * @returns {string} A color name.
    */
-  static GetClosestShadeName(hex) {
+  static ClosestShadeName(hex) {
     const result = ntc.name(hex);
     // let rgb_value = result[0]; // #6495ed : RGB value of closest match
     // let specific_name = result[1]; // Cornflower Blue : Color name of closest match
@@ -176,7 +176,7 @@ export class Color {
    * @param {String} hex Hex code of color to parse.
    * @returns {string} A color name.
    */
-  static GetClosestColorName(hex) {
+  static ClosestColorName(hex) {
     const result = ntc.name(hex);
     return result[1];
   }

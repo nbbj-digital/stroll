@@ -4,8 +4,8 @@
 
 import { Color } from "../src";
 
-test("GetPalette", async () => {
-  const result = await Color.GetPalette(46.414382, 10.013988, 151.78);
+test("Palette", async () => {
+  const result = await Color.Palette(46.414382, 10.013988, 151.78);
   expect(result.DarkMuted.rgb.length).toBe(3);
   expect(result.DarkVibrant.rgb.length).toBe(3);
   expect(result.LightMuted.rgb.length).toBe(3);
@@ -15,12 +15,12 @@ test("GetPalette", async () => {
   expect(result.Vibrant.rgb.length).toBe(3);
 });
 
-test("GetPaletteNames", async () => {
-  const result = await Color.GetPaletteNames(46.414382, 10.013988);
+test("PaletteNames", async () => {
+  const result = await Color.PaletteNames(46.414382, 10.013988);
   expect(result.length).toBe(3);
 });
 
-test("GetPaletteAnalysis", async () => {
-  const result = await Color.GetPaletteAnalysis(47.660259, -122.408417);
+test("PaletteAnalysis", async () => {
+  const result = await Color.PaletteAnalysis(47.660259, -122.408417);
   expect(result).toBeGreaterThan(0.05);
 });
