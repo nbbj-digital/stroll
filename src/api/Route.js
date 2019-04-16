@@ -47,7 +47,7 @@ export class Route {
           1 /
           (link.data.greenScore * 5 +
             link.data.parkScore * 1 +
-            link.data.closeParkScore * 4 +
+            link.data.closeParkScore * 3 +
             link.data.mediumParkScore * 2 +
             link.data.farParkScore * 1 +
             0.0000000000000001)
