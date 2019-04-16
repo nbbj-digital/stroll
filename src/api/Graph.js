@@ -54,6 +54,7 @@ export class Graph {
         // get color palette analysis from google street view images
         Color.PaletteAnalysis(coordinates[1], coordinates[0], apiKey)
           .then(greenScore => {
+            point.properties.greenScore = +greenScore;
             // get nearby parks and categorize based on distance from origin point
             Place.ParkSearch(+coordinates[1], +coordinates[0], 1000, apiKey)
               .then(yelpResult => {
@@ -69,15 +70,11 @@ export class Graph {
                   return park.distance < 1;
                 });
 
-                const returnObj = {
-                  coordinates,
-                  greenScore: +greenScore,
-                  parkScore: yelpResult.length,
-                  closeParkScore: closestParks.length,
-                  mediumParkScore: closeParks.length,
-                  farParkScore: farParks.length
-                };
-                resolve(returnObj);
+                point.properties.parkScore = yelpResult.length;
+                point.properties.closeParkScore = closestParks.length;
+                point.properties.mediumParkScore = closeParks.length;
+                point.properties.farParkScore = farParks.length;
+                resolve(point);
               })
               .catch(err => {
                 console.error(err);
@@ -111,49 +108,53 @@ export class Graph {
         .GetData(grid, apiKey)
         .then(points => {
           const graph = createGraph();
-          points.map(o => {
-            const idA = `${String(o.coordinates[0])}-${String(
-              o.coordinates[1]
+          points.map(point => {
+            const geom = point.geometry;
+            const props = point.properties;
+            const idA = `${String(geom.coordinates[0])}-${String(
+              geom.coordinates[1]
             )}`;
 
             // add nodes to graph
             graph.addNode(idA, {
-              x: +o.coordinates[0],
-              y: +o.coordinates[1],
-              greenScore: o.greenScore,
-              parkScore: o.parkScore,
-              closeParkScore: o.closeParkScore,
-              mediumParkScore: o.mediumParkScore,
-              farParkScore: o.farParkScore
+              x: +geom.coordinates[0],
+              y: +geom.coordinates[1],
+              greenScore: props.greenScore,
+              parkScore: props.parkScore,
+              closeParkScore: props.closeParkScore,
+              mediumParkScore: props.mediumParkScore,
+              farParkScore: props.farParkScore
             });
 
-            points.map(o2 => {
-              const idB = `${String(o2.coordinates[0])}-${String(
-                o2.coordinates[1]
+            // loop over points again to create links
+            points.map(point2 => {
+              const geom2 = point2.geometry;
+              const props2 = point2.properties;
+              const idB = `${String(geom2.coordinates[0])}-${String(
+                geom2.coordinates[1]
               )}`;
-
               const distance = TurfDistance.default(
-                o.coordinates,
-                o2.coordinates
+                geom.coordinates,
+                geom2.coordinates
               );
-              const dx = +o.coordinates[0] - +o2.coordinates[0];
-              const dy = +o.coordinates[1] - +o2.coordinates[1];
+              const dx = +geom.coordinates[0] - +geom2.coordinates[0];
+              const dy = +geom.coordinates[1] - +geom2.coordinates[1];
 
               // if the node is within the tolerance, add it as a walkable link
               if (distance !== 0 && distance < linkTolerance) {
                 graph.addLink(idA, idB, {
-                  greenScore: o.greenScore + o2.greenScore,
-                  parkScore: o.parkScore + o2.parkScore,
-                  closeParkScore: o.closeParkScore + o2.closeParkScore,
-                  mediumParkScore: o.mediumParkScore + o2.mediumParkScore,
-                  farParkScore: o.farParkScore + o2.farParkScore,
+                  greenScore: props.greenScore + props2.greenScore,
+                  parkScore: props.parkScore + props2.parkScore,
+                  closeParkScore: props.closeParkScore + props2.closeParkScore,
+                  mediumParkScore:
+                    props.mediumParkScore + props2.mediumParkScore,
+                  farParkScore: props.farParkScore + props2.farParkScore,
                   distanceEuclidean: Math.abs(Math.sqrt(dx * dx + dy * dy)),
                   distanceTurf: distance
                 });
               }
             });
           });
-
           resolve(graph);
         })
         .catch(err => {
