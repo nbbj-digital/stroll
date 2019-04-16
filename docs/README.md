@@ -119,10 +119,9 @@ distance between points for creation of a grid.
 
 #### Parameters
 
--   `grid` **[Array][93]&lt;Point>** A grid of Turf.js points
+-   `grid` **[Array][93]&lt;Point>** A grid of Turf.js points containing 'properties' objects which contain the data
+    needed (greenScore, parkScore, etc.) to compute the weighted graph.
 -   `linkTolerance` **[Number][96]** The minimum distance between points to be considered a 'link'.
--   `apiKey` **[String][94]** (Optional) GoogleMaps API Key for the request. If none is provided, a process
-    environment variable 'GMAPS_KEY' will be queried for the value. (optional, default `process.env.GMAPS_KEY`)
 
 Returns **[Graph][97]** A ngraph.graph object.
 
@@ -162,10 +161,9 @@ distance between points for creation of a grid.
 
 #### Parameters
 
--   `grid` **[Array][93]&lt;Point>** A grid of Turf.js points
+-   `grid` **[Array][93]&lt;Point>** A grid of Turf.js points containing 'properties' objects which contain the data
+    needed (greenScore, parkScore, etc.) to compute the weighted graph.
 -   `linkTolerance` **[Number][96]** The minimum distance between points to be considered a 'link'.
--   `apiKey` **[String][94]** (Optional) GoogleMaps API Key for the request. If none is provided, a process
-    environment variable 'GMAPS_KEY' will be queried for the value. (optional, default `process.env.GMAPS_KEY`)
 
 Returns **[Graph][97]** A ngraph.graph object.
 

@@ -12,25 +12,23 @@ import * as stroll from from "@nbbj/stroll"; // es6
 // create a point grid to run analysis on
 const grid = stroll.Geometry.PointGrid(47.651588, -122.415078, 1, 0.8);
 
-// get the data to build the weighted graph
-stroll.Graph.GetData(grid, 0.3).then(results => {
-  console.log(results);
-});
-
-// build the weighted graph ('GetData' step imbedded in 'Create' method)
-stroll.Graph.Create(grid, 0.9).then(graph => {
-  console.log(graph);
-});
+// get the data to make up the weighted graph
+stroll.Graph.GetData(grid)
+  .then(grid => {
+    console.log(grid);
+  });
 
 // all paths
-stroll.Graph.Create(grid, 0.9)
+stroll.Graph.GetData(grid)
+  .then(grid => stroll.Graph.Create(grid, 0.9))
   .then(graph => stroll.Route.PathsAll(graph))
   .then(results => {
     console.log(results);
   });
 
 // parse paths
-stroll.Graph.Create(grid, 0.9)
+stroll.Graph.GetData(grid)
+  .then(grid => stroll.Graph.Create(grid, 0.9))
   .then(graph => stroll.Route.PathsAll(graph))
   .then(paths => stroll.Route.ParsePaths(paths))
   .then(results => {
@@ -39,7 +37,8 @@ stroll.Graph.Create(grid, 0.9)
   .catch(err => console.error(err));
 
 // paths 'a to b'
-stroll.Graph.Create(grid, 0.9)
+stroll.Graph.GetData(grid)
+  .then(grid => stroll.Graph.Create(grid, 0.9))
   .then(graph => stroll.Route.PathsFrom(graph, 47.651588, -122.415078))
   .then(paths => stroll.Route.ParsePaths(paths))
   .then(results => {
@@ -48,7 +47,8 @@ stroll.Graph.Create(grid, 0.9)
   .catch(err => console.error(err));
 
 // paths that start and end at the same point
-stroll.Graph.Create(grid, 0.9)
+stroll.Graph.GetData(grid)
+  .then(grid => stroll.Graph.Create(grid, 0.9))
   .then(graph => stroll.Route.PathsLoop(graph, 47.651588, -122.415078))
   .then(paths => stroll.Route.ParsePaths(paths))
   .then(results => {

@@ -43,7 +43,9 @@ export class Graph {
    * @returns {Promise<Array>} A ngraph.graph object.
    */
   static GetData(grid, apiKey = process.env.GMAPS_KEY) {
-    console.log("Staring Get Graph Data");
+    console.log(
+      `Staring Get Graph Data | Grid Size: ${String(grid.features.length)}`
+    );
     const promises = [];
 
     // iterate over the same collection to get links between nodes based on distance
@@ -92,76 +94,68 @@ export class Graph {
   /**
    * Get graph object representing the points which are walkable given an origin lat/long, radius, and
    * distance between points for creation of a grid.
-   * @param {Array<Point>} grid A grid of Turf.js points
+   * @param {Array<Point>} grid A grid of Turf.js points containing 'properties' objects which contain the data
+   * needed (greenScore, parkScore, etc.) to compute the weighted graph.
    * @param {Number} linkTolerance The minimum distance between points to be considered a 'link'.
-   * @param {String} apiKey (Optional) GoogleMaps API Key for the request. If none is provided, a process
-   * environment variable 'GMAPS_KEY' will be queried for the value.
    * @returns {Graph} A ngraph.graph object.
    */
-  static Create(grid, linkTolerance, apiKey = process.env.GMAPS_KEY) {
-    console.log(
-      `Staring Get Graph | Grid Size: ${String(grid.features.length)}`
-    );
-    const self = this;
+  static Create(grid, linkTolerance) {
+    console.log("Staring Get Graph");
     return new Promise((resolve, reject) => {
-      self
-        .GetData(grid, apiKey)
-        .then(points => {
-          const graph = createGraph();
-          points.map(point => {
-            const geom = point.geometry;
-            const props = point.properties;
-            const idA = `${String(geom.coordinates[0])}-${String(
-              geom.coordinates[1]
-            )}`;
+      const graph = createGraph();
 
-            // add nodes to graph
-            graph.addNode(idA, {
-              x: +geom.coordinates[0],
-              y: +geom.coordinates[1],
-              greenScore: props.greenScore,
-              parkScore: props.parkScore,
-              closeParkScore: props.closeParkScore,
-              mediumParkScore: props.mediumParkScore,
-              farParkScore: props.farParkScore
-            });
+      if (grid.length < 1) {
+        reject(graph);
+      }
 
-            // loop over points again to create links
-            points.map(point2 => {
-              const geom2 = point2.geometry;
-              const props2 = point2.properties;
-              const idB = `${String(geom2.coordinates[0])}-${String(
-                geom2.coordinates[1]
-              )}`;
-              const distance = TurfDistance.default(
-                geom.coordinates,
-                geom2.coordinates
-              );
-              const dx = +geom.coordinates[0] - +geom2.coordinates[0];
-              const dy = +geom.coordinates[1] - +geom2.coordinates[1];
+      grid.map(point => {
+        const geom = point.geometry;
+        const props = point.properties;
+        const idA = `${String(geom.coordinates[0])}-${String(
+          geom.coordinates[1]
+        )}`;
 
-              // if the node is within the tolerance, add it as a walkable link
-              if (distance !== 0 && distance < linkTolerance) {
-                graph.addLink(idA, idB, {
-                  greenScore: props.greenScore + props2.greenScore,
-                  parkScore: props.parkScore + props2.parkScore,
-                  closeParkScore: props.closeParkScore + props2.closeParkScore,
-                  mediumParkScore:
-                    props.mediumParkScore + props2.mediumParkScore,
-                  farParkScore: props.farParkScore + props2.farParkScore,
-                  distanceEuclidean: Math.abs(Math.sqrt(dx * dx + dy * dy)),
-                  distanceTurf: distance
-                });
-              }
-            });
-          });
-          resolve(graph);
-        })
-        .catch(err => {
-          console.error(err);
-          reject(err);
+        // add nodes to graph
+        graph.addNode(idA, {
+          x: +geom.coordinates[0],
+          y: +geom.coordinates[1],
+          greenScore: props.greenScore,
+          parkScore: props.parkScore,
+          closeParkScore: props.closeParkScore,
+          mediumParkScore: props.mediumParkScore,
+          farParkScore: props.farParkScore
         });
-    });
+
+        // loop over points again to create links
+        grid.map(point2 => {
+          const geom2 = point2.geometry;
+          const props2 = point2.properties;
+          const idB = `${String(geom2.coordinates[0])}-${String(
+            geom2.coordinates[1]
+          )}`;
+          const distance = TurfDistance.default(
+            geom.coordinates,
+            geom2.coordinates
+          );
+          const dx = +geom.coordinates[0] - +geom2.coordinates[0];
+          const dy = +geom.coordinates[1] - +geom2.coordinates[1];
+
+          // if the node is within the tolerance, add it as a walkable link
+          if (distance !== 0 && distance < linkTolerance) {
+            graph.addLink(idA, idB, {
+              greenScore: props.greenScore + props2.greenScore,
+              parkScore: props.parkScore + props2.parkScore,
+              closeParkScore: props.closeParkScore + props2.closeParkScore,
+              mediumParkScore: props.mediumParkScore + props2.mediumParkScore,
+              farParkScore: props.farParkScore + props2.farParkScore,
+              distanceEuclidean: Math.abs(Math.sqrt(dx * dx + dy * dy)),
+              distanceTurf: distance
+            });
+          }
+        });
+      });
+      resolve(graph);
+    }).catch(err => console.error(err));
   }
 
   /**

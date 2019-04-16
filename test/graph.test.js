@@ -23,11 +23,11 @@ test("GetData", async () => {
   const result = await Graph.GetData(grid);
 
   function greenScore(item) {
-    return item.greenScore;
+    return item.properties.greenScore;
   }
 
   function parkScore(item) {
-    return item.parkScore;
+    return item.properties.parkScore;
   }
 
   function sum(prev, next) {
@@ -42,17 +42,18 @@ test("GetData", async () => {
 
   expect.anything(result);
   expect(result.length).toBeGreaterThan(6);
-  expect(result[0].parkScore).not.toBeNaN();
-  expect(result[0].closeParkScore).not.toBeNaN();
-  expect(result[0].farParkScore).not.toBeNaN();
-  expect(result[0].mediumParkScore).not.toBeNaN();
-  expect(result[0].coordinates.length).toBe(2);
+  expect(result[0].properties.parkScore).not.toBeNaN();
+  expect(result[0].properties.closeParkScore).not.toBeNaN();
+  expect(result[0].properties.farParkScore).not.toBeNaN();
+  expect(result[0].properties.mediumParkScore).not.toBeNaN();
+  expect(result[0].geometry.coordinates.length).toBe(2);
   expect(greenScoreSum).toBeGreaterThan(0);
   expect(parkScoreSum).toBeGreaterThan(0);
 }, 8000);
 
 test("Create", async () => {
-  const grid = Geometry.PointGrid(47.651588, -122.415078, 1, 0.8);
+  let grid = Geometry.PointGrid(47.651588, -122.415078, 1, 0.8);
+  grid = await Graph.GetData(grid);
   const graph = await Graph.Create(grid, 0.9);
 
   expect.anything(graph);

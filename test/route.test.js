@@ -14,8 +14,10 @@ import { Route, Geometry, Graph } from "../src";
 // }, 8000);
 
 test("ParsePaths", async () => {
-  const grid = Geometry.PointGrid(47.651588, -122.415078, 1, 0.8);
+  let grid = Geometry.PointGrid(47.651588, -122.415078, 1, 0.8);
+  grid = await Graph.GetData(grid);
   const graph = await Graph.Create(grid, 0.9);
+
   const paths = await Route.PathsAll(graph);
   const topPaths = await Route.ParsePaths(paths);
 
