@@ -76,7 +76,8 @@ Building graphs and calculating paths of travel.
 // Create a custom grid around a origin lat/long
 let grid = Geometry.PointGrid(47.660273, -122.409887, 1, 0.5);
 
-Graph.Create(grid, 0.7) // get a graph from point grid
+Graph.GetData(grid) // get data for each lat/long point on the grid
+  .then(grid => Graph.Create(grid, 0.9)) // create the weighted graph from the grid data
   .then(graph => Route.PathsAll(graph)) // find all possible paths
   .then(paths => Route.ParsePaths(paths)) // return sorted paths
   .then(results => {
