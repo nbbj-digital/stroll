@@ -31,10 +31,6 @@ const grid = stroll.Geometry.PointGrid(47.651588, -122.415078, 1, 0.8);
 //   .catch(err => console.error(err));
 
 stroll.Graph.GetData(grid)
-  .then(results => {
-    console.log(results);
-    console.log(results);
-  })
   .then(grid => stroll.Graph.Create(grid, 0.9))
   .then(graph => stroll.Route.PathsLoop(graph, 47.651588, -122.415078))
   .then(paths => stroll.Route.ParsePaths(paths))

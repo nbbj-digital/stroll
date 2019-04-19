@@ -53,38 +53,47 @@ export class Graph {
       const mainPromise = new Promise((resolve, reject) => {
         const { coordinates } = point.geometry;
 
-        // get color palette analysis from google street view images
-        Color.PaletteAnalysis(coordinates[1], coordinates[0], apiKey)
-          .then(greenScore => {
-            point.properties.greenScore = +greenScore;
-            // get nearby parks and categorize based on distance from origin point
-            Place.ParkSearch(+coordinates[1], +coordinates[0], 1000, apiKey)
-              .then(yelpResult => {
-                const closestParks = yelpResult.filter(park => {
-                  return park.distance < 0.3;
-                });
+        // if park score and green score properties exist on the point feature, do not
+        // run the analysis again
+        if (
+          point.properties.greenScore != null &&
+          point.properties.parkScore != null
+        ) {
+          resolve(point);
+        } else {
+          // get color palette analysis from google street view images
+          Color.PaletteAnalysis(coordinates[1], coordinates[0], apiKey)
+            .then(greenScore => {
+              point.properties.greenScore = +greenScore;
+              // get nearby parks and categorize based on distance from origin point
+              Place.ParkSearch(+coordinates[1], +coordinates[0], 1000, apiKey)
+                .then(yelpResult => {
+                  const closestParks = yelpResult.filter(park => {
+                    return park.distance < 0.3;
+                  });
 
-                const closeParks = yelpResult.filter(park => {
-                  return park.distance < 0.6;
-                });
+                  const closeParks = yelpResult.filter(park => {
+                    return park.distance < 0.6;
+                  });
 
-                const farParks = yelpResult.filter(park => {
-                  return park.distance < 1;
-                });
+                  const farParks = yelpResult.filter(park => {
+                    return park.distance < 1;
+                  });
 
-                point.properties.parkScore = yelpResult.length;
-                point.properties.closeParkScore = closestParks.length;
-                point.properties.mediumParkScore = closeParks.length;
-                point.properties.farParkScore = farParks.length;
-                resolve(point);
-              })
-              .catch(err => {
-                console.error(err);
-                reject(err);
-              });
-          })
-          .catch(err => console.error(err));
-      });
+                  point.properties.parkScore = yelpResult.length;
+                  point.properties.closeParkScore = closestParks.length;
+                  point.properties.mediumParkScore = closeParks.length;
+                  point.properties.farParkScore = farParks.length;
+                  resolve(point);
+                })
+                .catch(err => {
+                  console.error(err);
+                  reject(err);
+                });
+            })
+            .catch(err => console.error(err));
+        }
+      }).catch(err => console.error(err));
       promises.push(mainPromise);
     });
 
