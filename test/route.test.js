@@ -25,4 +25,4 @@ test("ParsePaths", async () => {
   expect(topPaths.length).toBeGreaterThan(50);
   expect(topPaths[0].totalGreenScore).toBeGreaterThan(1);
   expect(topPaths[0].path.length).toBeGreaterThan(1);
-}, 8000);
+}, 12000);

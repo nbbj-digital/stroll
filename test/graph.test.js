@@ -49,7 +49,7 @@ test("GetData", async () => {
   expect(result[0].geometry.coordinates.length).toBe(2);
   expect(greenScoreSum).toBeGreaterThan(0);
   expect(parkScoreSum).toBeGreaterThan(0);
-}, 8000);
+}, 12000);
 
 test("Create", async () => {
   let grid = Geometry.PointGrid(47.651588, -122.415078, 1, 0.8);
@@ -68,4 +68,4 @@ test("Create", async () => {
     expect(node.data.x).not.toBeNaN();
     expect(node.data.y).not.toBeNaN();
   });
-}, 8000);
+}, 12000);
